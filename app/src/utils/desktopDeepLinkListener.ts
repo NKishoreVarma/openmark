@@ -290,7 +290,7 @@ const handleAuthDeepLink = async (parsed: URL, requireStateNonce = true) => {
     const rawMessage = error instanceof Error ? error.message : String(error);
     if (isDecryptionFailure(rawMessage)) {
       failDeepLinkAuthProcessing(
-        "Sign-in failed because OpenHuman couldn't decrypt locally stored data. " +
+        "Sign-in failed because openmark couldn't decrypt locally stored data. " +
           'This usually means the encryption key on this device no longer matches ' +
           'your stored secrets. Clear app data to start fresh.',
         { requiresAppDataReset: true }
@@ -423,7 +423,7 @@ export const authStoreFailureUserMessage = (
   if (mode !== 'cloud') {
     return (
       'Sign-in could not be completed right now. The session store did not respond in time ' +
-      '(even after retrying). Please restart OpenHuman and try again.'
+      '(even after retrying). Please restart openmark and try again.'
     );
   }
   switch (kind) {
@@ -519,8 +519,8 @@ const handleOAuthDeepLink = async (parsed: URL) => {
     if (!versionGate.ok) {
       const msg =
         versionGate.current === 'unknown'
-          ? `OpenHuman could not verify this build against the minimum required for OAuth (${versionGate.minimum}). Install the latest release, then try connecting again.`
-          : `This OpenHuman build (${versionGate.current}) is older than the minimum required for OAuth (${versionGate.minimum}). Install the latest release, then try connecting again.`;
+          ? `openmark could not verify this build against the minimum required for OAuth (${versionGate.minimum}). Install the latest release, then try connecting again.`
+          : `This openmark build (${versionGate.current}) is older than the minimum required for OAuth (${versionGate.minimum}). Install the latest release, then try connecting again.`;
       console.warn(`[DeepLink][oauth:stale-app] ${msg}`);
       try {
         await openUrl(versionGate.downloadUrl);
@@ -651,7 +651,7 @@ export const handleDeepLinkUrls = async (
 
   try {
     const parsed = new URL(url);
-    if (parsed.protocol !== 'openhuman:') {
+    if (parsed.protocol !== 'openmark:') {
       console.warn('[DeepLink] Ignoring unsupported protocol:', parsed.protocol);
       return;
     }
@@ -715,7 +715,7 @@ export const setupDesktopDeepLinkListener = async () => {
         let effectiveUrl = url;
         try {
           const parsed = new URL(url);
-          if (parsed.protocol === 'openhuman:' && parsed.hostname === 'auth') {
+          if (parsed.protocol === 'openmark:' && parsed.hostname === 'auth') {
             const existing = parsed.searchParams.get('state');
             if (existing) {
               registerAuthDeepLinkState(existing);

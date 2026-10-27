@@ -7,7 +7,7 @@ fn url(s: &str) -> Url {
 #[test]
 fn remote_pages_are_cancelled_and_handed_to_the_os_browser() {
     for href in [
-        "https://github.com/tinyhumansai/openhuman",
+        "https://github.com/kishorevarma/openmark",
         "http://example.com/login?token=abc",
         // Loopback that is not the dev server is still a remote page to the webview.
         "http://localhost:8000/",

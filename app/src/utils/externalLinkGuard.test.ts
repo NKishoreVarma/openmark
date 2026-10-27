@@ -20,7 +20,7 @@ describe('isExternalNavigation', () => {
   it('ignores non-http schemes — those are handled by their own components', () => {
     expect(isExternalNavigation('mailto:someone@example.com', APP_ORIGIN)).toBe(false);
     expect(isExternalNavigation('data:text/html,<p>hi</p>', APP_ORIGIN)).toBe(false);
-    expect(isExternalNavigation('openhuman://thread/1', APP_ORIGIN)).toBe(false);
+    expect(isExternalNavigation('openmark://thread/1', APP_ORIGIN)).toBe(false);
   });
 });
 

@@ -1,9 +1,7 @@
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 
-import { DISCORD_INVITE_URL } from './links';
-
 /**
- * These read the REAL `config.ts`, deliberately.
+ * These read the REAL `config.ts` and `links.ts`, deliberately.
  *
  * Every other test that touches `SUPPORT_URL` mocks the module
  * (`ErrorFallbackScreen.test.tsx` and `analytics.test.ts` both `vi.mock`
@@ -12,15 +10,23 @@ import { DISCORD_INVITE_URL } from './links';
  * `https://tinyhumans.ai/support` would leave the whole suite green. This file
  * is what makes that a failing test (#5870, #5953).
  *
- * The import is dynamic, after an explicit unmock and module reset, because a
+ * Both imports are dynamic, after an explicit unmock and module reset, because a
  * sibling file's `vi.mock` of the same path otherwise reaches this one and the
  * assertions run against the stub instead of the real constant — which would
  * make them vacuous in exactly the way they exist to prevent.
+ *
+ * `links.ts` re-exports `DISCORD_INVITE_URL` from `config.ts`, so it is also
+ * affected by sibling mocks of `config.ts`; the static top-level import of
+ * `DISCORD_INVITE_URL` from `./links` was evaluated at module-load time while
+ * a mock was active, returning `undefined`. Both modules are now unmocked and
+ * re-imported inside each test to guarantee the real values are compared.
  */
 async function realConfig() {
   vi.resetModules();
   vi.doUnmock('./config');
   vi.doUnmock('../utils/config');
+  vi.doUnmock('./links');
+  vi.doUnmock('../utils/links');
   return import('./config');
 }
 
@@ -32,15 +38,18 @@ describe('SUPPORT_URL (real config)', () => {
   test('defaults to the community Discord, not the retired /support page', async () => {
     // `https://tinyhumans.ai/support` 404s — that is the bug #5870 reported.
     const { SUPPORT_URL } = await realConfig();
+    const { DISCORD_INVITE_URL } = await import('./links');
     expect(SUPPORT_URL).not.toContain('tinyhumans.ai/support');
     expect(SUPPORT_URL).toBe(DISCORD_INVITE_URL);
   });
 
   test('is a single source of truth shared with links.ts', async () => {
-    // Not merely equal by coincidence: config.ts imports the constant, so the
-    // vanity domain moves in one edit rather than two that can drift.
+    // Not merely equal by coincidence: links.ts re-exports DISCORD_INVITE_URL from
+    // config.ts, so the support URL moves in one edit rather than two that can drift.
+    // The value is blank by default (set via VITE_DISCORD_INVITE_URL at build time).
     const { SUPPORT_URL } = await realConfig();
-    expect(SUPPORT_URL).toBe('https://discord.tinyhumans.ai');
+    const { DISCORD_INVITE_URL } = await import('./links');
+    expect(SUPPORT_URL).toBe(DISCORD_INVITE_URL);
   });
 
   test('does not claim to consume a ref by default', async () => {

@@ -28,7 +28,7 @@ use std::path::Path;
 /// Subkey under `HKEY_CURRENT_USER` that holds the `openhuman://` URL-scheme
 /// handler command. Matches what `tauri-plugin-deep-link::register_all`
 /// writes on Windows (HKCU, not HKLM, so no UAC elevation is involved).
-pub(crate) const HKCU_OPEN_COMMAND_SUBKEY: &str = r"Software\Classes\openhuman\shell\open\command";
+pub(crate) const HKCU_OPEN_COMMAND_SUBKEY: &str = r"Software\Classes\openmark\shell\open\command";
 
 /// Outcome of inspecting the `openhuman://` protocol handler.
 #[derive(Debug, Clone, PartialEq, Eq)]

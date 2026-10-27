@@ -454,7 +454,7 @@ mod linux_imp {
             .and_then(|n| n.to_str())
             .unwrap_or(argv0);
         let lower = filename.to_ascii_lowercase();
-        lower == "openhuman-core" || lower == "openhuman"
+        lower == "openhuman-core" || lower == "openmark"
     }
 
     #[cfg(test)]
@@ -756,7 +756,7 @@ mod windows_imp {
     /// core, CEF helper). Used only for the diagnostics listing.
     fn is_openhuman_process(argv0: &str) -> bool {
         let name = exe_file_name(argv0);
-        name == "openhuman.exe" || name == "openhuman-core.exe"
+        name == "openmark.exe" || name == "openhuman-core.exe"
     }
 
     /// True only for a wedged GUI browser process that is safe to reap: the
@@ -766,7 +766,7 @@ mod windows_imp {
     /// mutex and may be an active user session, e.g. a Claude MCP client
     /// (issue #3900 P2; see `main.rs` for the subcommand routing).
     fn is_reapable_gui_instance(argv0: &str, command_line: &str) -> bool {
-        if exe_file_name(argv0) != "openhuman.exe" {
+        if exe_file_name(argv0) != "openmark.exe" {
             return false;
         }
         if command_line_has_type_flag(command_line) {

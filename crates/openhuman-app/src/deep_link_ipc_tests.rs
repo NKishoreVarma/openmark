@@ -30,7 +30,7 @@ fn socket_path_uses_xdg_runtime_dir() {
     let path = socket_path();
     assert_eq!(
         path,
-        PathBuf::from("/run/user/1234/com.openhuman.app-deeplink.sock")
+        PathBuf::from("/run/user/1234/com.openmark.app-deeplink.sock")
     );
 }
 
@@ -40,7 +40,7 @@ fn socket_path_fallback_has_uid() {
     let path = socket_path();
     let name = path.file_name().unwrap().to_string_lossy();
     assert!(
-        name.contains("com_openhuman_app_deeplink"),
+        name.contains("com_openmark_app_deeplink"),
         "path {path:?} should contain identifier"
     );
     // Should NOT be inside /run/user since XDG_RUNTIME_DIR is unset.
@@ -56,21 +56,21 @@ fn extract_deep_link_urls_filters_correctly() {
     // (mirrors the Windows sibling test) instead of re-implementing the
     // predicate inline — so a regression in the filter actually fails here.
     let urls = collect_deep_link_urls_from_args([
-        "OpenHuman",
-        "openhuman://auth?token=abc",
+        "openmark",
+        "openmark://auth?token=abc",
         "--some-flag",
-        "openhuman://other",
+        "openmark://other",
         "https://example.com",
     ]);
     assert_eq!(
         urls,
-        vec!["openhuman://auth?token=abc", "openhuman://other"]
+        vec!["openmark://auth?token=abc", "openmark://other"]
     );
 }
 
 #[test]
 fn write_urls_reports_broken_pipe_after_partial_write() {
-    let urls = vec!["openhuman://auth?token=test".to_string()];
+    let urls = vec!["openmark://auth?token=test".to_string()];
     let mut writer = FailingWriter { remaining: 5 };
 
     let result = write_urls(&mut writer, &urls);
@@ -81,8 +81,8 @@ fn write_urls_reports_broken_pipe_after_partial_write() {
 #[test]
 fn write_urls_writes_all_urls_with_newlines() {
     let urls = vec![
-        "openhuman://auth?token=first".to_string(),
-        "openhuman://auth?token=second".to_string(),
+        "openmark://auth?token=first".to_string(),
+        "openmark://auth?token=second".to_string(),
     ];
     let mut writer = Vec::new();
 
@@ -90,13 +90,13 @@ fn write_urls_writes_all_urls_with_newlines() {
 
     assert_eq!(
         writer,
-        b"openhuman://auth?token=first\nopenhuman://auth?token=second\n"
+        b"openmark://auth?token=first\nopenmark://auth?token=second\n"
     );
 }
 
 #[test]
 fn failed_forward_is_not_reported_as_forwarded() {
-    let urls = vec!["openhuman://auth?token=test".to_string()];
+    let urls = vec!["openmark://auth?token=test".to_string()];
     let mut writer = FailingWriter { remaining: 5 };
 
     let result = forward_connected_stream(&mut writer, &urls);
@@ -108,7 +108,7 @@ fn failed_forward_is_not_reported_as_forwarded() {
 fn no_primary_returns_no_primary() {
     let tmp = tempfile::TempDir::new().unwrap();
     let sock_path = tmp.path().join("missing-deeplink.sock");
-    let urls = vec!["openhuman://auth?token=test".to_string()];
+    let urls = vec!["openmark://auth?token=test".to_string()];
 
     let result = try_forward_urls(&urls, &sock_path);
 
@@ -132,19 +132,19 @@ fn round_trip_bind_connect_forward() {
             stream.set_read_timeout(Some(Duration::from_secs(2))).ok();
             let reader = BufReader::new(stream);
             for line in reader.lines().flatten() {
-                if line.starts_with("openhuman://") {
+                if line.starts_with("openmark://") {
                     received_clone.lock().unwrap().push(line);
                 }
             }
         }
     });
 
-    let urls = vec!["openhuman://auth?token=testtoken123".to_string()];
+    let urls = vec!["openmark://auth?token=testtoken123".to_string()];
     let result = try_forward_urls(&urls, &sock_path);
     assert!(matches!(result, ForwardResult::Forwarded));
 
     std::thread::sleep(Duration::from_millis(100));
     let got = received.lock().unwrap();
     assert_eq!(got.len(), 1);
-    assert_eq!(got[0], "openhuman://auth?token=testtoken123");
+    assert_eq!(got[0], "openmark://auth?token=testtoken123");
 }

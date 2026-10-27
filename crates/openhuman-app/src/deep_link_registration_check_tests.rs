@@ -61,16 +61,16 @@ fn extract_first_token_unterminated_quote_falls_through() {
 #[test]
 fn paths_equal_loose_is_case_insensitive_and_slash_agnostic() {
     assert!(paths_equal_loose(
-        "C:\\Program Files\\OpenHuman\\OpenHuman.exe",
-        "c:/program files/openhuman/openhuman.exe"
+        "C:\\Program Files\\openmark\\openmark.exe",
+        "c:/program files/openmark/openmark.exe"
     ));
 }
 
 #[test]
 fn paths_equal_loose_distinguishes_different_paths() {
     assert!(!paths_equal_loose(
-        "C:\\OldPath\\OpenHuman.exe",
-        "C:\\NewPath\\OpenHuman.exe"
+        "C:\\OldPath\\openmark.exe",
+        "C:\\NewPath\\openmark.exe"
     ));
 }
 

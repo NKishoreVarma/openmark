@@ -1738,7 +1738,7 @@ fn setup_tray(app: &AppHandle<AppRuntime>) -> tauri::Result<()> {
         .cloned()
         .ok_or_else(|| tauri::Error::AssetNotFound("default window icon".to_string()))?;
 
-    TrayIconBuilder::with_id("openhuman-tray")
+    TrayIconBuilder::with_id("openmark-tray")
         .icon(icon)
         .menu(&menu)
         .on_menu_event(|app, event| match event.id().as_ref() {
@@ -2706,7 +2706,7 @@ pub fn run() {
 
         // Must match the bundle identifier in tauri.conf.json.
         // Changing the app identifier requires updating this string too.
-        let mutex_name: Vec<u16> = "com.openhuman.app-cef-init\0".encode_utf16().collect();
+        let mutex_name: Vec<u16> = "com.openmark.app-cef-init\0".encode_utf16().collect();
 
         // SAFETY: mutex_name is null-terminated UTF-16; handle is checked below.
         let handle = unsafe { CreateMutexW(std::ptr::null(), 0, mutex_name.as_ptr()) };
@@ -3136,7 +3136,7 @@ pub fn run() {
             //     i.e. a sibling worktree's stale binary, not us.
             #[cfg(target_os = "macos")]
             if cfg!(debug_assertions) && !daemon_mode {
-                const STALE_LABEL: &str = "com.openhuman.core";
+                const STALE_LABEL: &str = "com.openmark.core";
 
                 if let Ok(home) = std::env::var("HOME") {
                     let plist = std::path::PathBuf::from(&home)
@@ -3698,7 +3698,7 @@ fn build_sentry_release_tag() -> String {
     let sha = option_env!("OPENHUMAN_BUILD_SHA").unwrap_or("").trim();
     let sha_short: String = sha.chars().take(12).collect();
     if sha_short.is_empty() {
-        format!("openhuman@{version}")
+        format!("openmark@{version}")
     } else {
         format!("openhuman@{version}+{sha_short}")
     }

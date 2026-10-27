@@ -45,7 +45,7 @@ pub(crate) fn resolve_data_dir() -> PathBuf {
         eprintln!(
             "[file_logging] default_root_openhuman_dir failed ({err}); falling back to temp dir"
         );
-        std::env::temp_dir().join("openhuman")
+        std::env::temp_dir().join("openmark")
     })
 }
 

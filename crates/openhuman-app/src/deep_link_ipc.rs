@@ -25,11 +25,11 @@ use std::{
 /// per-session tmpfs, cleaned on reboot), falls back to /tmp with UID.
 pub(crate) fn socket_path() -> PathBuf {
     if let Ok(dir) = std::env::var("XDG_RUNTIME_DIR") {
-        return PathBuf::from(dir).join("com.openhuman.app-deeplink.sock");
+        return PathBuf::from(dir).join("com.openmark.app-deeplink.sock");
     }
     // Fallback: include UID so multi-user machines don't collide.
     let uid = nix::unistd::getuid().as_raw();
-    std::env::temp_dir().join(format!("com_openhuman_app_deeplink_{uid}.sock"))
+    std::env::temp_dir().join(format!("com_openmark_app_deeplink_{uid}.sock"))
 }
 
 /// Filter `openhuman://` URLs out of an argv-style iterator. Split out from
@@ -45,7 +45,7 @@ where
         .skip(1)
         .filter_map(|arg| {
             let arg = arg.as_ref();
-            arg.starts_with("openhuman://").then(|| arg.to_string())
+            arg.starts_with("openmark://").then(|| arg.to_string())
         })
         .collect()
 }

@@ -156,6 +156,31 @@ const AboutPanel = () => {
         </div>
       </SettingsSection>
 
+      {/* GPL-3.0 §5(a) attribution — legal notice; intentionally not i18n'd
+          so the attribution text cannot be altered or omitted by locale. */}
+      <SettingsSection>
+        <div className="px-4 py-3 space-y-1">
+          <div className="text-xs font-medium text-content-muted">Open Source</div>
+          <p className="text-[11px] text-content-faint leading-relaxed">
+            openmark is a modified version of{' '}
+            <button
+              type="button"
+              className="underline text-content-muted hover:text-content"
+              onClick={() => void openUrl('https://github.com/tinyhumansai/openhuman')}>
+              OpenHuman
+            </button>
+            {' '}by TinyHumans AI, licensed under{' '}
+            <button
+              type="button"
+              className="underline text-content-muted hover:text-content"
+              onClick={() => void openUrl('https://www.gnu.org/licenses/gpl-3.0.html')}>
+              GPL-3.0
+            </button>
+            . Modifications by the openmark contributors.
+          </p>
+        </div>
+      </SettingsSection>
+
       {/* Star us on GitHub — a subtle, dismissible CTA (#5005). The card owns
           its own surface styling and renders nothing once the user stars or
           dismisses it (durable, per-user), so it is not wrapped in a

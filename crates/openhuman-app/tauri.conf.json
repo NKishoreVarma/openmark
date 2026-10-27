@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "OpenHuman",
+  "productName": "openmark",
   "version": "0.63.31",
-  "identifier": "com.openhuman.app",
+  "identifier": "com.openmark.app",
   "build": {
     "beforeDevCommand": "pnpm --dir ../app run dev",
     "devUrl": "http://localhost:1420",
@@ -13,7 +13,7 @@
     "windows": [
       {
         "label": "main",
-        "title": "OpenHuman",
+        "title": "openmark",
         "width": 1280,
         "height": 900,
         "visible": false,
@@ -93,15 +93,15 @@
   "plugins": {
     "updater": {
       "active": true,
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDc0OTREMjkxREFCNUIzRTEKUldUaHM3WGFrZEtVZEJzZWtMTlc5dGxnT0R2Q3hUTWVaclJWSm9JUFpPcVFUV2RBSG5oNFN6UjQK",
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEFBMkFBQjlBNkQ2QjBFMDQKUldRRURtdHRtcXNxcW1ScStDZWszS08wZWtwejFsQ3VicGJDdmVVQ0lrcmducndzc0p2UVB6WkkK",
       "endpoints": [
-        "https://github.com/tinyhumansai/openhuman/releases/latest/download/latest.json"
+        "https://github.com/NKishoreVarma/openmark/releases/latest/download/latest.json"
       ]
     },
     "deep-link": {
       "desktop": {
         "schemes": [
-          "openhuman"
+          "openmark"
         ]
       }
     }

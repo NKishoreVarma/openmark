@@ -130,7 +130,7 @@ describe('PermissionsPanel', () => {
     mockGetPaths.mockRejectedValue(new Error('rpc unavailable'));
     renderWithProviders(<PermissionsPanel />);
     expect(await screen.findByTestId('permissions-action-dir')).toHaveTextContent(
-      '~/OpenHuman/projects'
+      '~/openmark/projects'
     );
   });
 

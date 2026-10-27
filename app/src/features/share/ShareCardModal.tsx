@@ -18,8 +18,8 @@ import { buildLinkedInShareUrl, buildTweetIntentUrl, SHARE_LANDING_URL } from '.
 
 const LOG_PREFIX = '[share-modal]';
 
-/** Marketing URL printed on the card footer. */
-const CARD_URL = 'tinyhumans.ai';
+/** Marketing URL printed on the card footer (protocol-stripped from SHARE_LANDING_URL). */
+const CARD_URL = SHARE_LANDING_URL.replace(/^https?:\/\//, '');
 
 interface ShareCardModalProps {
   /** The assistant output being shared (already image-stripped plain text). */

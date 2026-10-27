@@ -78,7 +78,7 @@ function selectionValue(selection: ProviderModelSelection): string | null {
 }
 
 function displayValue(value: string | null | undefined): string {
-  if (!value || value.startsWith('hint:')) return 'OpenHuman';
+  if (!value || value.startsWith('hint:')) return 'openmark';
   // Managed ids carry no `providerSlug:` prefix to strip, and slicing on `:`
   // would reduce `…/nex-n2.5-mini:free` to just `free`. Show the model name.
   if (isManagedPassthroughId(value)) {

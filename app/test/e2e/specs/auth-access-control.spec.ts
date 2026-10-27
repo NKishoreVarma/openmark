@@ -259,7 +259,7 @@ describe('Auth & Access Control', () => {
     await navigateToBilling();
     clearRequestLog();
 
-    await expectBillingMarkers(['Open billing dashboard', 'TinyHumans on the web']);
+    await expectBillingMarkers(['Open billing dashboard', 'openmark on the web']);
 
     console.log('[AuthAccess] 3.2.1 — Billing dashboard entry point verified');
     await navigateToHome();

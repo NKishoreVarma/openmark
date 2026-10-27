@@ -171,8 +171,8 @@ export interface ShareCaptionTemplates {
 
 /** English defaults, used when a caller doesn't pass locale-aware templates (e.g. tests). */
 const DEFAULT_CAPTION_TEMPLATES: ShareCaptionTemplates = {
-  emptyFallback: 'Look what my OpenHuman agent just did.',
-  withHeadline: '{headline}. Made with my OpenHuman agent.',
+  emptyFallback: 'Look what my openmark agent just did.',
+  withHeadline: '{headline}. Made with my openmark agent.',
 };
 
 /**

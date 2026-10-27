@@ -25,6 +25,7 @@ import {
   testCoreRpcConnection,
 } from '../../services/coreRpcClient';
 import { type CoreMode, resetCoreMode, setCoreMode } from '../../store/coreModeSlice';
+import { LATEST_APP_DOWNLOAD_URL } from '../../utils/config';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
   clearStoredCoreMode,
@@ -123,7 +124,7 @@ type TestStatus =
 // Desktop release artifact URL surfaced on the web build's mode picker so
 // users without a remote core have a clear path to install the app instead
 // of being trapped on the cloud-only form.
-const DESKTOP_DOWNLOAD_URL = 'https://github.com/tinyhumansai/openhuman/releases/latest';
+const DESKTOP_DOWNLOAD_URL = LATEST_APP_DOWNLOAD_URL;
 
 function ModePicker({ onConfirm }: PickerProps) {
   const { t } = useT();

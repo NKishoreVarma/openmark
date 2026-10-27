@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 
 import { renderWithProviders } from '../../test/test-utils';
+import { OPENHUMAN_GITHUB_REPO_URL } from '../../utils/config';
 import { GitHubStarCard } from './GitHubStarCard';
 
 const mocks = vi.hoisted(() => ({ openUrl: vi.fn(), trackAnalyticsEvent: vi.fn() }));
@@ -22,7 +23,7 @@ describe('GitHubStarCard', () => {
   test('renders the CTA when not yet dismissed', () => {
     renderWithProviders(<GitHubStarCard />);
     expect(screen.getByTestId('github-star-cta')).toBeInTheDocument();
-    expect(screen.getByText('Enjoying OpenHuman?')).toBeInTheDocument();
+    expect(screen.getByText('Enjoying openmark?')).toBeInTheDocument();
     expect(screen.getByText('Star on GitHub')).toBeInTheDocument();
   });
 
@@ -40,7 +41,8 @@ describe('GitHubStarCard', () => {
     await user.click(screen.getByText('Star on GitHub'));
 
     await waitFor(() => expect(mocks.openUrl).toHaveBeenCalledTimes(1));
-    expect(mocks.openUrl.mock.calls[0][0]).toBe('https://github.com/tinyhumansai/openhuman');
+    // URL is blank by default; set via VITE_OPENHUMAN_GITHUB_REPO_URL at build time.
+    expect(mocks.openUrl.mock.calls[0][0]).toBe(OPENHUMAN_GITHUB_REPO_URL);
     expect(mocks.trackAnalyticsEvent).toHaveBeenCalledWith('github_star_cta_clicked');
     // Acting on the CTA retires it: the flag is set and the card unmounts.
     expect(store.getState().githubStar.dismissed).toBe(true);

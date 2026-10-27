@@ -183,11 +183,11 @@ describe('buildShareCaption', () => {
   test('embeds the headline and brand', () => {
     const out = buildShareCaption('My agent summarised my inbox');
     expect(out).toContain('My agent summarised my inbox');
-    expect(out).toContain('OpenHuman');
+    expect(out).toContain('openmark');
   });
 
   test('falls back to a generic caption for empty headline', () => {
-    expect(buildShareCaption('')).toContain('OpenHuman');
+    expect(buildShareCaption('')).toContain('openmark');
   });
 
   test('leaves headroom under the tweet limit', () => {
@@ -198,10 +198,10 @@ describe('buildShareCaption', () => {
   test('uses caller-supplied localized templates instead of English', () => {
     const templates = {
       emptyFallback: 'Mira lo que hizo mi agente.',
-      withHeadline: '{headline}. Hecho con mi agente OpenHuman.',
+      withHeadline: '{headline}. Hecho con mi agente openmark.',
     };
     expect(buildShareCaption('Resumió mi bandeja', templates)).toBe(
-      'Resumió mi bandeja. Hecho con mi agente OpenHuman.'
+      'Resumió mi bandeja. Hecho con mi agente openmark.'
     );
     expect(buildShareCaption('', templates)).toBe('Mira lo que hizo mi agente.');
   });

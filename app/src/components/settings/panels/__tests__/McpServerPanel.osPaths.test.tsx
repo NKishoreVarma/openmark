@@ -136,7 +136,7 @@ describe('<McpServerPanel /> config paths per OS', () => {
     // `embedded` branch deleted, because the string it looked for was wrong
     // and so never present in either mode. A negative assertion alone cannot
     // tell "correctly hidden" from "never rendered".
-    const DESCRIPTION = 'Configure external MCP clients to connect to OpenHuman';
+    const DESCRIPTION = 'Configure external MCP clients to connect to openmark';
 
     await renderForOs('macos');
     expect(

@@ -125,7 +125,7 @@ const baseSettings = {
     {
       id: 'p_oh_x',
       slug: 'openhuman',
-      label: 'OpenHuman',
+      label: 'openmark',
       endpoint: 'https://api.openhuman.ai/v1',
       auth_style: 'openhuman_jwt' as const,
       has_api_key: false,
@@ -312,12 +312,12 @@ describe('AIPanel', () => {
     expect(screen.queryByText(/rejected the API key/i)).not.toBeInTheDocument();
   });
 
-  it('renders the OpenHuman primary card after load', async () => {
+  it('renders the openmark primary card after load', async () => {
     renderWithProviders(<AIPanel />);
-    // The OpenHuman label now appears in multiple places (provider card,
-    // each workload routing row's "↳ OpenHuman" resolution hint), so we
+    // The openmark label appears in multiple places (provider card,
+    // each workload routing row's "↳ openmark" resolution hint), so we
     // assert at-least-one match rather than getByText.
-    await waitFor(() => expect(screen.getAllByText(/OpenHuman/i).length).toBeGreaterThan(0));
+    await waitFor(() => expect(screen.getAllByText(/openmark/i).length).toBeGreaterThan(0));
   });
 
   it('renders Managed as an always-on badge, not a switchable toggle (#3760)', async () => {

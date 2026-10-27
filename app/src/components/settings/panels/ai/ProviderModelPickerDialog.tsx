@@ -85,7 +85,7 @@ export interface ProviderModelSelection {
 
 interface ProviderModelPickerDialogProps {
   /**
-   * Offer the managed OpenRouter source ("Managed by TinyHumans") first. Default `true`: managed
+   * Offer the managed OpenRouter source ("Managed by openmark") first. Default `true`: managed
    * is the product's own routing and must stay reachable from anywhere a model
    * is chosen, or picking a specific model becomes a one-way door.
    *

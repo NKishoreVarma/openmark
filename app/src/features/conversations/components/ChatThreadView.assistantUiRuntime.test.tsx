@@ -22,6 +22,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { AssistantUiRuntimeProvider } from '../../../providers/AssistantUiRuntimeProvider';
 import chatRuntimeReducer, { streamDeltaReceived } from '../../../store/chatRuntimeSlice';
+import layaReducer from '../../../features/laya/layaSlice';
 import themeReducer from '../../../store/themeSlice';
 import threadReducer from '../../../store/threadSlice';
 import type { ThreadMessage } from '../../../types/thread';
@@ -96,6 +97,7 @@ function buildStore() {
       thread: threadReducer,
       chatRuntime: chatRuntimeReducer,
       theme: themeReducer,
+      laya: layaReducer,
     }),
     preloadedState: {
       thread: {

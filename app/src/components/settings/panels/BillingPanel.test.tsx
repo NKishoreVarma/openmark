@@ -1,6 +1,7 @@
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { BILLING_DASHBOARD_URL } from '../../../utils/links';
 import BillingPanel from './BillingPanel';
 
 const navigateBack = vi.fn();
@@ -36,9 +37,9 @@ const summary = {
     weeklyBudgetUsd: 25,
   },
   links: {
-    topUpUrl: 'https://staging.tinyhumans.ai/dashboard?tab=billing',
-    manageUrl: 'https://staging.tinyhumans.ai/dashboard?tab=plans',
-    apiKeysUrl: 'https://staging.tinyhumans.ai/dashboard?tab=api-keys',
+    topUpUrl: 'https://dashboard.openmark.app?tab=billing',
+    manageUrl: 'https://dashboard.openmark.app?tab=plans',
+    apiKeysUrl: 'https://dashboard.openmark.app?tab=api-keys',
   },
 };
 
@@ -145,8 +146,8 @@ describe('<BillingPanel />', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'Top Up Credits' }));
     fireEvent.click(screen.getByRole('button', { name: 'Open billing dashboard' }));
-    expect(openUrlMock).toHaveBeenNthCalledWith(1, 'https://tinyhumans.ai/dashboard?tab=billing');
-    expect(openUrlMock).toHaveBeenNthCalledWith(2, 'https://tinyhumans.ai/dashboard');
+    expect(openUrlMock).toHaveBeenNthCalledWith(1, `${BILLING_DASHBOARD_URL}?tab=billing`);
+    expect(openUrlMock).toHaveBeenNthCalledWith(2, BILLING_DASHBOARD_URL);
   });
 
   it('falls back when the backend returns empty billing links', async () => {
@@ -159,8 +160,8 @@ describe('<BillingPanel />', () => {
     await screen.findByText('$39.50');
     fireEvent.click(screen.getByRole('button', { name: 'Top Up Credits' }));
     fireEvent.click(screen.getByRole('button', { name: 'Open billing dashboard' }));
-    expect(openUrlMock).toHaveBeenNthCalledWith(1, 'https://tinyhumans.ai/dashboard?tab=billing');
-    expect(openUrlMock).toHaveBeenNthCalledWith(2, 'https://tinyhumans.ai/dashboard');
+    expect(openUrlMock).toHaveBeenNthCalledWith(1, `${BILLING_DASHBOARD_URL}?tab=billing`);
+    expect(openUrlMock).toHaveBeenNthCalledWith(2, BILLING_DASHBOARD_URL);
   });
 
   it('keeps plan and balances visible when cycle usage fails', async () => {

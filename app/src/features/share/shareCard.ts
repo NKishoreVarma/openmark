@@ -7,18 +7,18 @@
  * pure functions so it can be unit-tested; `paintShareCard` issues the actual
  * draw calls and is exercised against a mock context in tests.
  *
- * Brand tokens mirror app/tailwind.config.js: ocean primary #4A83DD, Inter for
- * body copy, Cabinet Grotesk for the wordmark (falls back to Inter/sans if the
- * font is not yet loaded in the webview).
+ * Brand tokens: teal primary #0D9488 (primary-600), Inter for body copy,
+ * Cabinet Grotesk for the wordmark (falls back to Inter/sans if the font is
+ * not yet loaded in the webview).
  */
 
 /** 16:9 — the aspect ratio both X and LinkedIn preview cleanly. */
 export const CARD_WIDTH = 1200;
 export const CARD_HEIGHT = 675;
 
-const OCEAN = '#4A83DD';
-const OCEAN_DEEP = '#2C5AA8';
-const INK = '#0E1726';
+const OCEAN = '#0D9488';
+const OCEAN_DEEP = '#0F766E';
+const INK = '#042F2E';
 
 const LOG_PREFIX = '[share-card]';
 
@@ -97,7 +97,7 @@ export interface ShareCardFallbacks {
 
 /** English defaults, used when a caller doesn't pass locale-aware fallbacks (e.g. tests). */
 const DEFAULT_CARD_FALLBACKS: ShareCardFallbacks = {
-  headline: 'Look what my OpenHuman agent just did',
+  headline: 'Look what my openmark agent just did',
   agentName: 'My agent',
 };
 
@@ -169,7 +169,7 @@ export function paintShareCard(
 
   const pad = 72;
 
-  // Brand wordmark: a dot + "OpenHuman".
+  // Brand wordmark: a dot + "openmark".
   ctx.beginPath();
   ctx.fillStyle = '#FFFFFF';
   ctx.arc(pad + 12, pad + 6, 12, 0, Math.PI * 2);
@@ -178,7 +178,7 @@ export function paintShareCard(
   ctx.textAlign = 'left';
   ctx.font = `700 34px ${FONT_DISPLAY}`;
   ctx.fillStyle = '#FFFFFF';
-  ctx.fillText('OpenHuman', pad + 36, pad + 18);
+  ctx.fillText('openmark', pad + 36, pad + 18);
 
   // Headline block.
   ctx.font = `700 62px ${FONT_SANS}`;

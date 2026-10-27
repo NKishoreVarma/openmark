@@ -14,6 +14,7 @@ import { Provider } from 'react-redux';
 import { describe, expect, it, vi } from 'vitest';
 
 import chatRuntimeReducer from '../../../store/chatRuntimeSlice';
+import layaReducer from '../../../features/laya/layaSlice';
 import themeReducer from '../../../store/themeSlice';
 import threadReducer from '../../../store/threadSlice';
 import type { Thread, ThreadMessage } from '../../../types/thread';
@@ -45,6 +46,7 @@ function buildStore(preload: Record<string, unknown> = {}) {
       thread: threadReducer,
       chatRuntime: chatRuntimeReducer,
       theme: themeReducer,
+      laya: layaReducer,
     }),
     preloadedState: preload as never,
   });

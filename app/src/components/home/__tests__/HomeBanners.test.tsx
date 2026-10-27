@@ -17,7 +17,7 @@ describe('HomeBanners', () => {
 
     fireEvent.click(screen.getByRole('button', { name: /get a subscription/i }));
 
-    expect(openUrl).toHaveBeenCalledWith('https://tinyhumans.ai/pricing');
+    expect(openUrl).toHaveBeenCalledWith(PRICING_URL);
   });
 
   it('opens the Discord invite through openUrl from the Discord banner', () => {

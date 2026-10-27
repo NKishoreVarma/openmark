@@ -133,15 +133,15 @@ describe('EmbeddingsPanel', () => {
     expect(screen.getByText('Custom')).toBeInTheDocument();
   });
 
-  it('marks Managed embeddings as requiring OpenHuman sign-in for local sessions', async () => {
+  it('marks Managed embeddings as requiring openmark sign-in for local sessions', async () => {
     setCoreSession({ sessionToken: 'header.payload.local', userId: 'local', profileId: null });
 
     renderWithProviders(<EmbeddingsPanel />);
 
     expect(await screen.findByText('Managed')).toBeInTheDocument();
-    expect(screen.getByText(/requires OpenHuman sign-in/i)).toBeInTheDocument();
+    expect(screen.getByText(/requires openmark sign-in/i)).toBeInTheDocument();
     expect(
-      screen.getByText(/Managed embeddings route through the OpenHuman backend/i)
+      screen.getByText(/Managed embeddings route through the openmark backend/i)
     ).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /Test Connection/i })).toBeDisabled();
   });
@@ -165,10 +165,10 @@ describe('EmbeddingsPanel', () => {
     fireEvent.click(screen.getByRole('radio', { name: /managed/i }));
 
     await waitFor(() =>
-      expect(screen.getByText(/Managed embeddings require OpenHuman sign-in/i)).toBeInTheDocument()
+      expect(screen.getByText(/Managed embeddings require openmark sign-in/i)).toBeInTheDocument()
     );
     expect(
-      screen.getByText(/Managed embeddings route through the OpenHuman backend/i)
+      screen.getByText(/Managed embeddings route through the openmark backend/i)
     ).toBeInTheDocument();
     expect(vi.mocked(updateEmbeddingsSettings)).not.toHaveBeenCalled();
   });
@@ -838,10 +838,10 @@ describe('EmbeddingsPanel', () => {
     fireEvent.click(await screen.findByRole('button', { name: /test connection/i }));
 
     await waitFor(() =>
-      expect(screen.getByText(/Managed embeddings require OpenHuman sign-in/i)).toBeInTheDocument()
+      expect(screen.getByText(/Managed embeddings require openmark sign-in/i)).toBeInTheDocument()
     );
     expect(
-      screen.getByText(/Managed embeddings route through the OpenHuman backend/i)
+      screen.getByText(/Managed embeddings route through the openmark backend/i)
     ).toBeInTheDocument();
     fireEvent.click(screen.getByRole('button', { name: /sign in again/i }));
   });

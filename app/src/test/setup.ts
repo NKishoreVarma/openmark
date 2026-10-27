@@ -291,15 +291,15 @@ vi.mock('../utils/config', () => ({
   DERIVED_TRANSCRIPT_ENABLED: true,
   SKILLS_GITHUB_REPO: 'test/skills',
   GA_MEASUREMENT_ID: undefined,
-  OPENPANEL_API_URL: 'https://panel.tinyhumans.ai/api',
+  OPENPANEL_API_URL: '',
   OPENPANEL_CLIENT_ID: undefined,
   SENTRY_DSN: undefined,
-  SENTRY_RELEASE: 'openhuman@test',
+  SENTRY_RELEASE: 'openmark@test',
   SENTRY_SMOKE_TEST: false,
   BACKEND_URL: mockApiUrl,
-  TELEGRAM_BOT_USERNAME: 'openhuman_bot',
-  LATEST_APP_DOWNLOAD_URL: 'https://github.com/tinyhumansai/openhuman/releases/latest',
-  OPENHUMAN_GITHUB_REPO_URL: 'https://github.com/tinyhumansai/openhuman',
+  TELEGRAM_BOT_USERNAME: '',
+  LATEST_APP_DOWNLOAD_URL: '',
+  OPENHUMAN_GITHUB_REPO_URL: '',
   APP_VERSION: '0.0.0-test',
   APP_BINARY_VERSION: '0.0.0-test',
   APP_ENVIRONMENT: 'test',
@@ -316,6 +316,7 @@ vi.mock('../utils/config', () => ({
   // point sees what a shipped build sees.
   HUMAN_VOICE_REALTIME_ENABLED: true,
   HUMAN_VOICE_SHOW_BOTH: false,
+  SHARE_LANDING_URL: '',
 }));
 
 vi.mock('../services/backendUrl', () => ({

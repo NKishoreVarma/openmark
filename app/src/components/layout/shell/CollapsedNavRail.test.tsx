@@ -2,6 +2,7 @@ import { fireEvent, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { renderWithProviders } from '../../../test/test-utils';
+import { DISCORD_INVITE_URL } from '../../../utils/links';
 import CollapsedNavRail from './CollapsedNavRail';
 
 const mockNavigate = vi.fn();
@@ -51,7 +52,7 @@ describe('CollapsedNavRail', () => {
   it('Discord button opens the community invite in the browser', () => {
     renderWithProviders(<CollapsedNavRail />, { initialEntries: ['/home'] });
     fireEvent.click(screen.getByRole('button', { name: 'nav.discord' }));
-    expect(openUrl).toHaveBeenCalledWith('https://discord.tinyhumans.ai');
+    expect(openUrl).toHaveBeenCalledWith(DISCORD_INVITE_URL);
   });
 
   it('Discord button has correct data-analytics-id', () => {

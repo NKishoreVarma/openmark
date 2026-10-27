@@ -7,6 +7,7 @@ import { useT } from '../../../lib/i18n/I18nContext';
 import { trackEvent } from '../../../services/analytics';
 import { useAppSelector } from '../../../store/hooks';
 import { selectUnreadCount } from '../../../store/notificationSlice';
+import { DISCORD_INVITE_URL } from '../../../utils/links';
 import { openUrl } from '../../../utils/openUrl';
 import {
   SidebarMenu,
@@ -16,7 +17,6 @@ import {
   Tooltip,
 } from '../../ui';
 import { NavIcon } from './navIcons';
-import { DISCORD_URL } from './SidebarHeader';
 import { useCloudNavGate } from './useCloudNavGate';
 import { useHomeNav } from './useHomeNav';
 
@@ -100,7 +100,7 @@ export default function CollapsedNavRail() {
         <SidebarMenuItem>
           <Tooltip label={t('nav.discord')}>
             <SidebarMenuButton
-              onClick={() => void openUrl(DISCORD_URL).catch(() => {})}
+              onClick={() => void openUrl(DISCORD_INVITE_URL).catch(() => {})}
               aria-label={t('nav.discord')}
               data-analytics-id="collapsed-rail-discord"
               className={RAIL_BTN}>

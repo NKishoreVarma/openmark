@@ -71,6 +71,17 @@ vi.mock('../../utils/clearAllAppData', () => ({
 
 vi.mock('../../utils/openUrl', () => ({ openUrl: vi.fn().mockResolvedValue(undefined) }));
 
+// Provide non-empty URLs so <a href=""> elements render as accessible links.
+// In production these come from VITE_* env vars; the test verifies click behaviour
+// independently of whatever URL is configured.
+vi.mock('../../utils/links', () => ({
+  TERMS_OF_USE_URL: 'https://example.com/terms',
+  PRIVACY_POLICY_URL: 'https://example.com/privacy',
+  DISCORD_INVITE_URL: '',
+  PRICING_URL: '',
+  BILLING_DASHBOARD_URL: '',
+}));
+
 vi.mock('../../services/coreRpcClient', () => ({
   clearCoreRpcUrlCache: vi.fn(),
   clearCoreRpcTokenCache: vi.fn(),
@@ -194,7 +205,7 @@ describe('Welcome — decryption-failure recovery action', () => {
     mockClearAllAppData.mockReset().mockResolvedValue(undefined);
     vi.mocked(useDeepLinkAuthState).mockReturnValue({
       isProcessing: false,
-      errorMessage: "Sign-in failed because OpenHuman couldn't decrypt locally stored data.",
+      errorMessage: "Sign-in failed because openmark couldn't decrypt locally stored data.",
       errorMessageKey: null,
       requiresAppDataReset: true,
     });

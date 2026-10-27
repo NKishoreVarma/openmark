@@ -94,7 +94,7 @@ export function AgentTimelineRail({
             className="absolute top-[9px] bottom-0 left-1/2 w-px -translate-x-1/2 bg-surface-strong"
           />
         ) : null}
-        <span className="relative z-10 mt-0.5 flex h-3 w-3 items-center justify-center bg-[#f6f6f6] dark:bg-surface-canvas">
+        <span className="relative z-10 mt-0.5 flex h-3 w-3 items-center justify-center bg-surface-canvas">
           {icon ?? <AgentSparkIcon className={iconClassName ?? 'text-content-faint'} />}
         </span>
       </div>

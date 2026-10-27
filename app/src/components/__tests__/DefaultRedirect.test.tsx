@@ -13,10 +13,10 @@ vi.mock('../../utils/config', () => ({
   DEV_FORCE_ONBOARDING: false,
   GA_MEASUREMENT_ID: undefined,
   IS_DEV: true,
-  OPENPANEL_API_URL: 'https://panel.tinyhumans.ai/api',
+  OPENPANEL_API_URL: '',
   OPENPANEL_CLIENT_ID: undefined,
   SENTRY_DSN: undefined,
-  SENTRY_RELEASE: 'openhuman@test',
+  SENTRY_RELEASE: 'openmark@test',
   SENTRY_SMOKE_TEST: false,
   TAURI_CARGO_VERSION: '0.0.0-test',
 }));
@@ -79,7 +79,7 @@ describe('DefaultRedirect', () => {
     expect(screen.queryByText('Home')).not.toBeInTheDocument();
     expect(screen.queryByText('Welcome')).not.toBeInTheDocument();
     // Positively assert the loading screen rendered (not just "nothing visible")
-    expect(screen.getByText('Initializing OpenHuman...')).toBeInTheDocument();
+    expect(screen.getByText('Initializing openmark...')).toBeInTheDocument();
   });
 
   it('redirects to /onboarding for a genuinely new user (currentUser set, onboarding false)', () => {

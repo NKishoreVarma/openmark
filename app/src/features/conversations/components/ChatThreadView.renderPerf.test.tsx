@@ -38,6 +38,7 @@ import { Provider } from 'react-redux';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import chatRuntimeReducer, { streamDeltaReceived } from '../../../store/chatRuntimeSlice';
+import layaReducer from '../../../features/laya/layaSlice';
 import themeReducer from '../../../store/themeSlice';
 import threadReducer from '../../../store/threadSlice';
 import type { Thread, ThreadMessage } from '../../../types/thread';
@@ -163,6 +164,7 @@ function buildStore(messages: ThreadMessage[]) {
       thread: threadReducer,
       chatRuntime: chatRuntimeReducer,
       theme: themeReducer,
+      laya: layaReducer,
     }),
     preloadedState: {
       thread: {

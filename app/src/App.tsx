@@ -157,7 +157,7 @@ function App() {
 /** Minimal mobile shell — renders routes only, no desktop chrome. */
 function AppShellMobile() {
   return (
-    <div className="relative h-screen flex flex-col overflow-hidden bg-[#0f1117]">
+    <div className="relative h-screen flex flex-col overflow-hidden bg-surface-canvas">
       <AppRoutes />
     </div>
   );

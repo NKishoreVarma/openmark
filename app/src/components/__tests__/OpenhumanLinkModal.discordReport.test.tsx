@@ -2,6 +2,7 @@ import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import * as openUrlModule from '../../utils/openUrl';
+import { DISCORD_INVITE_URL } from '../../utils/links';
 import OpenhumanLinkModal, { OPENHUMAN_LINK_EVENT } from '../OpenhumanLinkModal';
 
 // Mock modules that require Tauri runtime or browser APIs not in jsdom
@@ -47,7 +48,7 @@ describe('OpenhumanLinkModal discord-report flow', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'Open Discord' }));
 
-    expect(openUrlSpy).toHaveBeenCalledWith('https://discord.tinyhumans.ai');
+    expect(openUrlSpy).toHaveBeenCalledWith(DISCORD_INVITE_URL);
   });
 
   it('clicking "Open Discord" closes the modal', async () => {
@@ -95,7 +96,7 @@ describe('OpenhumanLinkModal discord join-community flow', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Open invite link' }));
 
     await waitFor(() => {
-      expect(openUrlSpy).toHaveBeenCalledWith('https://discord.tinyhumans.ai');
+      expect(openUrlSpy).toHaveBeenCalledWith(DISCORD_INVITE_URL);
     });
   });
 

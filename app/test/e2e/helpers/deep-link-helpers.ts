@@ -191,9 +191,9 @@ function resolveBuiltAppPath(): string | null {
       'debug',
       'bundle',
       'macos',
-      'OpenHuman.app'
+      'openmark.app'
     ),
-    path.join(repoRoot, 'target', 'debug', 'bundle', 'macos', 'OpenHuman.app'),
+    path.join(repoRoot, 'target', 'debug', 'bundle', 'macos', 'openmark.app'),
   ];
 
   for (const candidate of candidates) {

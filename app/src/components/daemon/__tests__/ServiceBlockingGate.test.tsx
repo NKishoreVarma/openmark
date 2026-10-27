@@ -20,11 +20,11 @@ vi.mock('../../../utils/config', () => ({
   CORE_CARGO_VERSION: '0.0.0-test',
   GA_MEASUREMENT_ID: undefined,
   IS_DEV: true,
-  LATEST_APP_DOWNLOAD_URL: 'https://github.com/tinyhumansai/openhuman/releases/latest',
-  OPENPANEL_API_URL: 'https://panel.tinyhumans.ai/api',
+  LATEST_APP_DOWNLOAD_URL: '',
+  OPENPANEL_API_URL: '',
   OPENPANEL_CLIENT_ID: undefined,
   SENTRY_DSN: undefined,
-  SENTRY_RELEASE: 'openhuman@test',
+  SENTRY_RELEASE: 'openmark@test',
   SENTRY_SMOKE_TEST: false,
   TAURI_CARGO_VERSION: '0.0.0-test',
 }));
@@ -53,7 +53,7 @@ describe('ServiceBlockingGate', () => {
     );
 
     await waitFor(() => expect(screen.getByText('App Content')).toBeInTheDocument());
-    expect(screen.queryByText('OpenHuman core is unavailable')).not.toBeInTheDocument();
+    expect(screen.queryByText('openmark core is unavailable')).not.toBeInTheDocument();
   });
 
   it('shows recovery prompt when daemon retries are exhausted', async () => {
@@ -66,7 +66,7 @@ describe('ServiceBlockingGate', () => {
       </ServiceBlockingGate>
     );
 
-    expect(screen.getByText('OpenHuman core is unavailable')).toBeInTheDocument();
+    expect(screen.getByText('openmark core is unavailable')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Download Latest Version' })).toBeInTheDocument();
   });
 
@@ -84,7 +84,7 @@ describe('ServiceBlockingGate', () => {
 
     await waitFor(() => {
       expect(mockOpenUrl).toHaveBeenCalledWith(
-        'https://github.com/tinyhumansai/openhuman/releases/latest'
+        ''
       );
     });
   });

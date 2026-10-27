@@ -6,12 +6,12 @@
  * Neither X nor LinkedIn lets a web intent attach a raw image blob, so the flow
  * is: the user copies/saves the generated PNG, then the intent opens a
  * pre-filled composer they drop the image into. The URL carries the caption and
- * a link back to tinyhumans.ai.
+ * a link back to the openmark marketing site.
  */
 import { TWEET_MAX } from './shareContent';
+import { SHARE_LANDING_URL } from '../../utils/config';
 
-/** Canonical marketing URL shared on every card. */
-export const SHARE_LANDING_URL = 'https://tinyhumans.ai';
+export { SHARE_LANDING_URL };
 
 /**
  * Builds an X (Twitter) web-intent URL that opens the composer pre-filled with

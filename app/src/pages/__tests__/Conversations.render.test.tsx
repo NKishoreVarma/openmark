@@ -31,6 +31,7 @@ import layoutReducer from '../../store/layoutSlice';
 import socketReducer from '../../store/socketSlice';
 import themeReducer from '../../store/themeSlice';
 import threadReducer from '../../store/threadSlice';
+import layaReducer from '../../features/laya/layaSlice';
 import type { Thread, ThreadMessage } from '../../types/thread';
 
 // ── Hoisted mock state ─────────────────────────────────────────────────────
@@ -128,6 +129,7 @@ function buildStore(preload: Record<string, unknown> = {}) {
       socket: socketReducer,
       chatRuntime: chatRuntimeReducer,
       theme: themeReducer,
+      laya: layaReducer,
     }),
     preloadedState: preload as never,
   });

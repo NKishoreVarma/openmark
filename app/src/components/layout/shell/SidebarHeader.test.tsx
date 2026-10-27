@@ -3,6 +3,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { registry } from '../../../lib/commands/registry';
 import { renderWithProviders } from '../../../test/test-utils';
+import { DISCORD_INVITE_URL } from '../../../utils/links';
 import SidebarHeader from './SidebarHeader';
 
 const mockNavigate = vi.fn();
@@ -38,7 +39,7 @@ describe('SidebarHeader', () => {
   it('Discord button opens the community invite in the browser', () => {
     renderWithProviders(<SidebarHeader />, { initialEntries: ['/home'] });
     fireEvent.click(screen.getByRole('button', { name: 'nav.discord' }));
-    expect(openUrl).toHaveBeenCalledWith('https://discord.tinyhumans.ai');
+    expect(openUrl).toHaveBeenCalledWith(DISCORD_INVITE_URL);
   });
 
   it('Discord button has correct data-analytics-id', () => {

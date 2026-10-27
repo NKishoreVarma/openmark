@@ -34,7 +34,7 @@ describe('computeCardModel', () => {
       headline: 'My agent summarised three months of emails in twelve seconds',
       agentName: 'Tiny',
       stat: '12s',
-      brandUrl: 'tinyhumans.ai',
+      brandUrl: 'openmark.app',
     });
     expect(model.headlineLines.length).toBeGreaterThan(0);
     expect(model.agentName).toBe('Tiny');
@@ -43,7 +43,7 @@ describe('computeCardModel', () => {
 
   test('supplies defaults for empty headline / agent / stat', () => {
     const model = computeCardModel({ headline: '  ', agentName: '', brandUrl: '' });
-    expect(model.headlineLines.join(' ')).toContain('OpenHuman');
+    expect(model.headlineLines.join(' ')).toContain('openmark');
     expect(model.agentName).toBe('My agent');
     expect(model.stat).toBeNull();
   });
@@ -89,14 +89,14 @@ describe('paintShareCard', () => {
       headline: 'Cleared my inbox',
       agentName: 'Tiny',
       stat: '12s',
-      brandUrl: 'tinyhumans.ai',
+      brandUrl: 'openmark.app',
     });
     const joined = ctx.texts.join('\n');
-    expect(joined).toContain('OpenHuman');
+    expect(joined).toContain('openmark');
     expect(joined).toContain('Cleared my inbox');
     expect(joined).toContain('12s');
     expect(joined).toContain('Tiny');
-    expect(joined).toContain('tinyhumans.ai');
+    expect(joined).toContain('openmark.app');
   });
 
   test('omits the stat chip when no stat given', () => {

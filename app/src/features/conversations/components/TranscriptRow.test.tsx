@@ -33,7 +33,7 @@ function renderRow(overrides: Partial<TranscriptRowProps> = {}) {
     isLatestVisible: false,
     isCopied: false,
     isReactionPickerOpen: false,
-    shareAgentName: 'OpenHuman',
+    shareAgentName: 'openmark',
     onCopy: vi.fn(),
     onReact: vi.fn(),
     onOpenReactionPicker: vi.fn(),

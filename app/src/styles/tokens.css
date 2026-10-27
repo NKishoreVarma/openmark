@@ -57,18 +57,18 @@
                                  box-shadow, not a border — see the
                                  `--shadow-content-edge` token in index.css. */
 
-  /* ---- Accent palette: primary (Complementary Blue) ---- */
-  --primary-50: 239 246 255;
-  --primary-100: 219 234 254;
-  --primary-200: 191 219 254;
-  --primary-300: 147 197 253;
-  --primary-400: 96 165 250;
-  --primary-500: 47 110 244;
-  --primary-600: 37 99 235;
-  --primary-700: 29 78 216;
-  --primary-800: 30 64 175;
-  --primary-900: 30 58 138;
-  --primary-950: 23 37 84;
+  /* ---- Accent palette: primary (Teal Horizon) ---- */
+  --primary-50: 240 253 250;
+  --primary-100: 204 251 241;
+  --primary-200: 153 246 228;
+  --primary-300: 94 234 212;
+  --primary-400: 45 212 191;
+  --primary-500: 20 184 166;
+  --primary-600: 13 148 136;
+  --primary-700: 15 118 110;
+  --primary-800: 17 94 89;
+  --primary-900: 19 78 74;
+  --primary-950: 4 47 46;
 
   /* ---- Accent palette: sage (Success Green) ---- */
   --sage-50: 240 253 244;
@@ -150,9 +150,12 @@
   --line-chrome: 64 64 64; /* neutral-700 */
 
   /*
-   * Accent palettes intentionally inherit their `:root` values under dark mode:
-   * the historical design kept primary/sage/amber/coral identical across light
-   * and dark, varying only the shade chosen per component via `dark:` utilities.
-   * Custom themes may override these per theme.
+   * Button fills in dark mode: the teal primary-500/600 values in :root have
+   * medium luminance that does not meet WCAG AA 4.5:1 for white button labels
+   * (dark:bg-primary-500 rest, dark:active:bg-primary-600 in Button.tsx).
+   * Override to mid-dark teal shades that clear both the button-label gate
+   * (≥4.5:1 vs content-inverted) and the UI-element gate (≥3:1 on surface-muted).
    */
+  --primary-500: 14 132 121; /* #0E8479 — 4.6:1 vs white, 3.3:1 on surface-muted */
+  --primary-600: 12 106 97;  /* #0C6A61 — 6.5:1 vs white */
 }

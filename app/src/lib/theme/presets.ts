@@ -131,9 +131,9 @@ const OCEAN_LIGHT: Theme = {
     'line-subtle': '224 236 248',
     content: '15 36 56',
     'content-secondary': '45 70 96',
-    'primary-500': '74 131 221',
-    'primary-600': '53 110 200',
-    'primary-700': '40 92 176',
+    'primary-500': '20 184 166',
+    'primary-600': '13 148 136',
+    'primary-700': '15 118 110',
   },
   fonts: {},
 };
@@ -161,11 +161,11 @@ const OCEAN_DARK: Theme = {
     // base surface.
     'content-muted': '152 168 200',
     'content-faint': '128 142 172',
-    // The primary fills here are light blue, so labels over them read as dark —
-    // a deep navy clears AA on primary-500/600 where white (2.5:1) failed.
+    // Teal fills are bright; dark navy clears AA on primary-400/500 where white
+    // fails (teal-400 = 45 212 191 gives white ~2.3:1).
     'content-inverted': '8 14 28',
-    'primary-500': '96 165 250',
-    'primary-600': '59 130 246',
+    'primary-500': '45 212 191',
+    'primary-600': '20 184 166',
   },
   fonts: {},
 };

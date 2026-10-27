@@ -33,12 +33,12 @@ const DARK_BASE: Record<string, string> = {
   'content-muted': '163 163 163',
   'content-faint': '115 115 115',
   'content-inverted': '255 255 255',
-  'primary-200': '191 219 254',
-  'primary-300': '147 197 253',
-  'primary-400': '96 165 250',
-  'primary-500': '47 110 244',
-  'primary-600': '37 99 235',
-  'primary-700': '29 78 216',
+  'primary-200': '153 246 228',
+  'primary-300': '94 234 212',
+  'primary-400': '45 212 191',
+  'primary-500': '14 132 121',
+  'primary-600': '12 106 97',
+  'primary-700': '15 118 110',
 };
 
 const AA_TEXT = 4.5; // body text

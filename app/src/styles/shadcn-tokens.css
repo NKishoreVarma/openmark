@@ -31,7 +31,7 @@
   --popover: var(--surface);
   --popover-foreground: var(--content);
 
-  --primary: var(--primary-500);
+  --primary: var(--primary-600);
   --primary-foreground: var(--content-inverted);
 
   --secondary: var(--surface-subtle);

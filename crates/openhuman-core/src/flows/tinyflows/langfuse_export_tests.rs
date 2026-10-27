@@ -75,10 +75,10 @@ fn find_span<'a>(batch: &'a [Value], id: &str) -> Option<&'a Value> {
 #[test]
 fn ingestion_url_targets_backend_proxy_route() {
     let mut config = Config::default();
-    config.api_url = Some("https://staging-api.tinyhumans.ai/api/v1".to_string());
+    config.api_url = Some("https://staging-api.openmark.app/api/v1".to_string());
     assert_eq!(
         ingestion_url(&config),
-        "https://staging-api.tinyhumans.ai/telemetry/langfuse/ingestion"
+        "https://staging-api.openmark.app/telemetry/langfuse/ingestion"
     );
 }
 

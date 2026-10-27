@@ -1,12 +1,28 @@
 import packageJson from '../../package.json';
-import { DISCORD_INVITE_URL } from './links';
+
+// External link constants — env-var driven, no upstream defaults (D011).
+// Exported here so callers go through config.ts per project lint convention.
+// links.ts re-exports these for backward compatibility.
+export const DISCORD_INVITE_URL =
+  (import.meta.env.VITE_DISCORD_INVITE_URL as string | undefined)?.trim() || '';
+export const PRICING_URL =
+  (import.meta.env.VITE_PRICING_URL as string | undefined)?.trim() || '';
+export const BILLING_DASHBOARD_URL =
+  (import.meta.env.VITE_BILLING_DASHBOARD_URL as string | undefined)?.trim() || '';
+export const PRIVACY_POLICY_URL =
+  (import.meta.env.VITE_PRIVACY_POLICY_URL as string | undefined)?.trim() || '';
+export const TERMS_OF_USE_URL =
+  (import.meta.env.VITE_TERMS_OF_USE_URL as string | undefined)?.trim() || '';
 
 const APP_ENV = (import.meta.env.VITE_OPENHUMAN_APP_ENV as string | undefined)
   ?.trim()
   .toLowerCase();
 
-const DEFAULT_BACKEND_URL =
-  APP_ENV === 'staging' ? 'https://staging-api.tinyhumans.ai' : 'https://api.tinyhumans.ai';
+// No default backend URL — must be set via VITE_BACKEND_URL or Render deployment.
+// In desktop/Tauri mode this constant is never read (getBackendUrl() asks the
+// Rust core); in web mode an empty string here means backend features fail
+// fast rather than silently calling a third-party host.
+const DEFAULT_BACKEND_URL = '';
 
 /**
  * Build-time fallback for the Core JSON-RPC endpoint URL.
@@ -107,8 +123,11 @@ export const CONSUMER_FIRST_SESSION_ENABLED =
  */
 export const CHAT_ATTACHMENTS_ENABLED = import.meta.env.VITE_CHAT_ATTACHMENTS !== 'false';
 
+// Leave blank until openhuman-skills is forked into our own account (D016).
+// An empty value means the skills registry silently fails to load rather than
+// reading from the upstream tinyhumansai/openhuman-skills repo.
 export const SKILLS_GITHUB_REPO =
-  import.meta.env.VITE_SKILLS_GITHUB_REPO || 'tinyhumansai/openhuman-skills';
+  (import.meta.env.VITE_SKILLS_GITHUB_REPO as string | undefined)?.trim() || '';
 
 /**
  * Transcript-derived restore path (Phase C, `docs/plans/transcript-derived-view.md`).
@@ -132,16 +151,16 @@ export const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID as strin
 /** When true, allow GA in dev builds (for local debugging). Set `VITE_GA_FORCE_DEV=true` in `.env.local`. */
 export const GA_FORCE_DEV = import.meta.env.VITE_GA_FORCE_DEV === 'true';
 
+// Analytics disabled by default — no client ID means no requests are made (D018).
+// To enable: set VITE_OPENPANEL_CLIENT_ID and VITE_OPENPANEL_API_URL in the build env.
 /** OpenPanel project client id. Leave blank to disable OpenPanel analytics. */
 export const OPENPANEL_CLIENT_ID = (
-  (import.meta.env.VITE_OPENPANEL_CLIENT_ID as string | undefined) ??
-  'e9c996d5-497f-4eec-9bde-630019ad525b'
+  (import.meta.env.VITE_OPENPANEL_CLIENT_ID as string | undefined) ?? ''
 ).trim();
 
-/** OpenPanel API base URL. */
+/** OpenPanel API base URL. Unused when OPENPANEL_CLIENT_ID is blank. */
 export const OPENPANEL_API_URL = (
-  (import.meta.env.VITE_OPENPANEL_API_URL as string | undefined) ??
-  'https://panel.tinyhumans.ai/api'
+  (import.meta.env.VITE_OPENPANEL_API_URL as string | undefined) ?? ''
 ).trim();
 
 /** Sentry DSN for error reporting. Leave blank to disable. */
@@ -162,9 +181,11 @@ export const SENTRY_DSN = import.meta.env.VITE_SENTRY_DSN as string | undefined;
 export const BACKEND_URL =
   (import.meta.env.VITE_BACKEND_URL as string | undefined)?.trim() || DEFAULT_BACKEND_URL;
 
+// Blank by default — users supply their own bot token via Settings (D019).
+// Set VITE_TELEGRAM_BOT_USERNAME to pre-configure a shared operator bot.
 /** Telegram bot username used for managed DM linking when backend does not return a launch URL. */
 export const TELEGRAM_BOT_USERNAME =
-  (import.meta.env.VITE_TELEGRAM_BOT_USERNAME as string | undefined) || 'openhuman_bot';
+  (import.meta.env.VITE_TELEGRAM_BOT_USERNAME as string | undefined) || '';
 
 /** Dev only: auto-inject JWT token to skip login flow. */
 export const DEV_JWT_TOKEN = import.meta.env.DEV
@@ -205,15 +226,15 @@ export const BUILD_SHA = ((import.meta.env.VITE_BUILD_SHA as string | undefined)
   .slice(0, 12);
 
 /**
- * Canonical Sentry release identifier: `openhuman@<version>[+<short_sha>]`.
+ * Canonical Sentry release identifier: `openmark@<version>[+<short_sha>]`.
  *
  * Matches the tag the Rust core sidecar reports (see `src/main.rs`) so events
  * from the frontend, the core, and source-map uploads all group under the
  * same release in the Sentry dashboard.
  */
 export const SENTRY_RELEASE = BUILD_SHA
-  ? `openhuman@${APP_VERSION}+${BUILD_SHA}`
-  : `openhuman@${APP_VERSION}`;
+  ? `openmark@${APP_VERSION}+${BUILD_SHA}`
+  : `openmark@${APP_VERSION}`;
 
 /**
  * Minimum **desktop app** semver required for OAuth deep-link completion (`openhuman://oauth/success`).
@@ -232,7 +253,7 @@ export const MINIMUM_SUPPORTED_APP_VERSION =
 /** URL for the latest app release download page. Used for OAuth version-gate recovery and crash-recovery prompts. Override via VITE_LATEST_APP_DOWNLOAD_URL for deployment-specific download pages. */
 export const LATEST_APP_DOWNLOAD_URL =
   (import.meta.env.VITE_LATEST_APP_DOWNLOAD_URL as string | undefined)?.trim() ||
-  'https://github.com/tinyhumansai/openhuman/releases/latest';
+  'https://github.com/NKishoreVarma/openmark/releases/latest';
 
 /**
  * Public GitHub repository URL. Target of the in-app "Star us on GitHub" CTA
@@ -244,7 +265,7 @@ export const LATEST_APP_DOWNLOAD_URL =
  * protocol handler; anything that is not valid HTTPS falls back to the default.
  */
 export const OPENHUMAN_GITHUB_REPO_URL = ((): string => {
-  const fallback = 'https://github.com/tinyhumansai/openhuman';
+  const fallback = 'https://github.com/NKishoreVarma/openmark';
   const override = (import.meta.env.VITE_OPENHUMAN_GITHUB_REPO_URL as string | undefined)?.trim();
   if (!override) return fallback;
   try {
@@ -259,10 +280,9 @@ const SUPPORT_URL_OVERRIDE = (import.meta.env.VITE_SUPPORT_URL as string | undef
 /**
  * Where "Contact Support" on the crash screen sends the user.
  *
- * The default is the community Discord — `https://tinyhumans.ai/support` 404s
- * (#5870). It is the same value as `links.ts`'s `DISCORD_INVITE_URL` and is
- * imported from there rather than repeated, so moving the vanity domain is one
- * edit and not two.
+ * The default is the community Discord (DISCORD_INVITE_URL). It is the same
+ * value as `links.ts`'s `DISCORD_INVITE_URL` and is imported from there rather
+ * than repeated, so moving the vanity domain is one edit and not two.
  *
  * Override with `VITE_SUPPORT_URL` for a deployment that runs a real support
  * endpoint. See {@link SUPPORT_URL_ACCEPTS_REF} for why that distinction is
@@ -379,3 +399,22 @@ export const HUMAN_VOICE_SHOW_BOTH =
 export const MASCOT_MANIFEST_URL =
   (import.meta.env.VITE_MASCOT_MANIFEST_URL as string | undefined)?.trim() ||
   'https://raw.githubusercontent.com/tinyhumansai/mascots/main/dist/mascots.json';
+
+/**
+ * Laya adaptive routing feature flag.
+ *
+ * OFF by default.  When enabled AND the shadow-evidence gate passes (≥200
+ * shadow observations with ≥75% estimated precision), the Laya router takes
+ * over per-turn model selection.  All failure modes fall back to the existing
+ * OpenMark router so a Laya fault can never break a chat turn.
+ *
+ * Set `VITE_LAYA_ROUTING_ENABLED=true` to enable at build time.  Runtime
+ * on/off is controlled by the `laya.config.enabled` Redux slice persisted in
+ * `userScopedStorage`.
+ */
+export const LAYA_ROUTING_BUILD_ENABLED =
+  (import.meta.env.VITE_LAYA_ROUTING_ENABLED as string | undefined)?.trim() === 'true';
+
+/** Canonical marketing URL used by share targets. Set via VITE_SHARE_LANDING_URL. */
+export const SHARE_LANDING_URL =
+  (import.meta.env.VITE_SHARE_LANDING_URL as string | undefined)?.trim() || '';

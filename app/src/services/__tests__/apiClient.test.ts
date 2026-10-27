@@ -16,10 +16,10 @@ vi.mock('../../utils/config', () => ({
   BUILD_SHA: 'test',
   CORE_CARGO_VERSION: '0.0.0-test',
   GA_MEASUREMENT_ID: undefined,
-  OPENPANEL_API_URL: 'https://panel.tinyhumans.ai/api',
+  OPENPANEL_API_URL: '',
   OPENPANEL_CLIENT_ID: undefined,
   SENTRY_DSN: undefined,
-  SENTRY_RELEASE: 'openhuman@test',
+  SENTRY_RELEASE: 'openmark@test',
   SENTRY_SMOKE_TEST: false,
   TAURI_CARGO_VERSION: '0.0.0-test',
   get IS_DEV() {

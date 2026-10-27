@@ -1,4 +1,4 @@
-# DigitalOcean App Platform spec for OpenHuman Core.
+# DigitalOcean App Platform spec for openmark Core.
 #
 # Deploys the headless Rust core (`openhuman-core`) from the repo Dockerfile,
 # exposing the JSON-RPC server on the public HTTP port. Used by the "Deploy

@@ -33,7 +33,7 @@ pub struct DaemonConfig {
 impl DaemonConfig {
     /// Build a config that derives paths from the Tauri `app_data_dir`.
     pub fn from_app_data_dir(app_data_dir: &std::path::Path) -> Self {
-        let data_dir = app_data_dir.join("openhuman");
+        let data_dir = app_data_dir.join("openmark");
         let workspace_dir = data_dir.join("workspace");
         log::info!(
             "[openhuman:config] Initialized config: data_dir={}, workspace_dir={}",

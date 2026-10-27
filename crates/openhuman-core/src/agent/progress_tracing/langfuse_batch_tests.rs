@@ -149,10 +149,10 @@ async fn an_unresolvable_host_skips_rather_than_erroring() {
 #[test]
 fn ingestion_url_uses_backend_origin_and_ingestion_path() {
     let mut config = Config::default();
-    config.api_url = Some("https://staging-api.tinyhumans.ai/api/v1".to_string());
+    config.api_url = Some("https://staging-api.openmark.app/api/v1".to_string());
     assert_eq!(
         ingestion_url(&config),
-        "https://staging-api.tinyhumans.ai/telemetry/langfuse/ingestion",
+        "https://staging-api.openmark.app/telemetry/langfuse/ingestion",
         "endpoint is the backend's Langfuse proxy route on the base server \
          host, replacing any inference path the base carried"
     );
@@ -162,10 +162,10 @@ fn ingestion_url_uses_backend_origin_and_ingestion_path() {
     // literal.
     let mut with_inference_path = Config::default();
     with_inference_path.api_url =
-        Some("https://api.tinyhumans.ai/openai/v1/chat/completions".to_string());
+        Some("https://api.openmark.app/openai/v1/chat/completions".to_string());
     assert_eq!(
         ingestion_url(&with_inference_path),
-        "https://api.tinyhumans.ai/telemetry/langfuse/ingestion"
+        "https://api.openmark.app/telemetry/langfuse/ingestion"
     );
 }
 

@@ -407,10 +407,10 @@ fn local_ai_matches_v1_subpath_on_loopback() {
 #[test]
 fn openhuman_backend_detection_accepts_hosted_api_paths() {
     assert!(looks_like_openhuman_backend_endpoint(
-        "https://api.tinyhumans.ai/openai/v1/chat/completions"
+        "https://api.openmark.app/openai/v1/chat/completions"
     ));
     assert!(looks_like_openhuman_backend_endpoint(
-        "https://staging-api.tinyhumans.ai/openai/v1/chat/completions"
+        "https://staging-api.openmark.app/openai/v1/chat/completions"
     ));
     assert!(!looks_like_openhuman_backend_endpoint(
         "https://openrouter.ai/api/v1/chat/completions"
@@ -430,14 +430,14 @@ fn backend_url_handles_llm_endpoint_overrides() {
 
     let cases: &[(&str, &str)] = &[
         (
-            "https://api.tinyhumans.ai/openai/v1/chat/completions",
-            "https://api.tinyhumans.ai",
+            "https://api.openmark.app/openai/v1/chat/completions",
+            "https://api.openmark.app",
         ),
         ("http://localhost:11434/v1/chat/completions", &fallback),
-        ("https://api.tinyhumans.ai", "https://api.tinyhumans.ai"),
+        ("https://api.openmark.app", "https://api.openmark.app"),
         (
-            "https://api.tinyhumans.ai/openai/v1/",
-            "https://api.tinyhumans.ai",
+            "https://api.openmark.app/openai/v1/",
+            "https://api.openmark.app",
         ),
         ("https://openrouter.ai/api/v1/chat/completions", &fallback),
     ];
@@ -494,9 +494,9 @@ fn backend_url_falls_back_for_cloud_inference_base() {
     // control-plane calls are not misrouted. A self-hosted backend must use a
     // non-`/v1` base (see the `my-openhuman.example.com` case) to keep routing.
     assert_eq!(
-        effective_backend_api_url(&Some("https://api.tinyhumans.ai/v1".to_string())),
-        "https://api.tinyhumans.ai",
-        "openhuman backend host must pass through"
+        effective_backend_api_url(&Some("https://api.openmark.app/v1".to_string())),
+        "https://api.openmark.app",
+        "openmark backend host must pass through"
     );
     assert_eq!(
         effective_backend_api_url(&Some("https://my-backend.example/v1".to_string())),

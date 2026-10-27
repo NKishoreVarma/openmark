@@ -479,7 +479,7 @@ async function sendOpenPanelTrack(eventName: string, params?: AnalyticsParams): 
       headers: {
         'Content-Type': 'application/json',
         'openpanel-client-id': OPENPANEL_CLIENT_ID,
-        'openpanel-sdk-name': 'openhuman-react',
+        'openpanel-sdk-name': 'openmark-react',
         'openpanel-sdk-version': '0.1.0',
       },
       body: JSON.stringify({

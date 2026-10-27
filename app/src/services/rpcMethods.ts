@@ -138,7 +138,7 @@ export const LEGACY_METHOD_ALIASES: Record<string, CoreRpcMethod> = {
   'health.status': CORE_RPC_METHODS.healthSnapshot,
   // `openhuman.system_info` was used by older clients / SDK callers before the
   // method was namespaced as `openhuman.health_system_info`.
-  // Sentry CORE-RUST-G0 — https://sentry.tinyhumans.ai/organizations/tinyhumans/issues/6340/
+  // Sentry CORE-RUST-G0 — upstream issue 6340 (tinyhumansai/openhuman)
   'openhuman.system_info': CORE_RPC_METHODS.healthSystemInfo,
 };
 

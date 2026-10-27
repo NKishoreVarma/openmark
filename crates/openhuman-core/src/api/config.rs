@@ -44,11 +44,11 @@
 
 /// Production hosted-API root. Used as the final fallback for non-staging
 /// builds when no override is configured.
-pub const DEFAULT_API_BASE_URL: &str = "https://api.tinyhumans.ai";
+pub const DEFAULT_API_BASE_URL: &str = "https://api.openmark.app";
 
 /// Staging hosted-API root. Activated when `OPENHUMAN_APP_ENV=staging` (or
 /// the Vite equivalent) is set at runtime or baked in at compile time.
-pub const DEFAULT_STAGING_API_BASE_URL: &str = "https://staging-api.tinyhumans.ai";
+pub const DEFAULT_STAGING_API_BASE_URL: &str = "https://staging-api.openmark.app";
 
 /// Runtime env key used by the Tauri/core side to select the app environment.
 pub const APP_ENV_VAR: &str = "OPENHUMAN_APP_ENV";
@@ -180,7 +180,7 @@ pub fn effective_backend_api_url(api_url: &Option<String>) -> String {
         // Let the override through only when it is NOT an inference endpoint
         // (local model runner OR remote managed provider), OR when it is one of
         // our own hosted backends (user deliberately set `api_url` to
-        // `https://api.tinyhumans.ai/openai/v1/chat/completions`).
+        // `https://api.openmark.app/openai/v1/chat/completions`).
         //
         // `config.api_url` doubles as the BYO inference base (see
         // `effective_inference_url`), so a user who points it at a managed
@@ -347,7 +347,7 @@ const INFERENCE_PROVIDER_DOMAINS: &[&str] = &[
 ///    already covered by [`looks_like_local_ai_endpoint`]'s path signal.
 ///
 /// Our own hosted backend short-circuits to `false` so a user who set
-/// `api_url` to `https://api.tinyhumans.ai/...` still reaches the backend.
+/// `api_url` to `https://api.openmark.app/...` still reaches the backend.
 pub fn looks_like_inference_provider_endpoint(url: &str) -> bool {
     let trimmed = url.trim();
     if trimmed.is_empty() {
@@ -387,10 +387,10 @@ pub fn looks_like_inference_provider_endpoint(url: &str) -> bool {
     false
 }
 
-/// Returns `true` when the URL's host is one of the known OpenHuman backends.
+/// Returns `true` when the URL's host is one of the known openmark backends.
 ///
 /// Used in [`effective_backend_api_url`] to short-circuit the local-AI check:
-/// a user who set `api_url` to `https://api.tinyhumans.ai/openai/v1/chat/completions`
+/// a user who set `api_url` to `https://api.openmark.app/openai/v1/chat/completions`
 /// must still reach the real backend (not fall back to the default chain).
 fn looks_like_openhuman_backend_endpoint(url: &str) -> bool {
     let trimmed = url.trim();
@@ -424,7 +424,7 @@ fn looks_like_openhuman_backend_endpoint(url: &str) -> bool {
 
     let is_openhuman = matches!(
         host.as_str(),
-        "api.tinyhumans.ai" | "staging-api.tinyhumans.ai"
+        "api.openmark.app" | "staging-api.openmark.app"
     );
 
     tracing::debug!(
@@ -462,7 +462,7 @@ pub fn normalize_api_base_url(url: &str) -> String {
 /// # Scheme-less fallback
 ///
 /// `option_env!`-baked values occasionally omit the scheme
-/// (e.g. `api.tinyhumans.ai/openai/v1/chat/completions`). We retry with an
+/// (e.g. `api.openmark.app/openai/v1/chat/completions`). We retry with an
 /// `https://` prefix so the path can still be stripped before the value is
 /// used as a base. Without this, a scheme-less inference path survived into
 /// every backend call — Sentry `OPENHUMAN-TAURI-H6 / -HN`, issue #2075.
@@ -497,9 +497,9 @@ pub(crate) fn normalize_backend_api_base_url(url: &str) -> String {
 ///
 /// | `base`                                    | `path`                    | result                                                                 |
 /// |-------------------------------------------|---------------------------|------------------------------------------------------------------------|
-/// | `https://api.tinyhumans.ai`               | `/auth/me`                | `https://api.tinyhumans.ai/auth/me`                                   |
-/// | `https://api.tinyhumans.ai/openai/v1/…`   | `/agent-integrations/foo` | `https://api.tinyhumans.ai/agent-integrations/foo`  ← path replaced   |
-/// | `https://api.tinyhumans.ai`               | `""`                      | `https://api.tinyhumans.ai`                                           |
+/// | `https://api.openmark.app`               | `/auth/me`                | `https://api.openmark.app/auth/me`                                   |
+/// | `https://api.openmark.app/openai/v1/…`   | `/agent-integrations/foo` | `https://api.openmark.app/agent-integrations/foo`  ← path replaced   |
+/// | `https://api.openmark.app`               | `""`                      | `https://api.openmark.app`                                           |
 /// | `not a url`                               | `/x`                      | `not a url/x`  ← safe fallback concat                                 |
 ///
 /// Paths **must start with `/`**. Relative paths (no leading slash) are

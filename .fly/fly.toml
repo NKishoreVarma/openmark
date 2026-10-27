@@ -7,7 +7,7 @@
 #   fly launch --no-deploy --config .fly/fly.toml
 #   fly volumes create openhuman_workspace --size 5 --region <region> --config .fly/fly.toml
 #   fly secrets set OPENHUMAN_CORE_TOKEN="$(openssl rand -hex 32)"
-#   fly secrets set BACKEND_URL="https://api.tinyhumans.ai"
+#   fly secrets set BACKEND_URL="https://api.openmark.app"
 #   fly deploy --config .fly/fly.toml
 
 app = '<your-app-name>'

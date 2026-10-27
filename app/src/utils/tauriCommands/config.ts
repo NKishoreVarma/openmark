@@ -910,7 +910,7 @@ export async function aiGetConfig(): Promise<AIPreview> {
   return {
     soul: {
       raw: '',
-      name: 'OpenHuman',
+      name: 'openmark',
       description: 'Agent',
       personalityPreview: [],
       safetyRulesPreview: [],

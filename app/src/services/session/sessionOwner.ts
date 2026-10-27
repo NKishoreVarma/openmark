@@ -45,9 +45,9 @@ export interface SessionOwnerState {
 const AUTH_ME_TIMEOUT_MS = 12_000;
 
 /**
- * Product attribution for TinyHumans backend requests, mirroring the
+ * Product attribution for openmark backend requests, mirroring the
  * `x-sdk-name` the Rust hosts send. The browser and cloud owners are always
- * OpenHuman's own renderer, so the default identity applies.
+ * openmark's own renderer, so the default identity applies.
  */
 export const PRODUCT_IDENTITY_HEADER = 'x-sdk-name';
 export const PRODUCT_IDENTITY = 'openhuman';

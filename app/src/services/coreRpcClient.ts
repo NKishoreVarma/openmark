@@ -191,7 +191,7 @@ export function classifyRpcError(
   // Everything above matched an explicit backend marker in the message. What
   // is left, if the transport gave us a 401, is the LOCAL core's bearer gate
   // (`crates/openhuman-core/src/core/auth.rs` — "Missing or invalid Authorization header"), never the
-  // TinyHumans backend: the core proxies backend calls and surfaces their
+  // openmark backend: the core proxies backend calls and surfaces their
   // rejections as a JSON-RPC error inside a 200, with no `httpStatus` at all.
   // Custom transports (cloud / LAN / tunnel) return before the branch that
   // populates it.
@@ -206,7 +206,7 @@ export function classifyRpcError(
   // the auth profile from disk. So a stale RPC bearer (the core restarting and
   // minting a new per-launch token while the renderer holds the old one, or a
   // browser session against a stale `core.token`) signed the user out of their
-  // TinyHumans account when the TinyHumans server had said nothing at all.
+  // openmark account when the openmark server had said nothing at all.
   // Recovery is to re-read the bearer or restart the core, never to destroy the
   // session.
   if (httpStatus === 401) return 'core_auth';

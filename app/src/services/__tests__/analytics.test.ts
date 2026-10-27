@@ -68,10 +68,10 @@ vi.mock('../../utils/config', () => ({
   APP_VERSION: '0.57.4',
   BUILD_SHA: 'abc123',
   CORE_CARGO_VERSION: '0.57.4',
-  OPENPANEL_API_URL: 'https://panel.tinyhumans.ai/api',
-  OPENPANEL_CLIENT_ID: 'e9c996d5-497f-4eec-9bde-630019ad525b',
+  OPENPANEL_API_URL: 'https://analytics.openmark.app/api',
+  OPENPANEL_CLIENT_ID: 'test-client-id-openmark',
   SENTRY_DSN: 'https://abc@example.ingest.sentry.io/1',
-  SENTRY_RELEASE: 'openhuman@test+abc',
+  SENTRY_RELEASE: 'openmark@test+abc',
   SENTRY_SMOKE_TEST: false,
   SUPPORT_URL: 'https://support.example/help',
   // The mocked SUPPORT_URL models a configured endpoint (an env override),
@@ -330,7 +330,7 @@ describe('initSentry beforeSend manual-staging bypass', () => {
       replaysOnErrorSampleRate: number;
       integrations: Array<{ name?: string }>;
     };
-    expect(opts.release).toBe('openhuman@test+abc');
+    expect(opts.release).toBe('openmark@test+abc');
     expect(opts.tracesSampleRate).toBe(0);
     expect(opts.replaysSessionSampleRate).toBe(0);
     expect(opts.replaysOnErrorSampleRate).toBe(0);
@@ -480,7 +480,7 @@ function expectAnalyticsContext(properties: Record<string, string | number | boo
     binary_version: '0.57.4',
     core_cargo_version: '0.57.4',
     tauri_cargo_version: '0.57.4',
-    release: 'openhuman@test+abc',
+    release: 'openmark@test+abc',
     build_sha: 'abc123',
     app_environment: 'staging',
   });
@@ -524,7 +524,7 @@ describe('initGA (OpenPanel)', () => {
     trackEvent('app_open');
     expect(createdScripts).toHaveLength(1);
     expect(fetch).toHaveBeenCalledWith(
-      'https://panel.tinyhumans.ai/api/track',
+      'https://analytics.openmark.app/api/track',
       expect.objectContaining({
         method: 'POST',
         body: expect.stringContaining('"name":"app_open"'),
@@ -560,12 +560,12 @@ describe('trackPageView (OpenPanel)', () => {
     initGA();
     trackPageView('/home');
     expect(fetch).toHaveBeenCalledWith(
-      'https://panel.tinyhumans.ai/api/track',
+      'https://analytics.openmark.app/api/track',
       expect.objectContaining({
         method: 'POST',
         headers: expect.objectContaining({
-          'openpanel-client-id': 'e9c996d5-497f-4eec-9bde-630019ad525b',
-          'openpanel-sdk-name': 'openhuman-react',
+          'openpanel-client-id': 'test-client-id-openmark',
+          'openpanel-sdk-name': 'openmark-react',
         }),
         body: expect.stringContaining('"name":"screen_view"'),
         keepalive: true,
@@ -647,7 +647,7 @@ describe('trackEvent (OpenPanel)', () => {
     initGA();
     trackEvent('app_open', { version: '1.0.0' });
     expect(fetch).toHaveBeenCalledWith(
-      'https://panel.tinyhumans.ai/api/track',
+      'https://analytics.openmark.app/api/track',
       expect.objectContaining({
         method: 'POST',
         body: expect.stringContaining('"name":"app_open"'),
@@ -872,7 +872,7 @@ describe('syncAnalyticsConsent OpenPanel integration', () => {
     syncAnalyticsConsent(true);
     trackEvent('app_open');
     expect(fetch).toHaveBeenCalledWith(
-      'https://panel.tinyhumans.ai/api/track',
+      'https://analytics.openmark.app/api/track',
       expect.objectContaining({
         method: 'POST',
         body: expect.stringContaining('"name":"app_open"'),

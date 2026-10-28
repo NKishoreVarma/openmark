@@ -167,7 +167,7 @@ jobs:
       # ── Upload artifacts ────────────────────────────────────────────────────
       - name: Upload macOS artifacts
         if: runner.os == 'macOS'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: openmark-${{ matrix.settings.artifact_suffix }}
           path: |
@@ -178,7 +178,7 @@ jobs:
 
       - name: Upload Windows artifacts
         if: runner.os == 'Windows'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: openmark-${{ matrix.settings.artifact_suffix }}
           path: |

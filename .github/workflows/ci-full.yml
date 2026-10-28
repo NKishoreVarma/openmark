@@ -260,7 +260,7 @@ jobs:
           key: ${{ steps.playwright-artifact-cache.outputs.cache-primary-key }}
 
       - name: Upload Playwright E2E artifact
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: e2e-playwright-linux-${{ github.run_id }}
           path: .ci/artifacts/e2e-playwright-linux.tar.gz
@@ -416,7 +416,7 @@ jobs:
 
       - name: Upload Playwright E2E failure artifacts
         if: failure()
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: e2e-playwright-failure-logs-${{ github.run_id }}
           path: .ci/artifacts/openhuman-playwright-failure-logs.tar.gz

@@ -320,7 +320,7 @@ jobs:
 
       - name: Upload frontend lcov
         if: needs.changes.outputs.frontend == 'true'
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: lcov-frontend
           path: app/coverage/lcov.info
@@ -739,7 +739,7 @@ jobs:
         run: ./target/release/rss-bench --out bench-rss.json | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Upload raw RSS samples
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: rss-bench-report
           path: bench-rss.json
@@ -885,7 +885,7 @@ jobs:
           df -h /__w || true
 
       - name: Upload core lcov
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: lcov-rust-core
           path: lcov-core.info
@@ -992,7 +992,7 @@ jobs:
           key: ${{ steps.cef-cache.outputs.cache-primary-key }}
 
       - name: Upload tauri lcov
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: lcov-rust-tauri
           path: lcov-tauri.info
@@ -1367,7 +1367,7 @@ jobs:
 
       - name: Upload diff-cover report
         if: always() && needs.changes.outputs.coverage == 'true'
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: diff-coverage-report
           path: |

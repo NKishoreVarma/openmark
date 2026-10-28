@@ -1306,7 +1306,7 @@ jobs:
 
       - name: Setup Python
         if: needs.changes.outputs.coverage == 'true'
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version: "3.12"
 

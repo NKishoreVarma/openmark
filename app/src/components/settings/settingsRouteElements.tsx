@@ -4,6 +4,7 @@ import { Navigate, Route } from 'react-router-dom';
 import ForwardSearch from '../routing/ForwardSearch';
 import SettingsIndexRedirect from './layout/SettingsIndexRedirect';
 import AboutPanel from './panels/AboutPanel';
+import LayaRoutingPanel from './panels/LayaRoutingPanel';
 import AccountPanel from './panels/AccountPanel';
 import AgentAccessPanel from './panels/AgentAccessPanel';
 import AgentActivityPanel from './panels/AgentActivityPanel';
@@ -102,6 +103,7 @@ export function settingsRouteElements(): ReactNode {
           background loops as tabs). */}
       <Route path="usage" element={<Navigate to="/connections?tab=usage" replace />} />
       <Route path="voice" element={<Navigate to="/connections?tab=voice" replace />} />
+      <Route path="laya-routing" element={wrapSettingsPage(<LayaRoutingPanel />)} />
       <Route path="personality" element={wrapSettingsPage(<PersonalityPanel />)} />
       <Route path="agents" element={wrapSettingsPage(<AgentsPanel />)} />
       <Route path="agents/new" element={wrapSettingsPage(<AgentEditorPage />)} />

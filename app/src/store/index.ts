@@ -15,6 +15,7 @@ import {
 
 import { E2E_RESTART_APP_AS_RELOAD, IS_DEV } from '../utils/config';
 import accountsReducer from './accountsSlice';
+import layaReducer from '../features/laya/layaSlice';
 import announcementReducer from './announcementSlice';
 import {
   type ArtifactsByThread,
@@ -241,6 +242,16 @@ const persistedAnnouncementReducer = persistReducer(announcementPersistConfig, a
 const githubStarPersistConfig = { key: 'githubStar', storage, whitelist: ['dismissed'] };
 const persistedGithubStarReducer = persistReducer(githubStarPersistConfig, githubStarReducer);
 
+// Laya adaptive routing: persist config + routing history + shadow records
+// per user.  The history ring (last 100 decisions) and shadow records (last 500)
+// are deliberately included so the evidence gate survives a restart.
+const layaPersistConfig = {
+  key: 'laya',
+  storage,
+  whitelist: ['config', 'history', 'shadowRecords', 'shadowStats'],
+};
+const persistedLayaReducer = persistReducer(layaPersistConfig, layaReducer);
+
 export const store = configureStore({
   reducer: {
     socket: socketReducer,
@@ -260,6 +271,7 @@ export const store = configureStore({
     ptt: persistedPttReducer,
     announcement: persistedAnnouncementReducer,
     githubStar: persistedGithubStarReducer,
+    laya: persistedLayaReducer,
     // In-memory only (not persisted): survives route changes / background-job
     // completion, resets on restart + user switch. Durable storage is a #3931
     // follow-up.

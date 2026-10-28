@@ -361,6 +361,18 @@ export const SETTINGS_ROUTE_REGISTRY: SettingsRegistryEntry[] = [
   },
 
   // =========================================================================
+  // Laya adaptive routing panel
+  // =========================================================================
+  {
+    id: 'laya-routing',
+    titleKey: 'settings.laya.title',
+    descriptionKey: 'settings.laya.description',
+    section: 'ai',
+    searchKeywords: ['laya', 'routing', 'local model', 'frontier', 'adaptive', 'classifier'],
+    navParent: 'llm',
+  },
+
+  // =========================================================================
   // AGENTS section leaf panels
   // =========================================================================
   {

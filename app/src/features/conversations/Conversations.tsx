@@ -42,6 +42,8 @@ import {
   useChatMascotSendBinding,
 } from '../../features/human/chatMascot';
 import MicComposer from '../../features/human/MicComposer';
+import { decideRouting } from '../../features/laya/layaRouter';
+import { DEFAULT_LAYA_STATE, type LayaState } from '../../features/laya/layaSlice';
 import { useFlowApprovalRequests } from '../../hooks/useFlowApprovalRequests';
 import { useUsageState } from '../../hooks/useUsageState';
 import {
@@ -437,6 +439,14 @@ const Conversations = ({
     state => state.chatRuntime.queuedFollowupsByThread ?? EMPTY_QUEUED_FOLLOWUPS
   );
   const rustChat = useRustChat();
+  // Laya: snapshot of the laya slice — used in send callbacks via layaStateRef.
+  // Falls back to DEFAULT_LAYA_STATE in test environments where the slice is
+  // not registered (laya is disabled by default so the fallback is safe).
+  const layaState = useAppSelector(
+    state => ((state as { laya?: LayaState }).laya ?? DEFAULT_LAYA_STATE)
+  );
+  const layaStateRef = useRef(layaState);
+  layaStateRef.current = layaState;
   // Inline thread-title rename in the sidebar thread list — keyed by the
   // thread id being edited (null = none) so any row can rename in place.
   const [editingThreadId, setEditingThreadId] = useState<string | null>(null);
@@ -542,7 +552,7 @@ const Conversations = ({
     };
   }, [composerModelOverride]);
 
-  const shareAgentName = 'OpenHuman';
+  const shareAgentName = 'openmark';
 
   const textInputRef = useRef<HTMLTextAreaElement>(null);
   const composerFooterRef = useRef<HTMLDivElement>(null);
@@ -1103,10 +1113,13 @@ const Conversations = ({
     pendingSendsRef.current.add(sendingThreadId);
     addPendingSendingThread(sendingThreadId);
     const pendingAttachments = attachments.slice();
-    const modelOverride = composerModelOverride ?? CHAT_MODEL_HINT;
+    const baseModel = composerModelOverride ?? CHAT_MODEL_HINT;
+    const userMsgId = `msg_${globalThis.crypto.randomUUID()}`;
+    const layaResult = decideRouting(trimmed, sendingThreadId, baseModel, layaStateRef.current, dispatch, userMsgId);
+    const modelOverride = layaResult.model;
     const messageText = buildMessageWithAttachments(trimmed, pendingAttachments);
     const userMessage: ThreadMessage = {
-      id: `msg_${globalThis.crypto.randomUUID()}`,
+      id: userMsgId,
       content: trimmed,
       type: 'text',
       extraMetadata:
@@ -1228,10 +1241,13 @@ const Conversations = ({
     if (!normalized && attachments.length === 0) return;
 
     const pendingAttachments = attachments.slice();
-    const modelOverride = composerModelOverride ?? CHAT_MODEL_HINT;
+    const baseModel2 = composerModelOverride ?? CHAT_MODEL_HINT;
+    const userMsgId2 = `msg_${globalThis.crypto.randomUUID()}`;
+    const layaResult2 = decideRouting(normalized, threadId, baseModel2, layaStateRef.current, dispatch, userMsgId2);
+    const modelOverride = layaResult2.model;
     const messageText = buildMessageWithAttachments(normalized, pendingAttachments);
     const userMessage: ThreadMessage = {
-      id: `msg_${globalThis.crypto.randomUUID()}`,
+      id: userMsgId2,
       content: normalized,
       type: 'text',
       extraMetadata:
@@ -1306,17 +1322,15 @@ const Conversations = ({
     const pendingAttachments = attachments.slice();
     if (!normalized && pendingAttachments.length === 0) return;
 
-    const modelOverride = composerModelOverride ?? CHAT_MODEL_HINT;
+    const baseModel3 = composerModelOverride ?? CHAT_MODEL_HINT;
+    const userMsgId3 = `msg_${globalThis.crypto?.randomUUID ? globalThis.crypto.randomUUID() : Math.random().toString(36).slice(2)}`;
+    const layaResult3 = decideRouting(normalized, selectedThreadId, baseModel3, layaStateRef.current, dispatch, userMsgId3);
+    const modelOverride = layaResult3.model;
     const messageText = buildMessageWithAttachments(normalized, pendingAttachments);
     // Build the full user message exactly like a normal send (content +
     // attachment metadata) so the follow-up persists identically when it is
-    // flushed into the transcript on turn end. Guard `crypto.randomUUID` like
-    // the rest of the codebase (threadSlice) for runtimes that lack it.
-    const messageId = `msg_${
-      globalThis.crypto?.randomUUID
-        ? globalThis.crypto.randomUUID()
-        : `${Date.now()}-${Math.random().toString(36).slice(2)}`
-    }`;
+    // flushed into the transcript on turn end.
+    const messageId = userMsgId3;
     const followupMessage: ThreadMessage = {
       id: messageId,
       content: normalized,
@@ -1372,6 +1386,44 @@ const Conversations = ({
       // handles the transport error locally, so restore the rejected follow-up
       // explicitly instead of letting the user's draft disappear.
       setInputValue(normalized);
+    }
+  };
+
+  // Re-send a message with the frontier model, bypassing Laya routing.  Called
+  // from LayaRoutingBadge's "Redo with frontier model" action.
+  const handleLayaRedoSend = async (content: string, frontierModel: string) => {
+    if (!selectedThreadId) return;
+    const sendingThreadId = selectedThreadId;
+    pendingSendsRef.current.add(sendingThreadId);
+    addPendingSendingThread(sendingThreadId);
+    const userMsgIdRedo = `msg_${globalThis.crypto.randomUUID()}`;
+    const userMessage: ThreadMessage = {
+      id: userMsgIdRedo,
+      content,
+      type: 'text',
+      extraMetadata: {},
+      sender: 'user',
+      createdAt: new Date().toISOString(),
+    };
+    try {
+      await dispatch(addMessageLocal({ threadId: sendingThreadId, message: userMessage })).unwrap();
+    } catch {
+      pendingSendsRef.current.delete(sendingThreadId);
+      removePendingSendingThread(sendingThreadId);
+      return;
+    }
+    dispatch(setToolTimelineForThread({ threadId: sendingThreadId, entries: [] }));
+    dispatch(beginInferenceTurn({ threadId: sendingThreadId }));
+    dispatch(markThreadInferenceActive(sendingThreadId));
+    try {
+      await chatSend({ threadId: sendingThreadId, message: content, model: frontierModel, locale: uiLocale });
+      pendingSendsRef.current.delete(sendingThreadId);
+      removePendingSendingThread(sendingThreadId);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      setSendError(chatSendError('cloud_send_failed', msg));
+      pendingSendsRef.current.delete(sendingThreadId);
+      removePendingSendingThread(sendingThreadId);
     }
   };
 
@@ -2227,6 +2279,7 @@ const Conversations = ({
         shareAgentName={shareAgentName}
         scrollResetKey={location.pathname}
         pendingSendActive={selectedThreadId ? pendingSendingThreadIds.has(selectedThreadId) : false}
+        onLayaRedo={handleLayaRedoSend}
       />
 
       {/* Full-width fade so messages dissolve into the page behind the floating

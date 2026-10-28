@@ -12,11 +12,14 @@ import {
 } from 'react';
 
 import { Conversation, ConversationContent } from '../../../components/ai-elements';
+import LayaRoutingBadge from '../../../components/chat/LayaRoutingBadge';
 import { useStickToBottom } from '../../../hooks/useStickToBottom';
 import { useCoreTranscriptProjection } from '../../../providers/useOpenHumanExternalStore';
 import type { ProcessingTranscriptItem, ToolTimelineEntry } from '../../../store/chatRuntimeSlice';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { persistReaction } from '../../../store/threadSlice';
+import type { LayaRoutingRecord } from '../../../features/laya/layaTypes';
+import { DEFAULT_LAYA_STATE, type LayaState } from '../../../features/laya/layaSlice';
 import type { ThreadMessage } from '../../../types/thread';
 import { buildThreadTimeline } from '../timeline/selectors';
 import { supersededInterimIndexes } from '../utils/interimNarration';
@@ -136,6 +139,9 @@ interface ChatThreadViewProps {
    *  send appears in-flight immediately, before the first socket event
    *  lands. */
   pendingSendActive?: boolean;
+  /** Called when the user clicks "Redo with frontier model" on a Laya-routed turn.
+   *  Receives the original message content and the frontier model override. */
+  onLayaRedo?: (content: string, frontierModel: string) => void;
 }
 
 /**
@@ -183,9 +189,10 @@ export const ChatThreadView = forwardRef<ChatThreadViewHandle, ChatThreadViewPro
       isLoading = false,
       loadError = null,
       emptyContent = null,
-      shareAgentName = 'OpenHuman',
+      shareAgentName = 'openmark',
       scrollResetKey = 'chat-thread-view',
       pendingSendActive = false,
+      onLayaRedo,
     },
     ref
   ) => {
@@ -195,6 +202,12 @@ export const ChatThreadView = forwardRef<ChatThreadViewHandle, ChatThreadViewPro
 
     const messages = useAppSelector(state =>
       threadId ? (state.thread.messagesByThreadId[threadId] ?? EMPTY_MESSAGES) : EMPTY_MESSAGES
+    );
+    const layaHistory = useAppSelector(
+      state => ((state as { laya?: LayaState }).laya ?? DEFAULT_LAYA_STATE).history
+    );
+    const layaFrontierModel = useAppSelector(
+      state => ((state as { laya?: LayaState }).laya ?? DEFAULT_LAYA_STATE).config.frontierModelOverride
     );
     const toolTimelineByThread = useAppSelector(state => state.chatRuntime.toolTimelineByThread);
     const interruptedAssistantByThread = useAppSelector(
@@ -373,6 +386,30 @@ export const ChatThreadView = forwardRef<ChatThreadViewHandle, ChatThreadViewPro
       }
       return anchors;
     }, [timelineMessages, selectedThreadTurnTimelines, selectedThreadTurnTranscripts]);
+
+    // Map agent message ID → Laya routing record for badge display.
+    // For each agent message, look at the preceding user message in the
+    // timeline and find the routing record whose userMessageId matches.
+    const layaRecordsByAgentMsgId = useMemo(() => {
+      const result: Record<string, LayaRoutingRecord> = {};
+      if (!threadId || layaHistory.length === 0) return result;
+      const threadRecordsByUserMsgId: Record<string, LayaRoutingRecord> = {};
+      for (const rec of layaHistory) {
+        if (rec.threadId === threadId && rec.userMessageId) {
+          threadRecordsByUserMsgId[rec.userMessageId] = rec;
+        }
+      }
+      let prevUserMsgId: string | null = null;
+      for (const msg of timelineMessages) {
+        if (msg.sender === 'user') {
+          prevUserMsgId = msg.id;
+        } else if (msg.sender === 'agent' && prevUserMsgId) {
+          const rec = threadRecordsByUserMsgId[prevUserMsgId];
+          if (rec) result[msg.id] = rec;
+        }
+      }
+      return result;
+    }, [threadId, layaHistory, timelineMessages]);
     const activeSubagentTimelineEntry = selectedThreadToolTimeline.find(
       entry => entry.status === 'running' && entry.name.startsWith('subagent:')
     );
@@ -531,6 +568,22 @@ export const ChatThreadView = forwardRef<ChatThreadViewHandle, ChatThreadViewPro
                       onOpenReactionPicker={setReactionPickerMsgId}
                     />
                   </AssistantMessageScope>
+                  {msg.sender === 'agent' && layaRecordsByAgentMsgId[msg.id] ? (
+                    <LayaRoutingBadge
+                      record={layaRecordsByAgentMsgId[msg.id]}
+                      onRedoWithFrontier={
+                        onLayaRedo
+                          ? (rec: LayaRoutingRecord) => {
+                              const userMsg = timelineMessages.find(m => m.id === rec.userMessageId);
+                              if (userMsg) {
+                                onLayaRedo(userMsg.content, layaFrontierModel || 'hint:chat');
+                              }
+                            }
+                          : undefined
+                      }
+                      className="ml-3"
+                    />
+                  ) : null}
                   {msg.id === lastUserMessageId ? agentInsights : null}
                 </Fragment>
               ))}

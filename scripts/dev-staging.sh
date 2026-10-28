@@ -27,8 +27,8 @@ export OPENHUMAN_APP_ENV=staging
 export VITE_OPENHUMAN_APP_ENV=staging
 
 # Point to staging API (ci-secrets.json has localhost for CI)
-export BACKEND_URL=https://staging-api.tinyhumans.ai
-export VITE_BACKEND_URL=https://staging-api.tinyhumans.ai
+export BACKEND_URL=https://staging-api.openmark.app
+export VITE_BACKEND_URL=https://staging-api.openmark.app
 
 # Load the regular .env (secrets take precedence since they're already set)
 source "$SCRIPT_DIR/load-dotenv.sh"

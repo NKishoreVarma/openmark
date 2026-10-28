@@ -639,8 +639,8 @@ function backendApiUrl() {
     "";
   if (explicit) return explicit.replace(/\/+$/, "");
   return process.env.OPENHUMAN_APP_ENV === "staging"
-    ? "https://staging-api.tinyhumans.ai"
-    : "https://api.tinyhumans.ai";
+    ? "https://staging-api.openmark.app"
+    : "https://api.openmark.app";
 }
 
 async function writeIsolatedOpenHumanBackendConfig(workspace, model) {

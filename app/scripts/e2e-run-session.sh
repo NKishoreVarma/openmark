@@ -188,12 +188,12 @@ export OPENHUMAN_TELEGRAM_BOT_API_BASE="http://127.0.0.1:${E2E_MOCK_PORT}"
 export OPENHUMAN_COMPOSIO_DIRECT_BASE_V2="http://127.0.0.1:${E2E_MOCK_PORT}"
 export OPENHUMAN_COMPOSIO_DIRECT_BASE_V3="http://127.0.0.1:${E2E_MOCK_PORT}"
 
-echo "[runner] Killing any running OpenHuman instances..."
+echo "[runner] Killing any running openmark instances..."
 case "$OS" in
-  Darwin) pkill -f "OpenHuman" 2>/dev/null || true ;;
-  Linux)  pkill -f "OpenHuman" 2>/dev/null || true ;;
+  Darwin) pkill -f "openmark" 2>/dev/null || true ;;
+  Linux)  pkill -f "openmark" 2>/dev/null || true ;;
   MINGW*|MSYS*|CYGWIN*|Windows_NT)
-    taskkill //F //IM "OpenHuman.exe" 2>/dev/null || true
+    taskkill //F //IM "openmark.exe" 2>/dev/null || true
     ;;
 esac
 sleep 1
@@ -234,7 +234,7 @@ fi
 #
 # WHY pre-populate cloud_providers here:
 #   The unify_ai_provider_settings migration runs on first startup. If
-#   cloud_providers is empty it seeds an OpenHuman entry and sets primary_cloud
+#   cloud_providers is empty it seeds an openmark entry and sets primary_cloud
 #   to that entry — which routes all inference to OpenHumanBackendProvider
 #   (supports_streaming=false, always returns non-streaming responses, so the
 #   mock server never receives /openai/v1/chat/completions).
@@ -283,22 +283,22 @@ resolve_app_binary() {
   case "$OS" in
     Darwin)
       for base in \
-        "$REPO_ROOT/crates/openhuman-app/target/debug/bundle/macos/OpenHuman.app/Contents/MacOS/OpenHuman" \
-        "$REPO_ROOT/target/debug/bundle/macos/OpenHuman.app/Contents/MacOS/OpenHuman"; do
+        "$REPO_ROOT/crates/openhuman-app/target/debug/bundle/macos/openmark.app/Contents/MacOS/openmark" \
+        "$REPO_ROOT/target/debug/bundle/macos/openmark.app/Contents/MacOS/openmark"; do
         if [ -x "$base" ]; then echo "$base"; return; fi
       done
       ;;
     Linux)
       for candidate in \
-        "$REPO_ROOT/crates/openhuman-app/target/debug/OpenHuman" \
-        "$REPO_ROOT/target/debug/OpenHuman"; do
+        "$REPO_ROOT/crates/openhuman-app/target/debug/openmark" \
+        "$REPO_ROOT/target/debug/openmark"; do
         if [ -x "$candidate" ]; then echo "$candidate"; return; fi
       done
       ;;
     MINGW*|MSYS*|CYGWIN*|Windows_NT)
       for candidate in \
-        "$REPO_ROOT/crates/openhuman-app/target/debug/OpenHuman.exe" \
-        "$REPO_ROOT/target/debug/OpenHuman.exe"; do
+        "$REPO_ROOT/crates/openhuman-app/target/debug/openmark.exe" \
+        "$REPO_ROOT/target/debug/openmark.exe"; do
         if [ -x "$candidate" ]; then echo "$candidate"; return; fi
       done
       ;;
@@ -344,7 +344,7 @@ if [ "$OS" = "Linux" ] && [ "${E2E_USE_TAURI_DRIVER:-0}" = "1" ]; then
   exit $?
 fi
 if [ -z "${APP_BIN:-}" ] || [ ! -x "$APP_BIN" ]; then
-  echo "ERROR: built OpenHuman binary not found. Run 'pnpm test:e2e:build' first." >&2
+  echo "ERROR: built openmark binary not found. Run 'pnpm test:e2e:build' first." >&2
   exit 1
 fi
 

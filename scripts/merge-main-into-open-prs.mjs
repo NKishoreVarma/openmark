@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 
-const DEFAULT_REPO = 'tinyhumansai/openhuman';
+const DEFAULT_REPO = process.env.OPENMARK_REPO || 'NKishoreVarma/openmark';
 const DEFAULT_BASE_BRANCH = 'main';
 const DEFAULT_OPEN_PR_LIMIT = 200;
 

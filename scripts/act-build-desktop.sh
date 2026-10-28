@@ -57,7 +57,7 @@ cat > "$EVENT_FILE" <<JSON
     "version": "${VERSION}",
     "sha": "${SHA}",
     "short_sha": "${SHORT_SHA}",
-    "base_url": "https://staging-api.tinyhumans.ai/",
+    "base_url": "https://staging-api.openmark.app/",
     "app_env": "staging",
     "build_profile": "debug",
     "telegram_bot_username": "alphahumantest_bot",

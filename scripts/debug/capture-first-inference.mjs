@@ -29,7 +29,7 @@ response: serving endpoint, time to first byte, prompt / cached tokens, status.
 Configure with environment variables:
   CAPTURE_PORT       listen port (default 18765)
   CAPTURE_HOST       listen host (default 127.0.0.1; see CAPTURE_ALLOW_REMOTE)
-  CAPTURE_UPSTREAM   where to forward (default https://api.tinyhumans.ai;
+  CAPTURE_UPSTREAM   where to forward (default https://api.openmark.app;
                      https://openrouter.ai for a direct BYOK OpenRouter route)
   CAPTURE_OUTPUT     file for the first inference body
                      (default target/debug-logs/first-inference-request.json)
@@ -54,7 +54,7 @@ if (process.argv.includes('--help') || process.argv.includes('-h')) {
 
 const listenHost = process.env.CAPTURE_HOST || '127.0.0.1';
 const listenPort = Number.parseInt(process.env.CAPTURE_PORT || '18765', 10);
-const upstream = new URL(process.env.CAPTURE_UPSTREAM || 'https://api.tinyhumans.ai');
+const upstream = new URL(process.env.CAPTURE_UPSTREAM || 'https://api.openmark.app');
 const outputPath = path.resolve(
   process.env.CAPTURE_OUTPUT || 'target/debug-logs/first-inference-request.json'
 );

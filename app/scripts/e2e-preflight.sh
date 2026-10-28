@@ -53,14 +53,14 @@ BINARY_PATH=""
 
 case "$PLATFORM" in
   Darwin)
-    MACOS_BUNDLE="$REPO_ROOT/crates/openhuman-app/target/debug/bundle/macos/OpenHuman.app"
+    MACOS_BUNDLE="$REPO_ROOT/crates/openhuman-app/target/debug/bundle/macos/openmark.app"
     if [[ -d "$MACOS_BUNDLE" ]]; then
       BINARY_FOUND=1
       BINARY_PATH="$MACOS_BUNDLE"
     fi
     ;;
   Linux)
-    LINUX_BIN="$REPO_ROOT/crates/openhuman-app/target/debug/OpenHuman"
+    LINUX_BIN="$REPO_ROOT/crates/openhuman-app/target/debug/openmark"
     LINUX_DEB="$REPO_ROOT/crates/openhuman-app/target/debug/bundle/deb"
     if [[ -f "$LINUX_BIN" ]]; then
       BINARY_FOUND=1
@@ -71,7 +71,7 @@ case "$PLATFORM" in
     fi
     ;;
   MINGW*|MSYS*|CYGWIN*|Windows*)
-    WIN_BIN="$REPO_ROOT/crates/openhuman-app/target/debug/OpenHuman.exe"
+    WIN_BIN="$REPO_ROOT/crates/openhuman-app/target/debug/openmark.exe"
     if [[ -f "$WIN_BIN" ]]; then
       BINARY_FOUND=1
       BINARY_PATH="$WIN_BIN"

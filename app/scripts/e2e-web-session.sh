@@ -149,7 +149,7 @@ default_model = "e2e-mock-model"
 [[cloud_providers]]
 id = "p_e2e_openhuman"
 slug = "openhuman"
-label = "OpenHuman"
+label = "openmark"
 endpoint = "http://127.0.0.1:${E2E_MOCK_PORT}/v1"
 auth_style = "openhumanjwt"
 EOF
@@ -201,7 +201,7 @@ CORE_MONITOR_PID=$!
 
 # Give the core process time to start and fail if it's going to
 sleep 2
-if ! check_process_alive "$CORE_PID" "OpenHuman core"; then
+if ! check_process_alive "$CORE_PID" "openmark core"; then
   echo "Core startup failed. Last 50 lines of core.log:" >&2
   tail -50 "$OPENHUMAN_WORKSPACE/core.log" >&2
   exit 1

@@ -1,0 +1,235 @@
+# openmark desktop build — macOS (arm64 + x86_64) and Windows (x64)
+#
+# Adapted from upstream build-desktop.yml at BASELINE d1dd270af (v0.63.31).
+# Run manually via workflow_dispatch, or trigger on push to `main`/`release`.
+#
+# Required repository secrets (see fork/REMOTE-DEPENDENCIES.md):
+#   TAURI_SIGNING_PRIVATE_KEY          — minisign private key (cargo tauri signer generate)
+#   TAURI_SIGNING_PRIVATE_KEY_PASSWORD — passphrase for the signing key
+#   APPLE_CERTIFICATE_BASE64           — base64-encoded .p12 Developer ID cert
+#   APPLE_CERTIFICATE_PASSWORD         — .p12 import passphrase
+#   APPLE_SIGNING_IDENTITY             — "Developer ID Application: <Name> (<TeamID>)"
+#   APPLE_ID                           — Apple ID email
+#   APPLE_APP_SPECIFIC_PASSWORD        — App-specific password (appleid.apple.com)
+#   APPLE_TEAM_ID                      — 10-char team identifier
+#   SENTRY_AUTH_TOKEN                  — (optional) source-map upload token
+
+name: openmark build
+
+on:
+  workflow_dispatch:
+    inputs:
+      sign:
+        description: 'Sign and notarize macOS build'
+        type: boolean
+        default: false
+      updater:
+        description: 'Generate updater artifacts (.sig files)'
+        type: boolean
+        default: false
+  push:
+    branches: [main, release]
+    tags: ['v*']
+
+permissions:
+  contents: write
+  packages: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  NPM_CONFIG_STORE_DIR: .pnpm-store
+
+jobs:
+  build:
+    name: Build ${{ matrix.settings.artifact_suffix }}
+    runs-on: ${{ matrix.settings.platform }}
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        settings:
+          # macOS Apple Silicon
+          - platform: macos-latest
+            args: --target aarch64-apple-darwin
+            target: aarch64-apple-darwin
+            artifact_suffix: aarch64-apple-darwin
+          # macOS Intel
+          - platform: macos-latest
+            args: --target x86_64-apple-darwin
+            target: x86_64-apple-darwin
+            artifact_suffix: x86_64-apple-darwin
+          # Windows x64
+          - platform: windows-latest
+            args: --target x86_64-pc-windows-msvc
+            target: x86_64-pc-windows-msvc
+            artifact_suffix: windows
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          submodules: recursive
+
+      - name: Set Xcode version (macOS)
+        if: runner.os == 'macOS'
+        uses: maxim-lobanov/setup-xcode@v1.7.0
+        with:
+          xcode-version: latest-stable
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.10.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.x
+          cache: pnpm
+          cache-dependency-path: |
+            pnpm-lock.yaml
+            app/pnpm-lock.yaml
+
+      - name: Install Rust 1.96.1
+        uses: dtolnay/rust-toolchain@1.96.1
+        with:
+          components: rustfmt,clippy
+          targets: ${{ runner.os == 'macOS' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
+
+      - name: Cargo.lock fingerprint
+        id: cargo-lock
+        run: |
+          echo "hash=$(tail -n +8 Cargo.lock | openssl dgst -sha256 | awk '{print $2}')" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Cargo registry
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+          key: ${{ runner.os }}-${{ matrix.settings.target }}-cargo-${{ steps.cargo-lock.outputs.hash }}
+          restore-keys: ${{ runner.os }}-${{ matrix.settings.target }}-cargo-
+
+      - name: Install JS dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install app JS dependencies
+        working-directory: app
+        run: pnpm install --frozen-lockfile
+
+      # ── macOS: import signing certificate ──────────────────────────────────
+      - name: Import Apple certificate (macOS signed builds)
+        if: runner.os == 'macOS' && inputs.sign
+        env:
+          APPLE_CERTIFICATE_BASE64: ${{ secrets.APPLE_CERTIFICATE_BASE64 }}
+          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+        run: |
+          KEYCHAIN_PATH="$RUNNER_TEMP/signing.keychain-db"
+          KEYCHAIN_PASSWORD="$(openssl rand -hex 16)"
+          echo "$APPLE_CERTIFICATE_BASE64" | base64 --decode > "$RUNNER_TEMP/cert.p12"
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN_PATH"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security import "$RUNNER_TEMP/cert.p12" -P "$APPLE_CERTIFICATE_PASSWORD" \
+            -A -t cert -f pkcs12 -k "$KEYCHAIN_PATH"
+          security list-keychains -d user -s "$KEYCHAIN_PATH"
+
+      # ── Build ───────────────────────────────────────────────────────────────
+      - name: Build openmark desktop app
+        working-directory: app
+        env:
+          # Tauri updater signing (optional — only needed when inputs.updater=true)
+          TAURI_SIGNING_PRIVATE_KEY: ${{ inputs.updater && secrets.TAURI_SIGNING_PRIVATE_KEY || '' }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ inputs.updater && secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD || '' }}
+          # macOS signing + notarization (optional — only when inputs.sign=true)
+          APPLE_CERTIFICATE_BASE64: ${{ inputs.sign && secrets.APPLE_CERTIFICATE_BASE64 || '' }}
+          APPLE_CERTIFICATE_PASSWORD: ${{ inputs.sign && secrets.APPLE_CERTIFICATE_PASSWORD || '' }}
+          APPLE_SIGNING_IDENTITY: ${{ inputs.sign && secrets.APPLE_SIGNING_IDENTITY || '' }}
+          APPLE_ID: ${{ inputs.sign && secrets.APPLE_ID || '' }}
+          APPLE_PASSWORD: ${{ inputs.sign && secrets.APPLE_APP_SPECIFIC_PASSWORD || '' }}
+          APPLE_TEAM_ID: ${{ inputs.sign && secrets.APPLE_TEAM_ID || '' }}
+        run: |
+          if [ "${{ matrix.settings.platform }}" = "macos-latest" ]; then
+            pnpm run macos:build:release ${{ matrix.settings.args }}
+          else
+            # Windows — use the tauri build script directly
+            node scripts/tauri.cjs build -- --target ${{ matrix.settings.target }}
+          fi
+
+      # ── Upload artifacts ────────────────────────────────────────────────────
+      - name: Upload macOS artifacts
+        if: runner.os == 'macOS'
+        uses: actions/upload-artifact@v4
+        with:
+          name: openmark-${{ matrix.settings.artifact_suffix }}
+          path: |
+            crates/openhuman-app/target/${{ matrix.settings.target }}/release/bundle/dmg/*.dmg
+            crates/openhuman-app/target/${{ matrix.settings.target }}/release/bundle/macos/*.app.tar.gz
+            crates/openhuman-app/target/${{ matrix.settings.target }}/release/bundle/macos/*.app.tar.gz.sig
+          retention-days: 30
+
+      - name: Upload Windows artifacts
+        if: runner.os == 'Windows'
+        uses: actions/upload-artifact@v4
+        with:
+          name: openmark-${{ matrix.settings.artifact_suffix }}
+          path: |
+            crates/openhuman-app/target/${{ matrix.settings.target }}/release/bundle/nsis/*-setup.exe
+            crates/openhuman-app/target/${{ matrix.settings.target }}/release/bundle/nsis/*-setup.exe.sig
+            crates/openhuman-app/target/${{ matrix.settings.target }}/release/bundle/msi/*.msi
+            crates/openhuman-app/target/${{ matrix.settings.target }}/release/bundle/msi/*.msi.sig
+          retention-days: 30
+
+  # ── Front-end + Rust unit tests (runs on every push) ──────────────────────
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.10.0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.x
+
+      - uses: dtolnay/rust-toolchain@1.96.1
+        with:
+          components: rustfmt,clippy
+
+      - name: Cache Cargo
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: ubuntu-test-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile && cd app && pnpm install --frozen-lockfile
+
+      - name: TypeScript check
+        working-directory: app
+        run: pnpm run compile
+
+      - name: Frontend unit tests
+        working-directory: app
+        run: pnpm run test
+
+      - name: Rust tests
+        working-directory: app
+        run: pnpm run test:rust

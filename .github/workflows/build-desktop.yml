@@ -341,7 +341,7 @@ jobs:
           CORE_BIN_NAME: ${{ steps.core-paths.outputs.core_bin_name }}
           OPENHUMAN_APP_ENV: ${{ inputs.app_env }}
           # Bake the short SHA into the CLI so build_release_tag() in
-          # src/main.rs produces openhuman@<version>+<sha> matching the
+          # src/main.rs produces openmark@<version>+<sha> matching the
           # Sentry release tag used when uploading the standalone CLI symbols.
           OPENHUMAN_BUILD_SHA: ${{ inputs.short_sha }}
           # Bake the core Sentry DSN into the binary via `option_env!` in
@@ -393,7 +393,7 @@ jobs:
           # via `option_env!("OPENHUMAN_TAURI_SENTRY_DSN")` at compile time.
           OPENHUMAN_TAURI_SENTRY_DSN: ${{ vars.OPENHUMAN_TAURI_SENTRY_DSN }}
           # Bake the build SHA into the Tauri shell so its Sentry release tag
-          # (`openhuman@<version>+<sha>`) matches the React bundle and the
+          # (`openmark@<version>+<sha>`) matches the React bundle and the
           # standalone CLI — events across all surfaces group under one release.
           OPENHUMAN_BUILD_SHA: ${{ inputs.sha }}
           VITE_DEBUG: ${{ vars.VITE_DEBUG }}
@@ -403,7 +403,7 @@ jobs:
           # OPENHUMAN_BUILD_SHA down to at runtime when emitting events. The
           # sentry-vite-plugin reads SENTRY_RELEASE raw, so a long-SHA value
           # here would tag uploads against a different release than events.
-          SENTRY_RELEASE: openhuman@${{ inputs.version }}+${{ inputs.short_sha }}
+          SENTRY_RELEASE: openmark@${{ inputs.version }}+${{ inputs.short_sha }}
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           SENTRY_URL: ${{ vars.SENTRY_URL }}
           SENTRY_ORG: ${{ vars.SENTRY_ORG }}
@@ -450,9 +450,9 @@ jobs:
         run: |
           set +e
           for BIN in \
-            "crates/openhuman-app/target/${MATRIX_TARGET}/${PROFILE}/OpenHuman" \
-            "crates/openhuman-app/target/${MATRIX_TARGET}/${PROFILE}/bundle/appimage_deb/data/usr/bin/OpenHuman" \
-            "target/${MATRIX_TARGET}/${PROFILE}/OpenHuman"; do
+            "crates/openhuman-app/target/${MATRIX_TARGET}/${PROFILE}/openmark" \
+            "crates/openhuman-app/target/${MATRIX_TARGET}/${PROFILE}/bundle/appimage_deb/data/usr/bin/openmark" \
+            "target/${MATRIX_TARGET}/${PROFILE}/openmark"; do
             if [ -x "$BIN" ]; then
               echo "==> ldd $BIN"
               ldd "$BIN" || true
@@ -514,7 +514,7 @@ jobs:
           SENTRY_URL: ${{ vars.SENTRY_URL }}
           SENTRY_ORG: ${{ vars.SENTRY_ORG }}
           SENTRY_PROJECT: ${{ vars.SENTRY_PROJECT_TAURI }}
-          SENTRY_RELEASE: openhuman@${{ inputs.version }}+${{ inputs.short_sha }}
+          SENTRY_RELEASE: openmark@${{ inputs.version }}+${{ inputs.short_sha }}
           VERSION: ${{ inputs.version }}
           MATRIX_TARGET: ${{ matrix.settings.target }}
           PROFILE: ${{ inputs.build_profile }}
@@ -544,7 +544,7 @@ jobs:
           SENTRY_URL: ${{ vars.SENTRY_URL }}
           SENTRY_ORG: ${{ vars.SENTRY_ORG }}
           SENTRY_PROJECT: ${{ vars.SENTRY_PROJECT_CORE }}
-          SENTRY_RELEASE: openhuman@${{ inputs.version }}+${{ inputs.short_sha }}
+          SENTRY_RELEASE: openmark@${{ inputs.version }}+${{ inputs.short_sha }}
           VERSION: ${{ inputs.version }}
           MATRIX_TARGET: ${{ matrix.settings.target }}
           PROFILE: ${{ inputs.build_profile }}
@@ -603,7 +603,7 @@ jobs:
           fi
           echo "Uploading:"
           printf '  %s\n' "${UPLOAD[@]}"
-          gh release upload "$TAG" "${UPLOAD[@]}" --repo tinyhumansai/openhuman --clobber
+          gh release upload "$TAG" "${UPLOAD[@]}" --repo ${{ github.repository }} --clobber
 
       # ---- macOS sign / notarize / repackage --------------------------------
       - name: Locate macOS .app bundle
@@ -617,19 +617,19 @@ jobs:
           set -euo pipefail
           APP_PATH=""
           for candidate in \
-            "crates/openhuman-app/target/${MATRIX_TARGET}/${PROFILE}/bundle/macos/OpenHuman.app" \
-            "target/${MATRIX_TARGET}/${PROFILE}/bundle/macos/OpenHuman.app"; do
+            "crates/openhuman-app/target/${MATRIX_TARGET}/${PROFILE}/bundle/macos/openmark.app" \
+            "target/${MATRIX_TARGET}/${PROFILE}/bundle/macos/openmark.app"; do
             if [ -d "$candidate" ]; then
               APP_PATH="$candidate"
               break
             fi
           done
           if [ -z "$APP_PATH" ]; then
-            APP_PATH="$(find . -path "*/${PROFILE}/bundle/macos/OpenHuman.app" -type d 2>/dev/null | head -1)"
+            APP_PATH="$(find . -path "*/${PROFILE}/bundle/macos/openmark.app" -type d 2>/dev/null | head -1)"
           fi
           if [ -z "$APP_PATH" ]; then
-            echo "ERROR: Could not find OpenHuman.app bundle anywhere"
-            find . -name 'OpenHuman.app' -type d 2>/dev/null || true
+            echo "ERROR: Could not find openmark.app bundle anywhere"
+            find . -name 'openmark.app' -type d 2>/dev/null || true
             exit 1
           fi
           BUNDLE_DIR="$(dirname "$(dirname "$APP_PATH")")"

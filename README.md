@@ -1,194 +1,284 @@
-<h1 align="center">OpenHuman</h1>
-
 <p align="center">
- <img src="./gitbooks/.gitbook/assets/demo.png" alt="The Tet" />
+  <img src="./app/public/logo.png" alt="OpenMark Logo" width="96" height="96" />
 </p>
 
-<p align="center" style="display: inline-block">
-	<a href="https://trendshift.io/repositories/23680" target="_blank" style="display: inline-block">
-		<img src="https://trendshift.io/api/badge/repositories/23680" alt="tinyhumansai%2Fopenhuman | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/>
-	</a>
-	<a href="https://www.producthunt.com/products/openhuman?embed=true&amp;utm_source=badge-top-post-badge&amp;utm_medium=badge&amp;utm_campaign=badge-openhuman" target="_blank" rel="noopener noreferrer">
-		<img alt="OpenHuman - An open source AI harness built with the human in mind | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=1136902&amp;theme=light&amp;period=daily&amp;t=1778916022823">
-		</a>
-		<a href="https://www.producthunt.com/products/openhuman?embed=true&amp;utm_source=badge-top-post-badge&amp;utm_medium=badge&amp;utm_campaign=badge-openhuman" target="_blank" rel="noopener noreferrer">
-			<img alt="OpenHuman - An open source AI harness built with the human in mind | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=1136902&amp;theme=light&amp;period=weekly&amp;t=1779351403565">
-		</a>
-</p>
-<p align="center" style="display: inline-block">
- <a href="https://www.producthunt.com/products/openhuman?embed=true&amp;utm_source=badge-top-post-topic-badge&amp;utm_medium=badge&amp;utm_campaign=badge-openhuman" target="_blank" rel="noopener noreferrer">
-  <img alt="OpenHuman - An open source AI harness built with the human in mind | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/top-post-topic-badge.svg?post_id=1136902&amp;theme=light&amp;period=weekly&amp;topic_id=268&amp;t=1779351808756">
-  </a>
-  <a href="https://www.producthunt.com/products/openhuman?embed=true&amp;utm_source=badge-top-post-topic-badge&amp;utm_medium=badge&amp;utm_campaign=badge-openhuman" target="_blank" rel="noopener noreferrer">
-   <img alt="OpenHuman - An open source AI harness built with the human in mind | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/top-post-topic-badge.svg?post_id=1136902&amp;theme=light&amp;period=weekly&amp;topic_id=46&amp;t=1779351808756">
-   </a>
- </p>
+<h1 align="center">OpenMark</h1>
 
 <p align="center">
- <strong>OpenHuman is your personal AI super intelligence: a brain that remembers everything, a fantastic orchestrator, a deep researcher. Local-first, simple, powerful.</strong>
+  <strong>Open-source desktop AI super-assistant and modular agent runtime.</strong><br>
+  Built with React 18, TypeScript, Tailwind CSS, Tauri v2, and Rust.
 </p>
 
 <p align="center">
- <a href="https://github.com/tinyhumansai/openhuman/discussions">Discussions</a> •
- <a href="https://discord.tinyhumans.ai/">Discord</a> •
- <a href="https://www.reddit.com/r/tinyhumansai/">Reddit</a> •
- <a href="https://x.com/intent/follow?screen_name=tinyhumansai">X/Twitter</a> •
- <a href="https://tinyhumans.gitbook.io/openhuman/">Docs</a> •
- <a href="https://x.com/intent/follow?screen_name=senamakel">Follow @senamakel (Creator)</a>
+  <a href="#key-capabilities">Capabilities</a> •
+  <a href="#system-architecture">Architecture</a> •
+  <a href="#technology-stack">Tech Stack</a> •
+  <a href="#installation--development">Quickstart</a> •
+  <a href="#laya-adaptive-routing">Laya Router</a> •
+  <a href="#license--attribution">License</a>
 </p>
 
-<p align="center">
-  🇺🇸 <a href="./README.md">English</a> | 🇨🇳 <a href="./docs/README.zh-CN.md">简体中文</a> | 🇯🇵 <a href="./docs/README.ja-JP.md">日本語</a> | 🇰🇷 <a href="./docs/README.ko.md">한국어</a> | 🇩🇪 <a href="./docs/README.de.md">Deutsch</a> | 🇵🇰 <a href="./docs/README.ur-pk.md">اردو</a>
-</p>
+---
 
-<p align="center">
- <img src="https://img.shields.io/badge/status-early%20beta-orange" alt="Early Beta" />
- <a href="https://github.com/tinyhumansai/openhuman/releases/latest"><img src="https://img.shields.io/github/v/release/tinyhumansai/openhuman?label=latest" alt="Latest Release" /></a>
- <a href="https://github.com/tinyhumansai/openhuman/stargazers"><img src="https://img.shields.io/github/stars/tinyhumansai/openhuman?style=flat" alt="GitHub Stars" /></a>
- <a href="./LICENSE"><img src="https://img.shields.io/github/license/tinyhumansai/openhuman" alt="License" /></a>
-</p>
+> [!NOTE]
+> **Project Status:** Active Development & Stabilization.
+> OpenMark is undergoing active core stabilization and showcase preparation. Production binary distribution is pending code-signing certification. Build from source or run via development mode for evaluation.
 
-> **Early Beta**: Under active development. Expect rough edges.
+---
 
-> OpenHuman is not AGI. But it is a meaningful architectural step closer, with better memory, better orchestration, and better tooling.
+## What is OpenMark?
 
-> 🎉 Within one week of launch, OpenHuman became the number one trending repository on GitHub for nine days in a row.
+OpenMark is a local-first, privacy-respecting desktop AI application and modular agent execution runtime. Derived from [OpenHuman](https://github.com/tinyhumansai/openhuman) (v0.63.31), OpenMark decouples agent computing from proprietary cloud silos, giving users full ownership of their data, prompts, memory graphs, and automation workflows.
 
-# Install
+### Why OpenMark?
+- **Durable Checkpointed Turns:** Agent turns execute as state graphs on `tinyagents` rather than ephemeral loops. A turn can pause for user approval, survive an application restart, and resume mid-flight.
+- **On-Device Memory Ownership:** Context and conversations are summarized into transparent Markdown files and local SQLite databases on your filesystem—not trapped in remote databases.
+- **Adaptive Model Routing (Laya):** Includes our experimental **Laya** routing engine, which heuristically estimates prompt complexity to dynamically assign queries across local models, fast reasoning tiers, or frontier cloud models.
+- **Bring Your Own Key (BYOK) & Local LLMs:** Seamlessly toggle between local Ollama instances and direct cloud providers (Anthropic, OpenAI, OpenRouter, Groq, DeepSeek) with zero telemetry leaks.
+- **Model Context Protocol (MCP):** Native support for the open MCP standard, allowing the agent to interface directly with external development tools, databases, and filesystem servers.
 
-Download installers from [tinyhumans.ai/openhuman](https://tinyhumans.ai/openhuman?utm_source=github&utm_medium=readme) or from the [GitHub Releases](https://github.com/tinyhumansai/openhuman/releases/latest) page.
+---
 
-For terminal installs (Homebrew, Debian/Ubuntu `.deb`, AUR, install scripts, and platform notes), see **[INSTALL.md](./INSTALL.md)**.
+## Key Capabilities & Implementation Status
 
-# What is OpenHuman?
+We provide an honest distinction between implemented code, automated tests, experimental features, and planned work:
 
-OpenHuman is three things most assistants aren't: **a brain** that builds a persistent, local memory of your world; **a fantastic orchestrator** that runs fleets of agents on durable graphs; and **a deep researcher** that sweeps your data and the web before you finish asking. Every bullet links to the deeper writeup in the [docs](https://tinyhumans.gitbook.io/openhuman/).
+| Capability | Source Evidence | Status |
+|---|---|---|
+| **Tauri v2 Desktop Shell** | `crates/openhuman-app/` | `IMPLEMENTED` / `TESTED` |
+| **Checkpointed Agent Graphs** | `vendor/tinyagents/` | `IMPLEMENTED` / `TESTED` |
+| **Laya Adaptive Model Router** | `app/src/features/laya/` | `IMPLEMENTED` / `TESTED` / `EXPERIMENTAL` |
+| **Local Inference (Ollama)** | `crates/openhuman-core/src/api/config.rs` | `IMPLEMENTED` / `TESTED` |
+| **Multi-Provider BYOK (Anthropic/OpenAI)** | `app/src/components/settings/panels/ai/` | `IMPLEMENTED` / `TESTED` |
+| **Model Context Protocol (MCP)** | `vendor/tinymcp/` | `IMPLEMENTED` / `TESTED` |
+| **Hierarchical Memory Trees** | `vendor/tinymemory/` | `IMPLEMENTED` |
+| **Visual Workflow Canvas** | `vendor/tinyflows/` | `IMPLEMENTED` |
+| **Deep Link Scheme (`openmark://`)** | `crates/openhuman-app/src/deep_link_ipc.rs` | `IMPLEMENTED` / `TESTED` |
+| **Telemetry Stripping & Privacy** | `app/src/utils/config.ts` | `IMPLEMENTED` / `TESTED` |
+| **Multi-Language Support (14 Locales)** | `app/src/lib/i18n/` | `IMPLEMENTED` / `TESTED` |
+| **Native Notifications & Tray** | `crates/openhuman-app/src/native_notifications/` | `IMPLEMENTED` / `TESTED` |
+| **Signed Production Releases** | `.github/workflows/openmark-build.yml` | `PLANNED` (Gated on Apple Developer ID) |
+| **Managed Cloud Sync Relay** | `app/src/services/` | `PLANNED` (Gated on server backend) |
 
-### 🧠 The brain
+*For full capability breakdown, see [`docs/FEATURES.md`](docs/FEATURES.md).*
 
-- **[Memory Tree](https://tinyhumans.gitbook.io/openhuman/features/memory-tree) + [Obsidian Wiki](https://tinyhumans.gitbook.io/openhuman/features/obsidian-wiki)**: your data compressed into scored Markdown trees in SQLite on your machine, mirrored as an [Obsidian vault](https://x.com/karpathy/status/2039805659525644595) you can open and edit. No vector-soup black box.
-- **[100+ OAuth integrations, 5,000+ MCP servers, 90,000+ Skills](https://tinyhumans.gitbook.io/openhuman/features/integrations)**: one click into Gmail, Notion, GitHub, Slack and the rest of your stack. [Auto-fetch](https://tinyhumans.gitbook.io/openhuman/features/obsidian-wiki/auto-fetch) feeds the brain every 20 minutes, so it has tomorrow's context this morning.
-- **[Goals & Todos](https://tinyhumans.gitbook.io/openhuman/features/goals-and-todos)**: long-term goals, durable per-thread goals, and a shared kanban board per conversation.
-- **[TokenJuice](https://tinyhumans.gitbook.io/openhuman/features/token-compression)**: tool output compressed before it hits the model: same information, up to 80% fewer tokens. A brain this big would be unaffordable without it.
+---
 
-### 🕸️ The orchestrator
+## System Architecture
 
-- **[Workflows](https://tinyhumans.gitbook.io/openhuman/features/workflows)**: the agent proposes the automation; you review it on a canvas and save. Durable, trigger-driven, approval-gated runs on open-source [tinyflows](https://github.com/tinyhumansai/tinyflows).
-- **[A harness that finishes the job](https://tinyhumans.gitbook.io/openhuman/developing/architecture/agent-harness)**: checkpointed graph runs on open-source [tinyagents](https://github.com/tinyhumansai/tinyagents). Stuck agents get steered, halted ones return a root cause, and every run replays with real per-call costs.
-- **[A split brain, always on](https://tinyhumans.gitbook.io/openhuman/features/orchestration)**: a fast reflex agent triages inbound traffic while a deep reasoning core delegates to worker fleets, steered by the subconscious.
+OpenMark separates user interaction from backend agent coordination using a clean multi-layer IPC and RPC boundary:
 
-### 🔬 The deep researcher & doer
+```mermaid
+flowchart TD
+    subgraph UI_Layer["Frontend Presentation (Webview)"]
+        UI["React 18 + TypeScript + Vite UI\nTailwind CSS • Radix UI • Redux Toolkit"]
+        LayaRouter["Laya Model Router\nHeuristic Complexity & Tier Selection"]
+    end
 
-- **Batteries included**: managed [web search](https://tinyhumans.gitbook.io/openhuman/features/native-tools/web-search), powered by [Exa](https://exa.ai), is included with your OpenHuman subscription and needs no API key; bring your own Exa key to search directly on your own Exa account and billing. Plus scraper, coder toolset, a real [browser](https://tinyhumans.gitbook.io/openhuman/features/native-tools/browser-and-computer), and [native voice](gitbooks/features/native-tools/voice.md) with backend-proxied speech-to-text and hosted or local Piper text-to-speech. [Model routing](https://tinyhumans.gitbook.io/openhuman/features/model-routing) picks the right LLM per workload on one subscription. That subscription is a default, not a lock-in: point any workload at [your own provider key or a fully local Ollama model](https://tinyhumans.gitbook.io/openhuman/features/model-routing/local-and-byok-models), and mix the three however you like.
-- **[Image & video generation](https://tinyhumans.gitbook.io/openhuman/features/native-tools)**: Seedream/SeedEdit images and Seedance/Veo video, straight into your workspace on the same subscription.
-- **[15 messaging channels](https://tinyhumans.gitbook.io/openhuman/features/channels)**: Telegram, Discord, Slack, WhatsApp, Signal, iMessage… plus **native email** (IMAP IDLE + SMTP). Your agent reaches you where you already are.
+    subgraph Native_Layer["Native Desktop Shell (Rust)"]
+        Tauri["Tauri v2 Shell (openmark)\nWindow Management • Tray • Deep Links"]
+        IPC["Tauri IPC & Command Bridge"]
+    end
 
-### 🧍 Human, private, yours
+    subgraph Core_Layer["Headless Agent Core (Rust)"]
+        Daemon["openmark Core Daemon\nJSON-RPC 2.0 • Session Lifecycle"]
+        AgentEngine["Agent Runtime (tinyagents)\nCheckpointed Execution Graphs"]
+    end
 
-- **Simple, UI-first & Human**: install to working agent in a few clicks, with no config files and no terminal. And it has [a face](https://tinyhumans.gitbook.io/openhuman/features/mascot): a mascot that speaks, reacts, and remembers you.
-- **[Privacy & security](https://tinyhumans.gitbook.io/openhuman/features/privacy-and-security)**: on-device encrypted data, approval gate, OS-keyring secrets, and opt-in sandboxing. There is also **[Privacy Mode](https://tinyhumans.gitbook.io/openhuman/features/privacy-mode)**: flip one switch and no inference leaves your machine, enforced in the Rust core.
-- **[Themes & Theme Studio](https://tinyhumans.gitbook.io/openhuman/features/theming)**: five theme families plus a full visual editor, exportable as JSON.
+    subgraph Subsystems["Modular Subsystems (vendor/tiny*)"]
+        Memory["tinymemory\nContext Trees & Markdown Store"]
+        Tools["tinymcp & tinytools\nTool Sandbox & MCP Host"]
+        Flows["tinyflows\nCanvas Automation Graphs"]
+    end
 
-## Context in minutes, not weeks
+    subgraph External_Layer["Providers & Storage"]
+        Ollama["Local Ollama Instance"]
+        CloudLLM["Cloud Providers (OpenAI, Anthropic)"]
+        Storage[("Local SQLite & Workspace Store")]
+    end
 
-OpenHuman is the first agent harness that gets to know you in minutes. Inspired by [Karpathy's LLM Knowledgebase](https://x.com/karpathy/status/2039805659525644595). Most agents start cold. Hermes learns by watching you work; OpenClaw waits for plugins to ferry context in. Either way, you spend days or weeks before the agent knows enough about your stack to be genuinely useful.
+    UI --> LayaRouter
+    UI <--> IPC
+    IPC <--> Tauri
+    Tauri <--> Daemon
+    Daemon --> AgentEngine
+    AgentEngine <--> Memory
+    AgentEngine <--> Tools
+    AgentEngine <--> Flows
+    AgentEngine <--> Ollama
+    AgentEngine <--> CloudLLM
+    Daemon --> Storage
+```
 
-<p align="center">
- <img src="./gitbooks/.gitbook/assets/memory.png" alt="OpenHuman context-building diagram">
-</p>
+*For detailed subsystem contracts, data flows, and sequence diagrams, refer to [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).*
 
-> OpenHuman summarizes and compresses all your documents, emails & chats; and creates a memory graph that lets your agent remember everything about you.
+---
 
-OpenHuman skips the wait. Connect your accounts, let [auto-fetch](https://tinyhumans.gitbook.io/openhuman/features/integrations/auto-fetch) pull data locally on a 20-minute loop, and then have [Memory Trees](https://tinyhumans.gitbook.io/openhuman/features/memory-tree) compress everything into Markdown files stored intelligently in a [Karpathy-style Obsidian wiki](https://tinyhumans.gitbook.io/openhuman/features/obsidian-wiki).
+## Technology Stack
 
-In just one sync pass, the agent has full (compressed) context of your inbox, your calendar, your repos, your docs, your messages. No training period. No "give it a few weeks.". It becomes you, controlled by you.
+### Frontend Application
+- **Framework:** React 18 with TypeScript 5
+- **Build Tool:** Vite with fast Hot Module Replacement (HMR)
+- **Styling:** Tailwind CSS with CSS custom properties and Radix UI primitives
+- **State Management:** Redux Toolkit with persisted user settings
+- **Conversation Interface:** Assistant-UI streaming chat runtime
 
-Already self-host [agentmemory](https://github.com/rohitg00/agentmemory) across other coding agents? OpenHuman ships an optional `Memory` backend that proxies to it. Set `memory.backend = "agentmemory"` in `config.toml` and the same durable store powers OpenHuman alongside Claude Code, Cursor, Codex, and OpenCode. See the [agentmemory backend](https://tinyhumans.gitbook.io/openhuman/features/obsidian-wiki/agentmemory-backend) page for setup.
+### Desktop Host & Native Core
+- **Desktop Runtime:** Tauri v2 (Rust 2021)
+- **Async Runtime:** Tokio with Axum JSON-RPC 2.0 services
+- **Database & Storage:** SQLite (`rusqlite`) for local state and session indexes
+- **Cryptography & Security:** Minisign release signature verification
 
-## An orchestrator, not a chatbot
+### Agent Subsystems (`vendor/tiny*`)
+- **`tinyagents`**: Checkpointed state machine execution graphs
+- **`tinymemory`**: Hierarchical memory trees and Obsidian-compatible Markdown knowledge store
+- **`tinymcp`**: Model Context Protocol client implementation (stdio & SSE)
+- **`tinyflows`**: Visual trigger and automation graph builder
+- **`tinyvoice`**: Real-time streaming voice input/output pipelines
 
-Most agent harnesses run one agent in one loop. OpenHuman is an **[orchestrator](https://tinyhumans.gitbook.io/openhuman/features/orchestration)**:
+---
 
-<p align="center">
- <img src="./gitbooks/.gitbook/assets/orchestration.png" alt="OpenHuman orchestration diagram">
-</p>
+## Repository Structure
 
-> Agent-to-agent messaging runs over Signal-protocol end-to-end encryption, so you can connect anything (Claude Code, Codex, OpenClaw, Hermes) and use OpenHuman to orchestrate all of your agents and tools.
+```text
+openmark/
+├── app/                        # React / TypeScript desktop frontend
+│   ├── src/
+│   │   ├── components/         # UI components, layout shell, settings panels
+│   │   ├── features/
+│   │   │   ├── conversations/  # Chat threads, tool narration, timelines
+│   │   │   └── laya/           # Laya adaptive routing engine & tests
+│   │   ├── lib/i18n/           # Localization bundles (14 languages)
+│   │   ├── services/           # JSON-RPC client & session coordinators
+│   │   └── utils/              # Configuration, deep-links, external guards
+│   └── test/                   # Vitest unit test suite
+├── crates/
+│   ├── openhuman-app/          # Tauri v2 desktop application shell
+│   │   ├── icons/              # Multi-resolution OpenMark icons
+│   │   └── src/                # Deep-link IPC, notifications, tray, crash recovery
+│   └── openhuman-core/         # Headless Rust agent core daemon
+│       └── src/                # JSON-RPC API, configuration, session engine
+├── vendor/                     # 16 modular submodules (all GPL-3.0)
+│   ├── tinyagents/             # Durable agent graph execution engine
+│   ├── tinymemory/             # Local Markdown context & memory trees
+│   ├── tinymcp/                # Model Context Protocol integration
+│   └── tinyflows/              # Visual workflow canvas & trigger graphs
+├── docs/                       # Showcase and architectural documentation
+│   ├── ARCHITECTURE.md         # Subsystem boundaries and sequence diagrams
+│   ├── DEVELOPMENT.md          # Setup, commands, and debugging guide
+│   ├── FEATURES.md             # Verified implementation matrix
+│   └── ROADMAP.md              # Engineering milestones & active goals
+├── fork/                       # Publication audit & legal compliance records
+│   ├── COMPLIANCE.md           # GPL-3.0 compliance & submodule license audit
+│   └── GITHUB-PUBLISH-AUDIT.md # Pre-release change classification inventory
+├── .github/workflows/          # GitHub Actions CI definitions
+│   └── openmark-build.yml      # Multi-platform build & test workflow
+├── Cargo.toml                  # Cargo workspace manifest
+├── docker-compose.yml          # Self-hosted headless core container spec
+└── LICENSE                     # GNU General Public License v3.0
+```
 
-- **Graphs, not loops**: turns run as checkpointed graphs on [tinyagents](https://github.com/tinyhumansai/tinyagents). They pause for a human, survive a restart, and resume mid-run.
-- **Sub-agent fleets**: specialists spawn three levels deep; stuck agents become root-cause reports.
-- **Agent-to-agent, encrypted**: instances orchestrate each other over Signal-protocol E2E sessions with x402 payments. No server ever sees plaintext.
+---
 
-## Workflows you can see
+## Installation & Development
 
-Heavily inspired by n8n and Zapier, [workflows](https://tinyhumans.gitbook.io/openhuman/features/workflows) bring the same visual, trigger-driven automation to your agent, except the agent builds them for you. Ask for an automation and it proposes one: a [tinyflows](https://github.com/tinyhumansai/tinyflows) graph you review on a visual canvas before saving.
+### Prerequisites
+- **Node.js**: `v24.x`
+- **pnpm**: `10.10.0`
+- **Rust**: `1.96.1` (stable toolchain)
+- **macOS / Linux / Windows**: Standard C/C++ build tools (Xcode CLI tools on macOS)
 
-<p align="center">
- <img src="./gitbooks/.gitbook/assets/workflows.png" alt="OpenHuman workflow canvas">
-</p>
+> [!WARNING]
+> On macOS, avoid running the repository inside iCloud-synced directories (`~/Desktop`, `~/Documents`). Sync locks degrade file I/O and break native database builds. Use a clean path like `~/dev/openmark`.
 
-> The agent proposes the workflow; you review it on a canvas and save it.
+### Quickstart
 
-Saved workflows are durable and trigger-driven. They fire on schedules, webhooks, or channel events, survive restarts, and gate side effects behind approvals.
+```bash
+# 1. Clone repository with all submodules
+git clone --recurse-submodules https://github.com/NKishoreVarma/openmark.git
+cd openmark
 
-## OpenHuman vs Other Agent Harnesses
+# 2. Install workspace and frontend dependencies (frozen lockfiles)
+pnpm install --frozen-lockfile
+cd app && pnpm install --frozen-lockfile && cd ..
 
-High-level comparison (products evolve, so verify against each vendor). OpenHuman is built to **minimize vendor sprawl**, keep **workflow knowledge on-device**, and give the agent a **persistent memory** of your data, not only chat.
+# 3. Configure local environment
+cp .env.example .env
+cp app/.env.example app/.env.local
 
-|                        | Claude Cowork     | OpenClaw          | Hermes Agent      | OpenHuman                                                                                                |
-| ---------------------- | ----------------- | ----------------- | ----------------- | -------------------------------------------------------------------------------------------------------- |
-| **Open-source**        | 🚫 Proprietary    | ✅ MIT            | ✅ MIT            | ✅ GNU                                                                                                   |
-| **Simple to start**    | ✅ Desktop + CLI  | ⚠️ Terminal-first | ⚠️ Terminal-first | ✅ Clean UI, minutes                                                                                     |
-| **Cost**               | ⚠️ Sub + add-ons  | ⚠️ BYO models     | ⚠️ BYO models     | ✅ One sub + TokenJuice                                                                                  |
-| **Memory**             | ✅ Chat-scoped    | ⚠️ Plugin-reliant | ✅ Self-learning  | 🚀 Memory Tree + Obsidian vault, optional [agentmemory](https://github.com/rohitg00/agentmemory) backend |
-| **Integrations**       | ⚠️ Few connectors | ⚠️ BYO            | ⚠️ BYO            | 🚀 100+ OAuth · 5k+ MCP · 90k+ Skills                                                                    |
-| **Auto-fetch**         | 🚫 None           | 🚫 None           | 🚫 None           | ✅ 20-min sync into memory                                                                               |
-| **Orchestration**      | ⚠️ Sub-tasks      | ⚠️ Single loop    | ⚠️ Single loop    | 🚀 Agent graphs + checkpoints + E2E-encrypted A2A                                                        |
-| **Workflows**          | 🚫 None           | ⚠️ Scripts        | ⚠️ Scripts        | 🚀 Visual, durable, agent-proposed, approval-gated                                                       |
-| **Meetings**           | 🚫 None           | 🚫 None           | 🚫 None           | 🚀 Joins Meet/Zoom/Teams/Webex, speaks, live transcript                                                  |
-| **Messaging channels** | 🚫 None           | ⚠️ A few          | ⚠️ A few          | ✅ 15 incl. native email (IMAP/SMTP)                                                                     |
-| **Local-only mode**    | 🚫 Cloud-only     | ⚠️ BYO local      | ⚠️ BYO local      | ✅ One-switch enforced Privacy Mode                                                                      |
-| **Observability**      | 🚫 Opaque         | ⚠️ Logs           | ⚠️ Logs           | ✅ Replayable run journals + per-call cost accounting                                                    |
-| **API sprawl**         | 🚫 Extra keys     | 🚫 BYOK           | 🚫 Multi-vendor   | ✅ One account                                                                                           |
-| **Model routing**      | 🚫 Single model   | ⚠️ Manual         | ⚠️ Manual         | ✅ Built-in                                                                                              |
-| **Native tools**       | ✅ Code-only      | ✅ Code-only      | ✅ Code-only      | ✅ Code + search + scraper + browser + voice + media gen                                                 |
+# 4. Start frontend development server (web preview)
+cd app && pnpm dev
 
-## Contributing from source
+# 5. Or launch the full Tauri desktop application
+cd app && pnpm dev:app
+```
 
-New contributor? Start with [`CONTRIBUTING.md`](./CONTRIBUTING.md) for the fork/PR workflow and local validation commands, or use the copy-paste AI-agent prompt in [`CONTRIBUTING-BEGINNERS.md`](./docs/CONTRIBUTING-BEGINNERS.md#optional--let-an-ai-coding-agent-guide-you). The short path is:
+*For comprehensive command listings and build targets, see [`docs/DEVELOPMENT.md`](docs/DEVELOPMENT.md).*
 
-1. Install Git, Node.js 24+, pnpm 10.10.0, Rust 1.96.1 (`rustfmt` + `clippy`), CMake, Ninja, ripgrep, and the platform desktop build prerequisites.
-2. Fork and clone the repo, then run `git submodule update --init --recursive` before `pnpm install` so the vendored Rust dependencies under `vendor/` (tinyagents, tinyflows, tinychannels, tinymemory, motosan-ai-oauth, ...) resolve.
-3. Use `pnpm dev` for web-only UI work, `pnpm --filter openhuman-app dev:app` (macOS) or `pnpm dev:app:win` (Windows) for the desktop shell, and focused checks such as `pnpm typecheck`, `pnpm format:check`, and `cargo check -p openhuman --lib` before opening a PR.
+---
 
-The Rust workspace under `crates/` splits into `crates/openhuman-core` (package
-`openhuman`: the core plus the `openhuman-core` CLI), `crates/openhuman-app`
-(the Tauri desktop shell, built as a separate Cargo world), `crates/openhuman-embed`
-(the library facade for embedding the core), `crates/openhuman-rpc` (shared RPC
-contracts and client), and `crates/openhuman-tui` (the terminal client). See
-[Building the Rust core](./gitbooks/developing/building-rust-core.md) and
-[AGENTS.md](./AGENTS.md#repository-map) for the full layout.
+## Configuration & Environment
 
-Deeper docs: [Architecture](https://tinyhumans.gitbook.io/openhuman/developing/architecture) · [Getting Set Up](https://tinyhumans.gitbook.io/openhuman/developing/getting-set-up) · [Cloud Deploy](./gitbooks/features/cloud-deploy.md).
+OpenMark uses a two-tier configuration model:
+1. **Core / Daemon Environment (`.env`):** Defines local port bindings, logging verbosity (`RUST_LOG=info`), and optional local inference endpoints.
+2. **Frontend Environment (`app/.env.local`):** Defines Vite build-time feature flags (`VITE_LAYA_ROUTING_ENABLED`).
 
-# Star us on GitHub
+**Security Guarantee:** OpenMark ships zero default tracking tokens. The upstream OpenPanel analytics ID has been eliminated from defaults (`app/src/utils/config.ts`), and Sentry reporting is disabled unless an explicit DSN is provided by the self-hoster.
 
-_Building toward AGI and artificial consciousness? Star the repo and help others find the path._
+---
 
-<p align="center">
- <a href="https://www.star-history.com/#tinyhumansai/openhuman&type=date&legend=top-left">
- <picture>
- <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=tinyhumansai/openhuman&type=date&theme=dark&legend=top-left" />
- <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=tinyhumansai/openhuman&type=date&legend=top-left" />
- <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=tinyhumansai/openhuman&type=date&legend=top-left" />
- </picture>
- </a>
-</p>
+## Verification & Testing
 
-# Contributors Hall of Fame
+OpenMark maintains rigorous unit and static-analysis test coverage across frontend components and native Rust crates:
 
-Show some love and end up in the hall of fame. Contributors get free merch and special access to our [Discord](https://discord.tinyhumans.ai/).
+```bash
+# Run TypeScript compilation check
+cd app && pnpm compile
 
-<a href="https://github.com/tinyhumansai/openhuman/graphs/contributors">
- <img src="https://contrib.rocks/image?repo=tinyhumansai/openhuman" alt="OpenHuman contributors" />
-</a>
+# Run frontend unit tests (Vitest)
+cd app && pnpm test
+
+# Run Rust core unit checks
+pnpm rust:check
+
+# Run Rust formatting verification
+pnpm --filter openhuman-app rust:format:check
+```
+
+> [!IMPORTANT]
+> **Testing Disclosure:** Following migration to the standalone `~/dev/openmark` tree, fresh full-suite test results are being established. Historical test counts from upstream are not claimed as current verification.
+
+---
+
+## Laya Adaptive Model Routing
+
+OpenMark includes **Laya**, an experimental prompt-complexity routing architecture:
+- **Heuristic Scorer:** Evaluates token density, syntax structures, and reasoning requirements.
+- **Dynamic Tiering:** Routes turns to Local LLMs (Ollama), Light models, or Frontier models.
+- **Evidence Threshold Gate:** Runs in shadow mode until achieving ≥200 observations with ≥75% estimated precision before taking over active dispatch.
+- **User Override:** Includes an in-turn UI badge with a one-click **"Redo with frontier model"** option.
+
+---
+
+## Roadmap & Known Limitations
+
+### Current Limitations:
+- **Desktop Release Gate:** Notarized public macOS `.dmg` and Windows installers require Developer ID signing keys. Source compilation is the current recommended path.
+- **Cloud Relays:** Server-side managed authentication relays are not yet deployed; use local BYOK or Ollama inference.
+
+### Upcoming Milestones:
+- [ ] Fresh test suite certification across the entire matrix.
+- [ ] Empirical qualification of the Laya routing scoring model.
+- [ ] Self-hosted headless daemon deployment recipes (Docker / Kubernetes).
+
+*See [`docs/ROADMAP.md`](docs/ROADMAP.md) for detailed project milestones.*
+
+---
+
+## License & Attribution
+
+OpenMark is licensed under the **GNU General Public License v3.0 (GPL-3.0)**.
+
+OpenMark is a modified version of [OpenHuman](https://github.com/tinyhumansai/openhuman) by TinyHumans AI. In accordance with GPL-3.0 §5(a), modifications have been introduced by the OpenMark contributors while preserving all original copyright notices, disclaimers, and reciprocal licensing obligations.
+
+Per GPL-3.0 requirements, in-app attribution and source links are rendered in `app/src/components/settings/panels/AboutPanel.tsx`. For detailed license verification across all 16 vendor submodules, see [`fork/COMPLIANCE.md`](fork/COMPLIANCE.md).

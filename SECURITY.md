@@ -1,53 +1,34 @@
 # Security Policy
 
+OpenMark takes the security and privacy of its users seriously. As a local-first application dealing with sensitive workspaces, API keys, and personal data, we welcome responsible vulnerability disclosures.
+
+---
+
 ## Supported Versions
 
-We provide security updates for the following versions of OpenHuman:
+| Version | Supported | Status |
+|---|---|---|
+| `main` (active dev) | :white_check_mark: | Actively maintained |
+| `< 0.63.31` | :x: | Unsupported |
 
-| Version        | Supported          |
-| -------------- | ------------------ |
-| Latest         | :white_check_mark: |
-| Previous minor | :white_check_mark: |
-| Older          | :x:                |
-
-We recommend always running the [latest release](https://github.com/tinyhumansai/openhuman/releases/latest). OpenHuman is in early beta; older versions may not receive patches.
+---
 
 ## Reporting a Vulnerability
 
-We take security seriously. If you believe you have found a security vulnerability, please report it responsibly.
+If you discover a security vulnerability or privacy leak in OpenMark:
 
-### How to Report
+1. **Do NOT open a public issue.** Please do not disclose vulnerabilities through public GitHub issues, discussions, or social channels.
+2. **Report Privately:** Use [GitHub Private Vulnerability Reporting](https://github.com/NKishoreVarma/openmark/security/advisories/new) on the repository.
+3. **Include Details:**
+   - Affected component (React UI, Tauri IPC bridge, Rust core, or a specific vendor submodule).
+   - Detailed reproduction steps or proof-of-concept payload.
+   - Any potential impact on local filesystem isolation or credential leakage.
 
-1. **Do not** open a public GitHub issue for security vulnerabilities.
-2. Email the maintainers with a clear description of the issue, steps to reproduce, and impact. You can reach us via the contact details listed in the [OpenHuman organization](https://github.com/openhumanxyz) or repository.
-3. Include as much detail as possible (platform, version, configuration) so we can reproduce and triage quickly.
+---
 
-### What to Expect
+## Security Principles in OpenMark
 
-- We will acknowledge your report as soon as possible (typically within 5 business days).
-- We will keep you updated on our assessment and any fix or mitigation.
-- We will credit you in our security advisories and release notes (unless you prefer to remain anonymous).
-
-### Scope
-
-We are especially interested in:
-
-- Authentication or authorization bypass
-- Data exfiltration or exposure (credentials, messages, user data)
-- Remote code execution (frontend, Tauri/Rust backend, or skills runtime)
-- Issues in dependency chain (npm, Cargo) that affect our build or runtime
-- Platform-specific issues (macOS, Windows, Linux) that compromise user data or device security
-
-Out-of-scope for this process: general bugs, feature requests, and issues in third-party services we integrate with (e.g., Telegram, Notion) unless they are specific to how OpenHuman uses them.
-
-### Safe Harbor
-
-We support safe harbor for security researchers who report in good faith. We will not pursue legal action or involve law enforcement against you for discovering or reporting vulnerabilities in accordance with this policy.
-
-## Security Practices
-
-- **Credentials**: Desktop uses OS-level credential storage (e.g., macOS Keychain, Windows Credential Manager). We do not store secrets in plain text.
-- **Data**: Message content is processed on request and not retained for training or long-term storage.
-- **Skills**: Skills run in a sandboxed environment with defined boundaries; we review skill behavior and dependencies where possible.
-
-Thank you for helping keep OpenHuman and its users safe.
+- **Local Storage by Default:** Conversation logs, memory graphs, and user settings are stored locally on the user's filesystem and are never uploaded without explicit consent.
+- **Keyring Storage:** API keys and credentials are stored in operating system keychains, not in plaintext config files.
+- **Sandboxed Execution:** Untrusted tool and skill invocations run within isolated memory-limited runtimes.
+- **Telemetry Independence:** Third-party analytics and error reporting are disabled by default.

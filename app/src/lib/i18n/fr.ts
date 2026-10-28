@@ -14,10 +14,10 @@ const messages: TranslationMap = {
   'share.captionPlaceholder': 'Rédigez une légende...',
   'share.privacyNote':
     "Seuls le titre, la légende, le nom de l'agent et la marque sont partagés. Votre conversation, votre mémoire et vos fichiers restent privés.",
-  'share.defaultHeadline': 'Regardez ce que mon agent OpenHuman vient de faire',
+  'share.defaultHeadline': 'Regardez ce que mon agent openmark vient de faire',
   'share.defaultAgentName': 'Mon agent',
-  'share.defaultCaption': 'Regardez ce que mon agent OpenHuman vient de faire.',
-  'share.captionWithHeadline': '{headline}. Réalisé avec mon agent OpenHuman.',
+  'share.defaultCaption': 'Regardez ce que mon agent openmark vient de faire.',
+  'share.captionWithHeadline': '{headline}. Réalisé avec mon agent openmark.',
   'share.linkedInHint': 'Légende copiée. Collez-la dans votre publication LinkedIn.',
   'share.shareX': 'Partager sur X',
   'share.shareLinkedIn': 'Partager sur LinkedIn',
@@ -54,7 +54,7 @@ const messages: TranslationMap = {
   'feedback.welcome.eyebrow': 'Retours',
   'feedback.welcome.title': 'Aidez à façonner ce que nous construisons',
   'feedback.welcome.body':
-    'Dites-nous ce qui fonctionne, ce qui manque et ce qui rendrait OpenHuman meilleur. Proposez une idée, votez pour celles des autres et regardez les meilleures remonter en tête de notre feuille de route.',
+    'Dites-nous ce qui fonctionne, ce qui manque et ce qui rendrait openmark meilleur. Proposez une idée, votez pour celles des autres et regardez les meilleures remonter en tête de notre feuille de route.',
   'feedback.welcome.ctaShare': 'Partager une idée',
   'feedback.welcome.ctaBoard': 'Voir le tableau',
   'feedback.welcome.featsLabel': 'Ce que vous pouvez faire',
@@ -123,7 +123,7 @@ const messages: TranslationMap = {
   'rewards.welcome.eyebrow': 'Récompenses',
   'rewards.welcome.title': 'Soyez récompensé de votre présence',
   'rewards.welcome.body':
-    'Gagnez des points à mesure que vous utilisez OpenHuman et invitez d’autres personnes, maintenez votre série en vie et échangez ce que vous avez gagné, le tout suivi au même endroit.',
+    'Gagnez des points à mesure que vous utilisez openmark et invitez d’autres personnes, maintenez votre série en vie et échangez ce que vous avez gagné, le tout suivi au même endroit.',
   'rewards.welcome.ctaView': 'Voir les récompenses',
   'rewards.welcome.featsLabel': 'Comment ça marche',
   'rewards.welcome.feat1Title': 'Gagnez des points',
@@ -181,7 +181,7 @@ const messages: TranslationMap = {
   'settings.core.statusUnreachable': 'Core inaccessible',
   'settings.core.recheck': 'Revérifier',
   'settings.core.save': 'Enregistrer et redémarrer',
-  'settings.core.applyRestartNote': 'Enregistrer redémarre OpenHuman pour se reconnecter.',
+  'settings.core.applyRestartNote': 'Enregistrer redémarre openmark pour se reconnecter.',
   // Cross-host vault (#4278)
   'crossHostVault.title': "Le coffre se trouve sur l'hôte du cœur.",
   'crossHostVault.message':
@@ -189,16 +189,16 @@ const messages: TranslationMap = {
   'conversations.toolFailure.whyLabel': 'Pourquoi',
   'conversations.toolFailure.nextLabel': 'Que faire ensuite',
   'conversations.toolFailure.missingPermission.cause':
-    "OpenHuman n'a pas encore l'autorisation de faire cela.",
+    "openmark n'a pas encore l'autorisation de faire cela.",
   'conversations.toolFailure.missingPermission.next':
     "Accordez l'autorisation nécessaire, puis réessayez.",
   'conversations.toolFailure.missingApp.cause':
     "L'application ou le programme requis pour cette action n'est pas disponible.",
   'conversations.toolFailure.missingApp.next': "Installez ou ouvrez l'application, puis réessayez.",
   'conversations.toolFailure.serviceUnavailable.cause':
-    'Un service dont OpenHuman a besoin est temporairement indisponible.',
+    'Un service dont openmark a besoin est temporairement indisponible.',
   'conversations.toolFailure.serviceUnavailable.next':
-    'OpenHuman réessaiera bientôt: aucune action nécessaire.',
+    'openmark réessaiera bientôt: aucune action nécessaire.',
   'conversations.toolFailure.badCredentials.cause':
     'Les identifiants enregistrés sont manquants ou ne sont plus valides.',
   'conversations.toolFailure.badCredentials.next':
@@ -207,19 +207,19 @@ const messages: TranslationMap = {
     'Cette action est bloquée par vos paramètres de sécurité.',
   'conversations.toolFailure.blockedByPolicy.next':
     "Autorisez-la dans Paramètres → Accès de l'agent si vous voulez qu'elle s'exécute.",
-  'conversations.toolFailure.modelConnection.cause': "OpenHuman n'a pas pu joindre le modèle d'IA.",
+  'conversations.toolFailure.modelConnection.cause': "openmark n'a pas pu joindre le modèle d'IA.",
   'conversations.toolFailure.modelConnection.next':
-    'Vérifiez votre connexion ou les paramètres du modèle ; OpenHuman réessaiera.',
+    'Vérifiez votre connexion ou les paramètres du modèle ; openmark réessaiera.',
   'conversations.toolFailure.timeout.cause': "L'action a pris trop de temps et a été arrêtée.",
   'conversations.toolFailure.timeout.next':
-    "OpenHuman réessaiera, ou vous pouvez relancer l'action manuellement.",
+    "openmark réessaiera, ou vous pouvez relancer l'action manuellement.",
   'conversations.toolFailure.denied.cause': 'Vous avez refusé cette action.',
   'conversations.toolFailure.denied.next':
     "Rien à faire: elle n'a pas été exécutée. Redemandez si vous changez d'avis.",
   'conversations.toolFailure.approvalExpired.cause':
     "La demande d'approbation a expiré avant que quiconque réponde.",
   'conversations.toolFailure.approvalExpired.next':
-    "Redemandez pour l'exécuter: OpenHuman ne réessaiera pas tout seul.",
+    "Redemandez pour l'exécuter: openmark ne réessaiera pas tout seul.",
   'conversations.toolFailure.unknown.cause': 'Un problème est survenu avec cette action.',
   'conversations.toolFailure.unknown.next':
     "Réessayez ; si l'échec persiste, lancez le diagnostic depuis les Paramètres.",
@@ -228,7 +228,7 @@ const messages: TranslationMap = {
   'conversations.toolFailure.notFound.next':
     "Aucune action nécessaire. L'assistant peut chercher le bon nom et réessayer.",
   'conversations.toolFailure.unsupported.cause':
-    'OpenHuman ne peut pas encore faire cela automatiquement.',
+    'openmark ne peut pas encore faire cela automatiquement.',
   'conversations.toolFailure.unsupported.next':
     'Faites-le manuellement ou demandez une autre option.',
   'conversations.backgroundTasks.title': 'Tâches en arrière-plan',
@@ -660,8 +660,8 @@ const messages: TranslationMap = {
   'clearData.failed': "Échec de l'effacement des données et de la déconnexion. Réessaie.",
   'clearData.failedLogout': 'Échec de la déconnexion. Réessaie.',
   'clearData.failedPersist': "Échec de l'effacement de l'état persisté. Réessaie.",
-  'welcome.logoAlt': 'OpenHuman',
-  'welcome.title': 'Bienvenue sur OpenHuman',
+  'welcome.logoAlt': 'openmark',
+  'welcome.title': 'Bienvenue sur openmark',
   'welcome.subtitle':
     'Ton assistant IA personnel super-intelligent. Privé, simple et extrêmement puissant.',
   'welcome.connectPrompt': "Configurer l'URL RPC (Avancé)",
@@ -671,7 +671,7 @@ const messages: TranslationMap = {
   'welcome.clearAppDataWarning':
     "Cela efface les secrets et comptes stockés localement sur cet appareil. Votre compte cloud n'est pas affecté: vous pouvez vous reconnecter immédiatement après.",
   'welcome.resetErrorFallback':
-    "Impossible d'effacer les données de l'appli. Quittez et rouvrez OpenHuman, puis réessayez.",
+    "Impossible d'effacer les données de l'appli. Quittez et rouvrez openmark, puis réessayez.",
   'welcome.signingIn': 'Vous connecter...',
   'welcome.termsIntro': 'En continuant, vous acceptez les',
   'welcome.termsOfUse': 'Terms',
@@ -695,7 +695,7 @@ const messages: TranslationMap = {
   'home.statusHostedStopped':
     "La liaison cloud s'est arrêtée : reconnecte-toi pour réactiver les intégrations et les canaux. Le chat continue de fonctionner.",
   'home.statusCoreUnreachable':
-    "Le processus local OpenHuman ne répond pas. Il a peut-être planté ou n'a pas démarré correctement.",
+    "Le processus local openmark ne répond pas. Il a peut-être planté ou n'a pas démarré correctement.",
   'home.statusInternetOffline':
     "Ton appareil est hors ligne. Vérifie ta connexion ou redémarre l'app.",
   'home.restartCore': 'Redémarrer le core',
@@ -1051,13 +1051,13 @@ const messages: TranslationMap = {
   'rewards.referrals': 'Parrainages',
   'rewards.coupons': 'Échanger',
   'rewards.localUnavailable':
-    'La connexion locale ne permet pas de gagner des récompenses, des coupons ou du crédit de parrainage. Déconnecte-toi puis connecte-toi avec un compte OpenHuman si tu veux que les récompenses comptent.',
+    'La connexion locale ne permet pas de gagner des récompenses, des coupons ou du crédit de parrainage. Déconnecte-toi puis connecte-toi avec un compte openmark si tu veux que les récompenses comptent.',
   'rewards.localUnavailableCta': 'Ouvrir les paramètres du compte',
   'rewards.credits': 'Crédits',
   'rewards.referralCode': 'Ton code de parrainage',
   'rewards.copyCode': 'Copier le code',
   'rewards.share': 'Partager',
-  'onboarding.welcome': 'Salut. Je suis OpenHuman.',
+  'onboarding.welcome': 'Salut. Je suis openmark.',
   'onboarding.welcomeDesc':
     'Ton assistant IA super-intelligent qui tourne sur ton ordinateur. Privé, simple et extrêmement puissant.',
   'onboarding.context': 'Collecte de contexte',
@@ -1069,14 +1069,14 @@ const messages: TranslationMap = {
   'onboarding.referral': 'Parrainage',
   'onboarding.referralDesc': 'Applique un code de parrainage si tu en as un.',
   'onboarding.finish': 'Terminer la configuration',
-  'onboarding.finishDesc': 'Tout est prêt ! Commence à utiliser OpenHuman.',
+  'onboarding.finishDesc': 'Tout est prêt ! Commence à utiliser openmark.',
   'onboarding.skip': 'Passer',
   'onboarding.getStarted': 'Démarrer',
-  'onboarding.runtimeChoice.title': 'Comment veux-tu utiliser OpenHuman ?',
+  'onboarding.runtimeChoice.title': 'Comment veux-tu utiliser openmark ?',
   'onboarding.runtimeChoice.subtitle':
     'Choisis la configuration qui te convient. Tu pourras la modifier plus tard dans les Paramètres.',
   'onboarding.runtimeChoice.cloud.title': 'Simple',
-  'onboarding.runtimeChoice.cloud.tagline': 'Laisse OpenHuman tout gérer pour toi.',
+  'onboarding.runtimeChoice.cloud.tagline': 'Laisse openmark tout gérer pour toi.',
   'onboarding.runtimeChoice.cloud.f1': 'Sécurité intégrée',
   'onboarding.runtimeChoice.cloud.f2': 'Compression de tokens pour aller plus loin',
   'onboarding.runtimeChoice.cloud.f3': 'Un abonnement, tous les modèles inclus',
@@ -1131,7 +1131,7 @@ const messages: TranslationMap = {
   'onboarding.custom.stepperMemory': 'Mémoire',
   'onboarding.custom.stepCounter': 'Étape {n} sur {total}',
   'onboarding.custom.defaultTitle': 'Par défaut',
-  'onboarding.custom.defaultSubtitle': 'Laisse OpenHuman gérer ça pour toi.',
+  'onboarding.custom.defaultSubtitle': 'Laisse openmark gérer ça pour toi.',
   'onboarding.custom.configureTitle': 'Configurer',
   'onboarding.custom.configureSubtitle': "Je choisis ce que j'utilise.",
   'onboarding.custom.progressAriaLabel': 'Progression de la configuration',
@@ -1145,41 +1145,41 @@ const messages: TranslationMap = {
   'onboarding.custom.inference.subtitle':
     'Quel modèle de langage doit répondre à tes questions et faire tourner tes agents ?',
   'onboarding.custom.inference.defaultDesc':
-    'OpenHuman dirige chaque charge de travail vers un modèle par défaut adapté. Aucune clé, aucune configuration.',
+    'openmark dirige chaque charge de travail vers un modèle par défaut adapté. Aucune clé, aucune configuration.',
   'onboarding.custom.inference.configureDesc':
     "Utilise ta propre clé OpenAI ou Anthropic. On l'utilise pour toutes les tâches textuelles.",
   'onboarding.custom.voice.title': 'Voix',
   'onboarding.custom.voice.subtitle': 'Reconnaissance vocale et synthèse pour le mode voix.',
   'onboarding.custom.voice.defaultDesc':
-    'OpenHuman inclut un STT/TTS géré qui fonctionne directement. Rien à configurer.',
+    'openmark inclut un STT/TTS géré qui fonctionne directement. Rien à configurer.',
   'onboarding.custom.voice.configureDesc':
     'Utilise ton propre ElevenLabs / OpenAI Whisper / etc. À configurer dans Paramètres › Voix.',
   'onboarding.custom.oauth.title': 'Connexions (OAuth)',
   'onboarding.custom.oauth.subtitle':
     'Gmail, Slack, Notion et autres services connectés nécessitant OAuth.',
   'onboarding.custom.oauth.defaultDesc':
-    'OpenHuman gère un espace de travail Composio. Un clic pour connecter chaque service plus tard.',
+    'openmark gère un espace de travail Composio. Un clic pour connecter chaque service plus tard.',
   'onboarding.custom.oauth.configureDesc':
     'Utilise ton propre compte Composio / clé API. À configurer dans Paramètres › Connexions.',
   'onboarding.custom.search.title': 'Recherche web',
   'onboarding.custom.search.subtitle':
-    'Comment OpenHuman effectue des recherches sur le web en ton nom.',
+    'Comment openmark effectue des recherches sur le web en ton nom.',
   'onboarding.custom.search.defaultDesc':
-    'OpenHuman utilise un backend de recherche géré. Aucune clé nécessaire.',
+    'openmark utilise un backend de recherche géré. Aucune clé nécessaire.',
   'onboarding.custom.search.configureDesc':
     'Utilise ta propre clé de fournisseur de recherche (Tavily, Brave, etc.). À configurer dans Paramètres › Outils.',
   'onboarding.custom.embeddings.title': 'Embeddings',
   'onboarding.custom.embeddings.subtitle':
-    'Comment OpenHuman génère des embeddings vectoriels pour la recherche sémantique en mémoire.',
+    'Comment openmark génère des embeddings vectoriels pour la recherche sémantique en mémoire.',
   'onboarding.custom.embeddings.defaultDesc':
-    "OpenHuman utilise un service d'embedding géré. Aucune clé API requise.",
+    "openmark utilise un service d'embedding géré. Aucune clé API requise.",
   'onboarding.custom.embeddings.configureDesc':
     "Utilisez votre propre fournisseur d'embeddings (OpenAI, Voyage, Ollama, etc.).",
   'onboarding.custom.memory.title': 'Mémoire',
   'onboarding.custom.memory.subtitle':
-    'Comment OpenHuman mémorise ton contexte, tes préférences et tes conversations passées.',
+    'Comment openmark mémorise ton contexte, tes préférences et tes conversations passées.',
   'onboarding.custom.memory.defaultDesc':
-    'OpenHuman gère automatiquement le stockage et la récupération en mémoire. Rien à configurer.',
+    'openmark gère automatiquement le stockage et la récupération en mémoire. Rien à configurer.',
   'onboarding.custom.memory.configureDesc':
     'Inspecte, exporte ou efface la mémoire toi-même. À configurer dans Paramètres › Mémoire.',
   'accounts.addAccount': 'Ajouter un compte',
@@ -1319,7 +1319,7 @@ const messages: TranslationMap = {
   'misc.downloading': 'Téléchargement…',
   'misc.installing': 'Installation…',
   'misc.beta':
-    "OpenHuman est en bêta anticipée. N'hésite pas à partager tes retours ou signaler des bugs: chaque rapport nous aide à avancer plus vite.",
+    "openmark est en bêta anticipée. N'hésite pas à partager tes retours ou signaler des bugs: chaque rapport nous aide à avancer plus vite.",
   'misc.betaFeedback': 'Envoyer un retour',
   'mnemonic.title': 'Phrase de récupération',
   'mnemonic.warning': "Note ces mots dans l'ordre et conserve-les en lieu sûr.",
@@ -1344,12 +1344,12 @@ const messages: TranslationMap = {
   'privacy.anonymizedAnalytics': 'Analyses produit',
   'privacy.shareAnonymizedData': 'Partager les analyses produit et les diagnostics',
   'privacy.shareAnonymizedDataDesc':
-    "Aide à améliorer OpenHuman en partageant des rapports de plantage et des événements d'utilisation limités pour la confidentialité, incluant un ID de compte stable et les métadonnées de version de l'app. Les messages, clés de portefeuille, clés API et jetons de session ne sont jamais collectés.",
+    "Aide à améliorer openmark en partageant des rapports de plantage et des événements d'utilisation limités pour la confidentialité, incluant un ID de compte stable et les métadonnées de version de l'app. Les messages, clés de portefeuille, clés API et jetons de session ne sont jamais collectés.",
   'privacy.meetingFollowUps': 'Suivis de réunion',
   'privacy.autoHandoffMeet':
     "Transmettre automatiquement les transcriptions Google Meet à l'orchestrateur",
   'privacy.autoHandoffMeetDesc':
-    "Quand un appel Google Meet se termine, l'orchestrateur d'OpenHuman peut lire la transcription et effectuer des actions comme rédiger des messages, planifier des suivis ou publier des résumés sur ton espace Slack connecté. Désactivé par défaut.",
+    "Quand un appel Google Meet se termine, l'orchestrateur d'openmark peut lire la transcription et effectuer des actions comme rédiger des messages, planifier des suivis ou publier des résumés sur ton espace Slack connecté. Désactivé par défaut.",
   'privacy.analyticsDisclaimer':
     "Quand elles sont activées, les analyses produit et les diagnostics peuvent inclure des rapports de plantage et des événements d'utilisation limités pour la confidentialité, un ID de compte stable et les métadonnées de version de l'app. Les messages, clés de portefeuille, clés API et jetons de session ne sont jamais collectés. Tu peux modifier ce paramètre à tout moment.",
   'settings.about.version': 'Version',
@@ -1362,7 +1362,7 @@ const messages: TranslationMap = {
   'settings.about.releasesDesc':
     'Parcourir les notes de version et les builds précédentes sur GitHub.',
   'settings.about.openReleases': 'Ouvrir les versions GitHub',
-  'settings.about.starCta.title': 'OpenHuman vous plaît ?',
+  'settings.about.starCta.title': 'openmark vous plaît ?',
   'settings.about.starCta.body':
     'Mettez-nous une étoile sur GitHub. Cela aide plus de gens à nous découvrir.',
   'settings.about.starCta.star': 'Ajouter une étoile sur GitHub',
@@ -1448,18 +1448,18 @@ const messages: TranslationMap = {
     "Envoyez un message agent: l'utilisation des jetons lors du prochain appel au fournisseur remplira le graphique en environ 10 secondes.",
   'settings.search.title': 'Moteur de recherche',
   'settings.search.menuDesc':
-    'Par défaut, utilisez la recherche gérée par OpenHuman ou connectez votre propre fournisseur avec une clé API.',
+    'Par défaut, utilisez la recherche gérée par openmark ou connectez votre propre fournisseur avec une clé API.',
   'settings.search.description':
-    "Choisissez le moteur de recherche utilisé par l'agent, ou désactivez entièrement les outils de recherche. Géré utilise le backend d'OpenHuman (sans configuration). Parallel, Brave, Querit, Exa et Tavily s'exécutent directement depuis votre machine avec votre clé API.",
+    "Choisissez le moteur de recherche utilisé par l'agent, ou désactivez entièrement les outils de recherche. Géré utilise le backend d'openmark (sans configuration). Parallel, Brave, Querit, Exa et Tavily s'exécutent directement depuis votre machine avec votre clé API.",
   'settings.search.engineAria': 'Moteur de recherche',
   'settings.search.engineDisabledLabel': 'Disabled',
   'settings.search.engineDisabledDesc':
     "Supprimer les outils de recherche du contexte agent et de la liste d'outils disponibles.",
-  'settings.search.engineManagedLabel': 'OpenHuman Géré',
+  'settings.search.engineManagedLabel': 'openmark Géré',
   'settings.search.engineManagedDesc':
-    'Par défaut. Acheminé via le backend OpenHuman, actuellement propulsé par Exa: aucune clé API requise.',
+    'Par défaut. Acheminé via le backend openmark, actuellement propulsé par Exa: aucune clé API requise.',
   'settings.search.localManagedUnavailable':
-    'La recherche gérée par OpenHuman n’est pas disponible pour les utilisateurs locaux. Ajoutez votre propre clé API Parallel, Brave, Querit, Exa ou Tavily pour activer la recherche web.',
+    'La recherche gérée par openmark n’est pas disponible pour les utilisateurs locaux. Ajoutez votre propre clé API Parallel, Brave, Querit, Exa ou Tavily pour activer la recherche web.',
   'settings.search.engineParallelLabel': 'Parallèle',
   'settings.search.engineParallelDesc':
     'Direct Parallel API: rechercher, extraire, discuter, rechercher, enrichir, outils de jeu de données.',
@@ -1518,15 +1518,15 @@ const messages: TranslationMap = {
   'settings.embeddings.providerAria': "Fournisseur d'embeddings",
   'settings.embeddings.statusConfigured': 'Configuré',
   'settings.embeddings.statusNeedsKey': 'Clé API requise',
-  'settings.embeddings.requiresSignIn': 'Connexion OpenHuman requise',
+  'settings.embeddings.requiresSignIn': 'Connexion openmark requise',
   'settings.embeddings.managedLoginRequired':
-    'Les embeddings gérés nécessitent une connexion OpenHuman. Connectez-vous pour utiliser le backend OpenHuman.',
+    'Les embeddings gérés nécessitent une connexion openmark. Connectez-vous pour utiliser le backend openmark.',
   'settings.embeddings.managedBannerIntro':
-    'Les embeddings gérés passent par le backend OpenHuman et nécessitent une session de compte OpenHuman.',
+    'Les embeddings gérés passent par le backend openmark et nécessitent une session de compte openmark.',
   'settings.embeddings.managedBannerLocalSession':
     'Quittez la session locale et connectez-vous pour utiliser ce fournisseur, ou passez à un fournisseur local ou avec votre propre clé.',
   'settings.embeddings.managedBannerRemoteSession':
-    'Reconnectez-vous pour actualiser votre session OpenHuman, ou passez à un fournisseur local ou avec votre propre clé.',
+    'Reconnectez-vous pour actualiser votre session openmark, ou passez à un fournisseur local ou avec votre propre clé.',
   'settings.embeddings.signInAgain': 'Se reconnecter',
   'settings.embeddings.apiKeyLabel': 'Clé API {provider}',
   'settings.embeddings.apiKeyLabelGeneric': 'Clé API',
@@ -1574,14 +1574,14 @@ const messages: TranslationMap = {
   'mcp.toolList.noTools': 'Aucun outil disponible.',
   'devices.betaBadge': 'Bêta',
   'devices.betaText':
-    'Cette fonctionnalité est actuellement en bêta. Associez des iPhone à cet OpenHuman pour les utiliser comme client distant.',
+    'Cette fonctionnalité est actuellement en bêta. Associez des iPhone à cet openmark pour les utiliser comme client distant.',
   'devices.comingSoonDescription':
     'L’appairage des appareils arrive bientôt. Cette page servira à appairer des iPhone et à gérer les appareils connectés.',
   'devices.title': 'Appareils',
   'devices.pairIphone': 'Jumeler l’iPhone',
   'devices.noPaired': 'Aucun appareil jumelé',
   'devices.emptyState':
-    'Scannez un code QR sur votre iPhone pour le connecter à cette session OpenHuman.',
+    'Scannez un code QR sur votre iPhone pour le connecter à cette session openmark.',
   'devices.devicePairedTitle': 'Appareil couplé',
   'devices.devicePairedMessage': 'iPhone connecté avec succès.',
   'devices.deviceRevokedTitle': 'Appareil révoqué',
@@ -1603,7 +1603,7 @@ const messages: TranslationMap = {
   'devices.pairModal.title': 'Jumeler l’iPhone',
   'devices.pairModal.loading': 'Génération du code de jumelage…',
   'devices.pairModal.instructions':
-    'Ouvrez l’application OpenHuman sur votre iPhone et scannez ce code.',
+    'Ouvrez l’application openmark sur votre iPhone et scannez ce code.',
   'devices.pairModal.expiresIn': 'Le code expire dans ~{count} minute',
   'devices.pairModal.expiresInPlural': 'Le code expire dans ~{count} minutes',
   'devices.pairModal.showDetails': 'Afficher les détails',
@@ -1839,7 +1839,7 @@ const messages: TranslationMap = {
   'mcp.connectAuth.schemeRaw': 'Aucun',
   'mcp.connectAuth.reconnectFailed': 'Identifiants enregistrés, mais la connexion a échoué.',
   'mcp.connectAuth.oauthHint':
-    'Ce serveur utilise OAuth. Connectez-vous via votre navigateur pour autoriser OpenHuman.',
+    'Ce serveur utilise OAuth. Connectez-vous via votre navigateur pour autoriser openmark.',
   'mcp.connectAuth.signIn': 'Se connecter avec le navigateur',
   'mcp.connectAuth.oauthWaiting': 'En attente de la connexion…',
   'mcp.connectAuth.oauthOrToken':
@@ -1862,7 +1862,7 @@ const messages: TranslationMap = {
   'autonomy.title': "Autonomie de l'agent",
   'autonomy.maxActionsLabel': 'Actions maximales par heure',
   'autonomy.maxActionsHelp':
-    "Nombre maximum d'actions d'outil qu'un agent peut exécuter par heure glissante. La nouvelle valeur s'applique à votre prochaine conversation. Les tâches planifiées et les écouteurs de canaux conservent leur limite actuelle jusqu'au redémarrage d'OpenHuman.",
+    "Nombre maximum d'actions d'outil qu'un agent peut exécuter par heure glissante. La nouvelle valeur s'applique à votre prochaine conversation. Les tâches planifiées et les écouteurs de canaux conservent leur limite actuelle jusqu'au redémarrage d'openmark.",
   'autonomy.statusSaving': 'Enregistrement…',
   'autonomy.statusSaved': 'Enregistré.',
   'autonomy.statusFailed': 'Échec',
@@ -1910,7 +1910,7 @@ const messages: TranslationMap = {
   'settings.billing.movedToWeb': 'La facturation est maintenant sur le web',
   'settings.billing.openDashboard': 'Ouvrir le tableau de bord de facturation',
   'settings.billing.movedToWebDesc':
-    "Les changements d'abonnement, méthodes de paiement, crédits et factures sont désormais gérés sur TinyHumans en ligne.",
+    "Les changements d'abonnement, méthodes de paiement, crédits et factures sont désormais gérés sur openmark en ligne.",
   'settings.billing.backToSettings': 'Retour aux paramètres',
   'settings.billing.openingBrowser': 'Ouverture du navigateur…',
   'settings.billing.browserNotOpen':
@@ -1918,7 +1918,7 @@ const messages: TranslationMap = {
   'settings.billing.browserOpenFailed':
     "Le navigateur n'a pas pu s'ouvrir automatiquement. Utilise le bouton ci-dessus.",
   'settings.tools.chooseCapabilities':
-    "Choisis les fonctionnalités qu'OpenHuman peut utiliser en ton nom.",
+    "Choisis les fonctionnalités qu'openmark peut utiliser en ton nom.",
   'settings.tools.saveChanges': 'Enregistrer les modifications',
   'settings.tools.preferencesSaved': 'Préférences enregistrées',
   'settings.tools.saveFailed': "Échec de l'enregistrement des préférences. Réessaie.",
@@ -2174,8 +2174,8 @@ const messages: TranslationMap = {
   'voice.providers.piperPreset.alanMedium': 'GB · Alan (homme)',
   'voice.providers.piperPreset.jennyDiocoMedium': 'GB · Jenny Dioco (femme)',
   'voice.providers.piperPreset.northernEnglishMaleMedium': 'GB · Anglais du Nord (homme)',
-  'voice.providers.chip.cloud': 'OpenHuman (Géré)',
-  'voice.providers.chip.cloudAria': 'Le fournisseur géré OpenHuman est toujours activé',
+  'voice.providers.chip.cloud': 'openmark (Géré)',
+  'voice.providers.chip.cloudAria': 'Le fournisseur géré openmark est toujours activé',
   'voice.providers.chip.piper': 'Piper (Local)',
   'voice.providers.chip.enablePiper': 'Activer la synthèse vocale Piper locale',
   'voice.providers.chip.disablePiper': 'Désactiver la synthèse vocale Piper locale',
@@ -2219,7 +2219,7 @@ const messages: TranslationMap = {
   'voice.externalProviders.add': 'Add',
   'pttSettings.title': 'Appuyer pour parler',
   'pttSettings.description':
-    'Maintiens une touche pour parler à OpenHuman pendant que tu utilises une autre application. Relâcher envoie l’enregistrement ; si « Lire les réponses » est activé, OpenHuman lit la réponse à voix haute.',
+    'Maintiens une touche pour parler à openmark pendant que tu utilises une autre application. Relâcher envoie l’enregistrement ; si « Lire les réponses » est activé, openmark lit la réponse à voix haute.',
   'pttSettings.shortcutLabel': 'Raccourci',
   'pttSettings.shortcutPlaceholder': 'Appuie sur une touche (par exemple F13)',
   'pttSettings.shortcutUnsetHint':
@@ -2232,11 +2232,11 @@ const messages: TranslationMap = {
     'Choisis une touche ordinaire (par exemple F13): les raccourcis composés uniquement de modificateurs ne fonctionnent pas pour appuyer pour parler.',
   'pttSettings.errorEmpty': 'Choisis une touche à associer.',
   'pttSettings.errorAccessibility':
-    'macOS exige l’autorisation Accessibilité pour ce raccourci. Ouvre Réglages système → Confidentialité et sécurité → Accessibilité et active OpenHuman.',
+    'macOS exige l’autorisation Accessibilité pour ce raccourci. Ouvre Réglages système → Confidentialité et sécurité → Accessibilité et active openmark.',
   'pttSettings.errorShortcutInUse':
     'Une autre application utilise déjà ce raccourci. Choisis-en un autre.',
   'pttSettings.errorUnsupportedWayland':
-    'Les sessions Wayland ne prennent pas encore en charge les raccourcis globaux dans OpenHuman: passe à une session X11 ou utilise la commande de dictée intégrée à l’application.',
+    'Les sessions Wayland ne prennent pas encore en charge les raccourcis globaux dans openmark: passe à une session X11 ou utilise la commande de dictée intégrée à l’application.',
   'pttSettings.exclusiveFullscreenHint':
     'En plein écran exclusif des jeux, la surcouche ne s’affichera pas: tu entendras seulement le son. Passe en plein écran sans bordures pour voir la surcouche.',
   'pttOverlay.listening': 'À l’écoute…',
@@ -2432,13 +2432,13 @@ const messages: TranslationMap = {
   'chat.attachment.tooManyFiles': 'Maximum {max} fichiers par message',
   'chat.attachment.tooManyVideos': 'Maximum {max} vidéos par message',
   'chat.attachment.videoNotSupported':
-    'Ce modèle ne peut pas lire les vidéos. Tu peux utiliser le niveau Raisonnement d’OpenHuman pour joindre ta vidéo.',
+    'Ce modèle ne peut pas lire les vidéos. Tu peux utiliser le niveau Raisonnement d’openmark pour joindre ta vidéo.',
   'chat.attachment.dropToAttach': 'Déposez les fichiers pour les joindre',
   'chat.attachment.tooLarge': "L'image dépasse la taille limite de {max}",
   'chat.attachment.unsupportedType':
     'Type de fichier non pris en charge. Utilise une image (PNG, JPEG, WebP, GIF, BMP) ou un fichier PDF, TXT ou Markdown.',
   'chat.attachment.imageNotSupported':
-    'Ce modèle ne peut pas lire les images. Tu peux utiliser le niveau Raisonnement d’OpenHuman pour joindre ton image.',
+    'Ce modèle ne peut pas lire les images. Tu peux utiliser le niveau Raisonnement d’openmark pour joindre ton image.',
   'chat.attachment.readFailed': 'Impossible de lire le fichier',
   'memory.searchAria': 'Rechercher dans la mémoire',
   'memory.searchPlaceholder': 'Rechercher des entrées de mémoire…',
@@ -2811,9 +2811,9 @@ const messages: TranslationMap = {
   'bootCheck.chooseCoreMode': 'Sélectionner un runtime',
   'bootCheck.connectToCore': 'Connecte-toi à ton runtime',
   'bootCheck.desktopDescription':
-    "OpenHuman a besoin d'un runtime pour fonctionner. Choisis où il doit être hébergé.",
+    "openmark a besoin d'un runtime pour fonctionner. Choisis où il doit être hébergé.",
   'bootCheck.webDescription':
-    "Sur le web, OpenHuman se connecte à un runtime que tu contrôles. Renseigne son URL et son token d'authentification ci-dessous, ou télécharge l'app desktop pour en faire tourner un directement sur ta machine.",
+    "Sur le web, openmark se connecte à un runtime que tu contrôles. Renseigne son URL et son token d'authentification ci-dessous, ou télécharge l'app desktop pour en faire tourner un directement sur ta machine.",
   'bootCheck.preferDesktop': 'Tu préfères tout garder sur ton propre appareil ?',
   'bootCheck.downloadDesktop': "Télécharger l'app desktop",
   'bootCheck.localRecommended': 'Exécuter localement (Recommandé)',
@@ -2840,7 +2840,7 @@ const messages: TranslationMap = {
   'bootCheck.quit': 'Quitter',
   'bootCheck.legacyDetected': 'Runtime de fond hérité détecté',
   'bootCheck.legacyDescription':
-    "Un daemon OpenHuman installé séparément est déjà en cours d'exécution sur cet appareil. On doit le supprimer avant que le runtime intégré puisse prendre le relais.",
+    "Un daemon openmark installé séparément est déjà en cours d'exécution sur cet appareil. On doit le supprimer avant que le runtime intégré puisse prendre le relais.",
   'bootCheck.removing': 'Suppression…',
   'bootCheck.removeContinue': 'Supprimer et continuer',
   'bootCheck.localNeedsRestart': 'Le runtime local doit être redémarré',
@@ -2862,13 +2862,13 @@ const messages: TranslationMap = {
   'bootCheck.actionFailed': "Une erreur s'est produite. Réessaie.",
   'bootCheck.portConflictTitle': "Impossible de démarrer le moteur de l'application",
   'bootCheck.portConflictBody':
-    'Un autre processus utilise le port réseau dont OpenHuman a besoin. Nous allons tenter de corriger cela automatiquement.',
+    'Un autre processus utilise le port réseau dont openmark a besoin. Nous allons tenter de corriger cela automatiquement.',
   'bootCheck.portConflictFixButton': 'Corriger automatiquement',
   'bootCheck.portConflictFixing': 'Correction en cours…',
   'bootCheck.portConflictFixFailed':
     "La correction automatique n'a pas fonctionné. Veuillez redémarrer votre ordinateur et réessayer.",
   'bootCheck.portConflictOwner':
-    '{name} (PID {pid}) utilise le port réseau dont OpenHuman a besoin.',
+    '{name} (PID {pid}) utilise le port réseau dont openmark a besoin.',
   'bootCheck.portConflictGuidance':
     'Fermez ce programme pour libérer le port, ou forcez sa fermeture ci-dessous, puis réessayez.',
   'bootCheck.portConflictForceQuit': 'Forcer la fermeture de {name}',
@@ -2909,8 +2909,8 @@ const messages: TranslationMap = {
     "L'environnement d'exécution n'a pas pu lire son fichier de configuration. config.toml appartient peut-être à un autre compte utilisateur, ou reste inaccessible au processus pour une autre raison. Redémarrez l'environnement d'exécution puis, si cela ne suffit pas, corrigez les droits du répertoire de travail ou recréez son volume.",
   'welcome.localSessionErrorFallback': 'Impossible de démarrer une session locale.',
   'welcome.gatewaySessionErrorFallback':
-    'La connexion n’a pas pu être terminée pour le moment. Le stockage de session n’a pas répondu à temps (même après plusieurs tentatives). Redémarrez OpenHuman et réessayez.',
-  'welcome.localSessionDesc': 'Utilise un profil local hors ligne et ignore TinyHumans OAuth.',
+    'La connexion n’a pas pu être terminée pour le moment. Le stockage de session n’a pas répondu à temps (même après plusieurs tentatives). Redémarrez openmark et réessayez.',
+  'welcome.localSessionDesc': 'Utilise un profil local hors ligne et ignore openmark OAuth.',
   'channels.activeRouteValue': '{channel} via {authMode}',
   'privacy.dataKind.messages': 'Messages',
   'privacy.dataKind.agents': 'Agents',
@@ -2930,7 +2930,7 @@ const messages: TranslationMap = {
   'composio.reconnect': 'Reconnecter',
   'composio.expiredAuthorization': "L'autorisation {name} a expiré",
   'composio.expiredDescription':
-    "Reconnectez-vous pour réactiver les outils {name}. OpenHuman gardera cette intégration indisponible jusqu'à ce que vous actualisiez l'accès OAuth.",
+    "Reconnectez-vous pour réactiver les outils {name}. openmark gardera cette intégration indisponible jusqu'à ce que vous actualisiez l'accès OAuth.",
   'composio.envVarOverrides': 'est définie, elle remplace ce paramètre.',
   'composio.previewBadge': 'Aperçu',
   'composio.colApp': 'Application',
@@ -2954,7 +2954,7 @@ const messages: TranslationMap = {
   'mic.failedToStopRecording': "Échec de l'arrêt de l'enregistrement : {message}",
   'mic.transcriptionFailed': 'Échec de la transcription : {message}',
   'mic.voiceNotCompiled':
-    "La transcription vocale n'est pas incluse dans cette version de l'application. Mettez à jour OpenHuman pour l'activer.",
+    "La transcription vocale n'est pas incluse dans cette version de l'application. Mettez à jour openmark pour l'activer.",
   'reflections.kind.retrospective': 'Rétrospective',
   'reflections.kind.derivedFact': 'Fait dérivé',
   'reflections.kind.moodInsight': 'Insight émotionnel',
@@ -2978,7 +2978,7 @@ const messages: TranslationMap = {
   'accounts.respondQueue.title': 'File de réponses',
   'app.connectionBadge.composio': 'Composio',
   'app.connectionBadge.messaging': 'Messagerie',
-  'app.connectionIndicator.connected': 'Connecté à OpenHuman AI 🚀',
+  'app.connectionIndicator.connected': 'Connecté à openmark AI 🚀',
   'app.connectionIndicator.connecting': 'Connexion en cours',
   'app.connectionIndicator.coreOffline': 'Core hors ligne',
   'app.connectionIndicator.disconnected': 'Déconnecté',
@@ -3022,12 +3022,12 @@ const messages: TranslationMap = {
   'app.openhumanLink.notifications.desktopOnly':
     "Les notifications natives ne sont disponibles que dans l'application de bureau (exécutez `pnpm dev:app`).",
   'app.openhumanLink.notifications.permissionOff':
-    "L'autorisation des notifications est désactivée. Activez OpenHuman dans Réglages système → Notifications, puis réessayez.",
+    "L'autorisation des notifications est désactivée. Activez openmark dans Réglages système → Notifications, puis réessayez.",
   'app.openhumanLink.notifications.triggerFailed':
-    "OpenHuman n'a pas pu déclencher de notification système. Vérifiez les paramètres de notification du système d'exploitation et réessayez.",
+    "openmark n'a pas pu déclencher de notification système. Vérifiez les paramètres de notification du système d'exploitation et réessayez.",
   'app.openhumanLink.notifications.welcomeBody':
     "Vous recevrez des alertes ici lorsqu'une chose nécessitera votre attention.",
-  'app.openhumanLink.notifications.welcomeTitle': 'OpenHuman est prêt',
+  'app.openhumanLink.notifications.welcomeTitle': 'openmark est prêt',
   'app.openhumanLink.status.closed': 'Fermé',
   'app.openhumanLink.status.connected': 'Connecté',
   'app.openhumanLink.status.error': 'Erreur',
@@ -3047,7 +3047,7 @@ const messages: TranslationMap = {
   'app.openhumanLink.notifications.send': 'Envoyer une notification de test',
   'app.openhumanLink.notifications.sendFailed': "Impossible d'envoyer : {error}",
   'app.openhumanLink.notifications.sent':
-    "Notification de test envoyée. Si vous ne l'avez pas reçue, allez dans Réglages Système → Notifications → OpenHuman, activez Autoriser les notifications, et définissez le style de bannière sur Persistant.",
+    "Notification de test envoyée. Si vous ne l'avez pas reçue, allez dans Réglages Système → Notifications → openmark, activez Autoriser les notifications, et définissez le style de bannière sur Persistant.",
   'app.openhumanLink.skipForNow': "Passer pour l'instant",
   'app.openhumanLink.telegramUnavailable': 'Telegram indisponible',
   'app.openhumanLink.title.accounts': 'Connecte tes apps',
@@ -3060,7 +3060,7 @@ const messages: TranslationMap = {
   'app.persistRehydration.heading': 'Titre',
   'app.persistRehydration.resetCta': 'Réinitialisation…',
   'app.persistRehydration.resetting': 'Réinitialisation…',
-  'app.routeLoading.initializing': "Initialisation d'OpenHuman...",
+  'app.routeLoading.initializing': "Initialisation d'openmark...",
   'app.update.currentlyOn': '{version}',
   'app.update.errorFallback': "Une erreur s'est produite lors de la mise à jour.",
   'app.update.header.default': 'Mise à jour',
@@ -3153,7 +3153,7 @@ const messages: TranslationMap = {
   'chat.flowProposal.stepKind.transform': 'Transformer',
   'chat.flowProposal.stepKind.outputParser': 'Analyser le résultat',
   'chat.flowProposal.stepKind.subWorkflow': 'Sous-workflow',
-  'channels.authMode.managed_dm': 'Connectez-vous avec OpenHuman',
+  'channels.authMode.managed_dm': 'Connectez-vous avec openmark',
   'channels.authMode.oauth': 'OAuth Connectez-vous',
   'channels.authMode.bot_token': 'Utiliser votre propre jeton de robot',
   'channels.authMode.api_key': 'Utilisez votre propre clé API',
@@ -3166,9 +3166,9 @@ const messages: TranslationMap = {
   'channels.discord.authMode.bot_token.description':
     'Fournissez votre propre jeton de bot Discord.',
   'channels.discord.authMode.oauth.description':
-    'Installez le bot OpenHuman sur votre serveur Discord via OAuth.',
+    'Installez le bot openmark sur votre serveur Discord via OAuth.',
   'channels.discord.authMode.managed_dm.description':
-    'Liez votre compte personnel Discord au bot OpenHuman.',
+    'Liez votre compte personnel Discord au bot openmark.',
   'channels.discord.fields.bot_token.label': 'Jeton de bot',
   'channels.discord.fields.bot_token.placeholder': 'Votre jeton de bot Discord',
   'channels.discord.fields.guild_id.label': 'ID de serveur (guilde)',
@@ -3177,7 +3177,7 @@ const messages: TranslationMap = {
   'channels.telegram.displayName': 'Telegram',
   'channels.telegram.description': 'Envoyer et recevoir des messages via Telegram.',
   'channels.telegram.authMode.managed_dm.description':
-    'Envoyez un message directement au robot OpenHuman Telegram.',
+    'Envoyez un message directement au robot openmark Telegram.',
   'channels.telegram.authMode.bot_token.description':
     'Fournissez votre propre jeton Bot Telegram de @BotFather.',
   'channels.telegram.fields.bot_token.label': 'Jeton de robot',
@@ -3190,9 +3190,9 @@ const messages: TranslationMap = {
     "À partir d'un chat Telegram autorisé, envoyez /status, /sessions, /new ou /help. Le routage de modèles utilise toujours /model et /models.",
   'channels.connectHelp.title': 'Comment se connecter',
   'channels.connectHelp.discord':
-    'Choisissez une méthode ci-dessous : reliez votre compte via OpenHuman, installez le bot avec OAuth, ou collez votre propre jeton de bot depuis le portail développeur Discord.',
+    'Choisissez une méthode ci-dessous : reliez votre compte via openmark, installez le bot avec OAuth, ou collez votre propre jeton de bot depuis le portail développeur Discord.',
   'channels.connectHelp.telegram':
-    'Choisissez une méthode ci-dessous : écrivez au bot OpenHuman géré pour le relier, ou collez votre propre jeton de bot depuis @BotFather.',
+    'Choisissez une méthode ci-dessous : écrivez au bot openmark géré pour le relier, ou collez votre propre jeton de bot depuis @BotFather.',
   'channels.connectHelp.slackNote':
     'Vous cherchez Slack ? Slack se connecte comme une app dans Connexions → OAuth, pas comme un canal de messagerie ici.',
   'channels.web.displayName': 'Web',
@@ -3257,16 +3257,16 @@ const messages: TranslationMap = {
   'iosPair.error.connectionFailed':
     "Échec de la connexion. Assurez-vous que l'application de bureau est en cours d'exécution et réessayez.",
   'iosPair.error.invalidQr':
-    "Code QR invalide. Assurez-vous de scanner un code d'association OpenHuman.",
+    "Code QR invalide. Assurez-vous de scanner un code d'association openmark.",
   'iosPair.error.unreachableDesktop':
     'Impossible de joindre le bureau. Assurez-vous que les deux appareils sont en ligne et réessayez.',
   'iosPair.expired': 'QR code a expiré. Demandez au bureau de régénérer le code.',
   'iosPair.instructions':
-    'Ouvrez OpenHuman sur votre bureau, allez dans Réglages > Appareils et appuyez sur « Associer un téléphone » pour afficher le code QR.',
+    'Ouvrez openmark sur votre bureau, allez dans Réglages > Appareils et appuyez sur « Associer un téléphone » pour afficher le code QR.',
   'iosPair.retryScan': 'Rescanner',
   'iosPair.scanQrCode': 'Numérisation QR code',
   'iosPair.scannerOpening': 'Ouverture du scanner...',
-  'iosPair.step.openDesktop': 'Ouvrez OpenHuman sur le bureau',
+  'iosPair.step.openDesktop': 'Ouvrez openmark sur le bureau',
   'iosPair.step.openSettings': 'Accédez à Paramètres > Appareils',
   'iosPair.step.showQr': 'Appuyez sur « Associer le téléphone » pour afficher QR',
   'iosPair.title': 'Associer avec votre bureau',
@@ -3301,7 +3301,7 @@ const messages: TranslationMap = {
   'composio.connect.permissionsDefault': 'Lecture + Écriture activées par défaut',
   'composio.connect.permissionsNote': 'peut exposer',
   'composio.connect.permissionsNoteSuffix':
-    "Les autorisations de l'agent OpenHuman sont contrôlées ci-dessous par des bascules lecture, écriture et admin.",
+    "Les autorisations de l'agent openmark sont contrôlées ci-dessous par des bascules lecture, écriture et admin.",
   'composio.connect.reopenBrowser': 'Rouvrir le navigateur',
   'composio.connect.requestingUrl': "Demande de l'URL de connexion…",
   'composio.connect.requiredFieldEmpty': 'Ce champ est obligatoire.',
@@ -3333,7 +3333,7 @@ const messages: TranslationMap = {
   'composio.triggers.listenFrom': 'Écouter les événements de',
   'composio.triggers.loadError': 'Impossible de charger les déclencheurs',
   'composio.triggers.sessionExpired':
-    'Votre session OpenHuman a expiré. Reconnectez-vous pour charger les déclencheurs.',
+    'Votre session openmark a expiré. Reconnectez-vous pour charger les déclencheurs.',
   'composio.triggers.needsConfiguration': 'Configuration requise',
   'composio.triggers.noneAvailable': "Aucun déclencheur n'est actuellement disponible pour",
   'conversations.composer.context.title': 'Fenêtre de contexte',
@@ -3400,7 +3400,7 @@ const messages: TranslationMap = {
   'daemon.serviceBlockingGate.retryFailed':
     "Nouvelle tentative échouée. Télécharge la dernière version de l'app et réessaie.",
   'daemon.serviceBlockingGate.retrying': 'Nouvelle tentative…',
-  'daemon.serviceBlockingGate.title': 'Le core OpenHuman est indisponible',
+  'daemon.serviceBlockingGate.title': 'Le core openmark est indisponible',
   'home.banners.discordSubtitle': 'Sous-titre Discord',
   'home.banners.discordTitle': 'Rejoins notre Discord',
   'home.banners.earlyBirdDismiss': 'Ignorer la bannière early bird',
@@ -3436,7 +3436,7 @@ const messages: TranslationMap = {
   'intelligence.diagram.skillInstallCommand': 'npx skills add yizhiyanhua-ai/fireworks-tech-graph',
   'intelligence.diagram.promptExample':
     "Générer un diagramme d'architecture du swarm actuel dans un style terminal sombre",
-  'intelligence.diagram.imageAlt': "Dernier diagramme d'architecture OpenHuman généré",
+  'intelligence.diagram.imageAlt': "Dernier diagramme d'architecture openmark généré",
   'intelligence.diagram.refreshesEvery': 'Actualise toutes les {seconds}s',
   'intelligence.memoryText.entityTypePrefix': "Type d'entité",
   'intelligence.workTask.sourceTaskHeading': 'Tâche source :',
@@ -3787,7 +3787,7 @@ const messages: TranslationMap = {
   'flows.nodeSummary.agent.withPrompt': '“{prompt}” · {model}',
   'flows.nodeSummary.agent.default': 'Interroge {model}',
   'flows.nodeSummary.toolCall.runsNative': 'Exécute {name}',
-  'flows.nodeSummary.toolCall.pickNative': 'Exécute un outil OpenHuman (à choisir)',
+  'flows.nodeSummary.toolCall.pickNative': 'Exécute un outil openmark (à choisir)',
   'flows.nodeSummary.toolCall.runs': 'Exécute {slug}',
   'flows.nodeSummary.toolCall.pick': "Exécute une action d'app (à choisir)",
   'flows.nodeSummary.http.withUrl': '{method} {url}',
@@ -4113,7 +4113,7 @@ const messages: TranslationMap = {
   'onboarding.contextGathering.title': 'Collecte de contexte',
   'openhuman.team_list_teams': 'Liste des équipes',
   'overlay.ariaAttention': "Message d'attention",
-  'overlay.ariaOrb': 'Overlay OpenHuman',
+  'overlay.ariaOrb': 'Overlay openmark',
   'overlay.ariaVoiceActive': 'Saisie vocale active',
   'overlay.orbTitle': 'Glisse pour déplacer · Double-clique pour réinitialiser la position',
   'pages.settings.account.connections': 'Connexions',
@@ -4154,7 +4154,7 @@ const messages: TranslationMap = {
   'privacy.dataKind.raw': 'Brut',
   'privacy.whatLeaves.link.label': "Qu'est-ce qui quitte mon ordinateur ?",
   'rewards.community.achievementsUnlocked': '{unlocked} sur {total} succès débloqués',
-  'rewards.community.activityStreakHint': 'Jours consécutifs d’activité sur OpenHuman.',
+  'rewards.community.activityStreakHint': 'Jours consécutifs d’activité sur openmark.',
   'rewards.community.activityTitle': 'Votre activité',
   'rewards.community.claimCredited': '{amount} crédités sur votre solde',
   'rewards.community.claimError': 'Impossible de réclamer. Veuillez réessayer.',
@@ -4193,7 +4193,7 @@ const messages: TranslationMap = {
   'rewards.community.roleAssigned': 'Rôle attribué',
   'rewards.community.roleAssignmentCount': '{assigned} sur {unlocked} rôles attribués',
   'rewards.community.roleClaimDesc':
-    "Vous avez débloqué des rôles Discord mais n'avez pas encore rejoint le serveur OpenHuman. Rejoignez-le pour qu'ils soient attribués automatiquement.",
+    "Vous avez débloqué des rôles Discord mais n'avez pas encore rejoint le serveur openmark. Rejoignez-le pour qu'ils soient attribués automatiquement.",
   'rewards.community.roleClaimTitle': 'Réclamez vos rôles Discord',
   'rewards.community.roleJoinToClaim': 'Rejoindre le serveur pour réclamer',
   'rewards.community.rolePending': 'Synchronisation du rôle…',
@@ -4273,7 +4273,7 @@ const messages: TranslationMap = {
   'settings.ai.providers.groupCli': 'Connexions CLI',
   'settings.ai.providers.cliDetail': 'Utilise une connexion que possède déjà une autre CLI',
   'settings.ai.providers.connected': 'Connecté',
-  'settings.ai.providers.managedDetail': 'OpenHuman choisit un modèle pour chaque tâche',
+  'settings.ai.providers.managedDetail': 'openmark choisit un modèle pour chaque tâche',
   'settings.ai.providers.rowActions': 'Autres actions pour {provider}',
   'settings.ai.providers.replaceKey': 'Remplacer la clé API',
   'settings.ai.providers.custom': 'Personnalisé',
@@ -4411,7 +4411,7 @@ const messages: TranslationMap = {
   'settings.ai.noSpendRows': 'Aucune ligne de dépenses chargée.',
   'settings.ai.topHours': 'Heures principales',
   'settings.ai.noHourlySpend': "Aucune dépense horaire pour l'instant.",
-  'settings.ai.openhumanDefault': 'OpenHuman (par défaut)',
+  'settings.ai.openhumanDefault': 'openmark (par défaut)',
   'settings.ai.localModelResolved': 'Ollama · {model}',
   'settings.ai.customRoutingForWorkload': 'Routage personnalisé pour {label}',
   'settings.ai.loadingModels': 'Chargement des modèles...',
@@ -4496,17 +4496,17 @@ const messages: TranslationMap = {
   'settings.ai.composioSyncScans': 'Composio analyses de synchronisation',
   'settings.ai.totalBackgroundApiReadBudget': 'Budget total de lecture API',
   'settings.ai.memoryWorkerPolls': 'Sondages de mémoire',
-  'settings.ai.defaultProviderName': 'OpenHuman',
+  'settings.ai.defaultProviderName': 'openmark',
   'settings.ai.routing.managed': 'Géré',
   'settings.ai.managedSourceLabel': 'OpenRouter',
-  'settings.ai.managedSourceDetail': 'Géré par TinyHumans',
+  'settings.ai.managedSourceDetail': 'Géré par openmark',
   'settings.ai.routing.managedAlwaysOn': 'Toujours allumé',
   'settings.ai.routing.managedHint':
     'Géré est toujours disponible en solution de secours. Pour utiliser votre propre modèle, choisissez un mode de routage ci-dessous.',
   'settings.ai.routing.managedDesc':
-    'OpenHuman exécutera toutes les inférences dans le cloud, choisira le meilleur modèle pour la tâche, optimisera les coûts et conservera les paramètres de routage les plus sûrs par défaut.',
+    'openmark exécutera toutes les inférences dans le cloud, choisira le meilleur modèle pour la tâche, optimisera les coûts et conservera les paramètres de routage les plus sûrs par défaut.',
   'settings.ai.routing.managedMsg':
-    'OpenHuman gérera toutes les inférences pour chaque charge de travail et choisira automatiquement la meilleure route en termes de coût, de qualité et de sécurité.',
+    'openmark gérera toutes les inférences pour chaque charge de travail et choisira automatiquement la meilleure route en termes de coût, de qualité et de sécurité.',
   'settings.ai.routing.useYourOwn': 'Utilisez vos propres modèles',
   'settings.ai.routing.useYourOwnDesc':
     "Choisissez un fournisseur + modèle et faites passer toutes les charges de travail par celui-ci. C'est simple, mais cela peut être inefficace car les inférences légères et lourdes partagent toutes le même trajet.",
@@ -4588,6 +4588,54 @@ const messages: TranslationMap = {
   'settings.ai.workload.changeModel': 'Changer de modèle',
   'settings.ai.workload.chooseModel': 'Choisir un modèle',
   'settings.ai.provider.ollama': 'Ollama',
+
+  // Laya adaptive routing
+  'settings.laya.title': 'Adaptive Routing (Laya)',
+  'settings.laya.description':
+    'Automatically route simple queries to your local model and complex queries to the frontier model.',
+  'settings.laya.enabled': 'Enable adaptive routing',
+  'settings.laya.enabledDesc': 'Laya scores each message and selects the best model tier automatically.',
+  'settings.laya.confidenceThreshold': 'Confidence threshold',
+  'settings.laya.confidenceThresholdDesc':
+    'Minimum routing confidence (0–1). Turns below this threshold fall back to the default router.',
+  'settings.laya.localModel': 'Local model override',
+  'settings.laya.localModelDesc': 'Model sent for low-complexity turns. Leave blank to use your configured local AI.',
+  'settings.laya.frontierModel': 'Frontier model override',
+  'settings.laya.frontierModelDesc':
+    'Model sent for high-complexity turns. Leave blank to use the managed cloud default.',
+  'settings.laya.shadowMode': 'Shadow mode (collect evidence)',
+  'settings.laya.shadowModeDesc':
+    'Score messages silently without changing routing, to build evidence before enabling live routing.',
+  'settings.laya.telemetry': 'Share routing decisions (anonymous)',
+  'settings.laya.telemetryDesc': 'Help improve Laya by sharing anonymised routing outcomes.',
+  'settings.laya.history': 'Recent routing decisions',
+  'settings.laya.historyEmpty': 'No routing decisions yet.',
+  'settings.laya.clearHistory': 'Clear history',
+  'settings.laya.shadowStats': 'Shadow evidence',
+  'settings.laya.shadowRecords': '{count} observations',
+  'settings.laya.shadowPrecision': 'Estimated precision: {pct}%',
+  'settings.laya.evidencePending':
+    'Live routing is disabled until at least 200 shadow observations are collected with ≥75% estimated precision.',
+  'settings.laya.status.label': 'Status',
+  'settings.laya.status.disabled': 'Disabled',
+  'settings.laya.status.shadow_only': 'Shadow mode',
+  'settings.laya.status.evidence_pending': 'Evidence pending',
+  'settings.laya.status.active': 'Active',
+  'settings.laya.outcome.laya_local': 'Local',
+  'settings.laya.outcome.laya_frontier': 'Frontier',
+  'settings.laya.outcome.fallback_low_confidence': 'Fallback (low confidence)',
+  'settings.laya.outcome.fallback_error': 'Fallback (error)',
+  'settings.laya.outcome.fallback_timeout': 'Fallback (timeout)',
+  'settings.laya.outcome.fallback_unavailable': 'Fallback (model unavailable)',
+  'settings.laya.outcome.flag_off': 'Flag off',
+
+  // Laya routing badge (chat UI)
+  'laya.badge.local': 'Local model',
+  'laya.badge.frontier': 'Frontier model',
+  'laya.badge.fallback': 'Default routing',
+  'laya.badge.redoWithFrontier': 'Redo with frontier model',
+  'laya.badge.routingExplanation': 'Complexity: {pct}% · Confidence: {conf}%',
+  'laya.badge.signals': 'Signals: {signals}',
   'settings.billing.autoRecharge.addAmount': 'Ajouter ce montant',
   'settings.billing.autoRecharge.addCard': 'Ajouter une carte',
   'settings.billing.autoRecharge.amountHint': 'Indice de montant',
@@ -4689,16 +4737,16 @@ const messages: TranslationMap = {
   'settings.composio.confirmSwitch': 'Je comprends, passer en Direct',
   'settings.composio.confirmTitle': '⚠️ Passage au mode Direct',
   'settings.composio.confirmWarning':
-    'Vos intégrations existantes (Gmail, Slack, GitHub, etc. liées via OpenHuman) ne seront pas visibles: elles vivent dans le tenant Composio géré par OpenHuman.',
+    'Vos intégrations existantes (Gmail, Slack, GitHub, etc. liées via openmark) ne seront pas visibles: elles vivent dans le tenant Composio géré par openmark.',
   'settings.composio.intro':
     "Composio intègre plus de 250 applications externes en tant qu'outils que votre agent peut appeler. Choisissez comment ces appels d'outils sont routés.",
   'settings.composio.title': 'Composio',
   'settings.composio.modeDirect': 'Direct (apporte ta propre clé API)',
   'settings.composio.modeDirectDesc':
     "Les appels vont directement à backend.composio.dev. Souverain / compatible hors ligne. L'exécution des outils fonctionne de manière synchrone ; les webhooks de déclencheurs en temps réel ne sont pas encore routés en mode direct (problème de suivi).",
-  'settings.composio.modeManaged': "Géré (OpenHuman s'en occupe pour toi)",
+  'settings.composio.modeManaged': "Géré (openmark s'en occupe pour toi)",
   'settings.composio.modeManagedDesc':
-    "OpenHuman relaie les appels d'outils via notre backend (recommandé). L'authentification est négociée ; vous ne collez jamais de clé API Composio. Les webhooks sont entièrement routés.",
+    "openmark relaie les appels d'outils via notre backend (recommandé). L'authentification est négociée ; vous ne collez jamais de clé API Composio. Les webhooks sont entièrement routés.",
   'settings.composio.routingMode': 'Mode de routage',
   'settings.composio.saveErrorNoKey':
     "Échec de l'enregistrement. Le mode Direct nécessite une clé API non vide.",
@@ -4803,7 +4851,7 @@ const messages: TranslationMap = {
     "Configure les modes d'authentification Telegram/Discord et le routage de canal par défaut",
   'settings.developerMenu.tools.title': 'Outils',
   'settings.developerMenu.tools.desc':
-    "Active ou désactive les capacités qu'OpenHuman peut utiliser en ton nom",
+    "Active ou désactive les capacités qu'openmark peut utiliser en ton nom",
   'settings.developerMenu.devWorkflow.title': 'Flux de travail de développement',
   'settings.developerMenu.devWorkflow.desc':
     'Agent autonome qui sélectionne vos problèmes GitHub et crée des PR selon un calendrier',
@@ -4984,7 +5032,7 @@ const messages: TranslationMap = {
     "Configurer les paramètres de triage IA pour les déclencheurs d'intégration Composio",
   'settings.developerMenu.mcpServer.title': 'MCP Serveur',
   'settings.developerMenu.mcpServer.desc':
-    'Configurer les clients MCP externes pour se connecter à OpenHuman',
+    'Configurer les clients MCP externes pour se connecter à openmark',
   'settings.developerMenu.autonomy.title': 'Autonomie de l’agent',
   'settings.developerMenu.autonomy.desc':
     'Limites de fréquence des actions des outils et seuils de sécurité',
@@ -5002,7 +5050,7 @@ const messages: TranslationMap = {
   'settings.mcpServer.copied': 'Copié !',
   'settings.mcpServer.openConfigFile': 'Ouvrir le fichier de configuration',
   'settings.mcpServer.binaryPathNotFound':
-    'Binaire OpenHuman introuvable. Si vous exécutez à partir des sources, compilez avec : cargo build --bin openhuman-core',
+    'Binaire openmark introuvable. Si vous exécutez à partir des sources, compilez avec : cargo build --bin openhuman-core',
   'settings.mcpServer.openConfigError': "Échec de l'ouverture du fichier de configuration",
   'settings.mcpServer.clientClaudeDesktop': 'Bureau Claude',
   'settings.mcpServer.clientCursor': 'Curseur',
@@ -5303,7 +5351,7 @@ const messages: TranslationMap = {
   'settings.mascot.characterPreview': 'Aperçu',
   'settings.mascot.characterStates': 'états',
   'settings.mascot.characterVisemes': 'visèmes',
-  'settings.mascot.colorAria': 'OpenHuman couleur',
+  'settings.mascot.colorAria': 'openmark couleur',
   'settings.mascot.colorDesc': 'Description de la couleur',
   'settings.mascot.colorHeading': 'Titre de la couleur',
   'settings.mascot.colorBlack': 'Noir',
@@ -5313,15 +5361,15 @@ const messages: TranslationMap = {
   'settings.mascot.primaryColor': 'Couleur primaire',
   'settings.mascot.secondaryColor': 'Couleur secondaire',
   'settings.mascot.colorYellow': 'Jaune',
-  'settings.mascot.libraryUnavailable': 'OpenHuman bibliothèque indisponible',
-  'settings.mascot.title': 'OpenHuman',
-  'settings.mascot.loadingLibrary': 'Chargement de la bibliothèque OpenHuman…',
+  'settings.mascot.libraryUnavailable': 'openmark bibliothèque indisponible',
+  'settings.mascot.title': 'openmark',
+  'settings.mascot.loadingLibrary': 'Chargement de la bibliothèque openmark…',
   'settings.mascot.loadDetailError': 'Impossible de charger la mascotte.',
   'settings.mascot.loadLibraryError': 'Impossible de charger la bibliothèque de mascottes.',
-  'settings.mascot.localDefault': 'OpenHuman local (par défaut)',
+  'settings.mascot.localDefault': 'openmark local (par défaut)',
   'settings.mascot.menuTitle': 'Mascotte',
   'settings.mascot.menuDesc': "Choisis la couleur de la mascotte utilisée dans toute l'application",
-  'settings.mascot.noCharacters': "Aucun personnage OpenHuman n'est encore disponible",
+  'settings.mascot.noCharacters': "Aucun personnage openmark n'est encore disponible",
   'settings.mascot.noColorVariants': 'Aucune variante de couleur',
   'settings.mascot.secondaryHeading': 'Duo de réunion (seconde mascotte)',
   'settings.mascot.secondaryDesc':
@@ -5416,7 +5464,7 @@ const messages: TranslationMap = {
     'Valeur par défaut raisonnable: bonne continuité sans consommer de jetons supplémentaires à chaque exécution.',
   'settings.memoryWindow.balanced.label': 'Équilibré',
   'settings.memoryWindow.description':
-    "Quelle quantité de contexte mémorisé OpenHuman injecte dans chaque nouvelle exécution d'agent. Des fenêtres plus larges semblent plus conscientes des conversations passées mais consomment plus de jetons (et coûtent plus cher) à chaque exécution.",
+    "Quelle quantité de contexte mémorisé openmark injecte dans chaque nouvelle exécution d'agent. Des fenêtres plus larges semblent plus conscientes des conversations passées mais consomment plus de jetons (et coûtent plus cher) à chaque exécution.",
   'settings.memoryWindow.extended.badge': 'Plus de contexte',
   'settings.memoryWindow.extended.hint':
     'Plus de mémoire à long terme injectée à chaque exécution. Coût en jetons plus élevé par tour.',
@@ -5578,19 +5626,19 @@ const messages: TranslationMap = {
   'skills.install.urlPlaceholder': 'https://raw.githubusercontent.com/owner/repo/main/SKILL.md',
   'skills.meetingBots.bannerDesc': 'Description de la bannière',
   'skills.meetingBots.bannerTitle': 'Titre de la bannière',
-  'skills.meetingBots.busyTitle': 'OpenHuman est occupé',
+  'skills.meetingBots.busyTitle': 'openmark est occupé',
   'skills.meetingBots.comingSoon': 'Bientôt disponible',
   'skills.meetingBots.couldNotLeaveTitle': 'Impossible de quitter la réunion',
-  'skills.meetingBots.couldNotStartTitle': 'Impossible de démarrer OpenHuman',
+  'skills.meetingBots.couldNotStartTitle': 'Impossible de démarrer openmark',
   'skills.meetingBots.displayName': "Nom d'affichage",
-  'skills.meetingBots.failedToStart': "Échec du démarrage d'OpenHuman.",
+  'skills.meetingBots.failedToStart': "Échec du démarrage d'openmark.",
   'skills.meetingBots.joiningMessage':
     'Il devrait apparaître comme participant dans quelques secondes.',
-  'skills.meetingBots.joiningTitle': 'OpenHuman rejoint la réunion',
+  'skills.meetingBots.joiningTitle': 'openmark rejoint la réunion',
   'skills.meetingBots.meetingLink': 'Lien de réunion',
-  'skills.meetingBots.modalAriaLabel': 'Envoyer OpenHuman à une réunion',
+  'skills.meetingBots.modalAriaLabel': 'Envoyer openmark à une réunion',
   'skills.meetingBots.modalDesc': 'Description de la modal',
-  'skills.meetingBots.modalTitle': 'Envoyer OpenHuman à une réunion',
+  'skills.meetingBots.modalTitle': 'Envoyer openmark à une réunion',
   'skills.meetingBots.newBadge': 'Nouveau badge',
   'skills.meetingBots.platformComingSoon': '{label} sera bientôt disponible.',
   'skills.meetingBots.platformHints.gmeet': 'meet.google.com/abc-defg-hij',
@@ -5603,7 +5651,7 @@ const messages: TranslationMap = {
   'skills.meetingBots.platforms.zoom': 'Zoom',
   'skills.meetingBots.sendTo': 'Envoyer à',
   'skills.meetingBots.serverOverloaded':
-    'OpenHuman est actuellement très sollicité. Veuillez réessayer dans quelques minutes.',
+    'openmark est actuellement très sollicité. Veuillez réessayer dans quelques minutes.',
   'skills.meetingBots.soonSuffix': 'bientôt',
   'skills.meetingBots.starting': 'Démarrage…',
   'skills.meetingBots.recentCallsAriaLabel': 'Appels de réunion récents',
@@ -5645,7 +5693,7 @@ const messages: TranslationMap = {
   'skills.meetingBots.respondToParticipantDesc':
     'Saisissez votre nom d\u2019affichage exact dans la réunion. Le bot ne répond que lorsque vous prononcez son nom (phrase de réveil).',
   'skills.meetingBots.wakePhrase': 'Phrase de réveil',
-  'skills.meetingBots.wakePhraseHint': 'Hey OpenHuman',
+  'skills.meetingBots.wakePhraseHint': 'Hey openmark',
   'skills.meetingBots.wakePhraseDesc': 'Le participant doit dire ceci avant que le bot réponde.',
   'skills.meetingBots.activeMode': 'Répondre quand je m’adresse à lui',
   'skills.meetingBots.activeModeDesc':
@@ -5656,7 +5704,7 @@ const messages: TranslationMap = {
   'skills.meetingBots.history.earlier': 'Plus tôt',
   'skills.meetingBots.history.participantCount': 'Participant {count}',
   'skills.meetingBots.history.participantCountPlural': 'Participants au {count}',
-  'skills.meetingBots.history.runWithOpenHuman': 'Exécuter avec OpenHuman',
+  'skills.meetingBots.history.runWithopenmark': 'Exécuter avec openmark',
   'skills.meetingBots.history.searchPlaceholder': 'Rechercher des appels…',
   'skills.meetingBots.history.selectPrompt':
     'Sélectionnez un appel pour voir son résumé et sa transcription.',
@@ -5700,7 +5748,7 @@ const messages: TranslationMap = {
   'skills.meetingBots.defaults.openDefaults': 'Paramètres de réunion',
   'skills.meetingBots.defaults.watchCalendar': 'Surveiller mon agenda',
   'skills.meetingBots.defaults.watchCalendarDesc':
-    "Laissez OpenHuman surveiller votre agenda connecté pour qu'il puisse rejoindre automatiquement ou vous inviter à des réunions selon les politiques ci-dessous. Cela est indépendant des notifications de rappel de réunion.",
+    "Laissez openmark surveiller votre agenda connecté pour qu'il puisse rejoindre automatiquement ou vous inviter à des réunions selon les politiques ci-dessous. Cela est indépendant des notifications de rappel de réunion.",
   'skills.meetingBots.defaults.globalPolicy': "Politique d'adhésion automatique globale",
   'skills.meetingBots.defaults.perPlatformTitle': 'Paramètres par plateforme',
   'skills.meetingBots.defaults.perPlatformDesc':
@@ -5786,7 +5834,7 @@ const messages: TranslationMap = {
     'Human réunit votre contexte personnel, votre identité et le profil visible par l’assistant.',
   'walkthrough.steps.brainTab.title': 'Ouvrez votre Brain',
   'walkthrough.steps.brainTab.content':
-    'Brain est le graphe de mémoire : l’endroit où vérifier ce qu’OpenHuman sait et comment les idées se relient.',
+    'Brain est le graphe de mémoire : l’endroit où vérifier ce qu’openmark sait et comment les idées se relient.',
   'walkthrough.steps.connectionsTab.title': 'Gérer les connexions',
   'walkthrough.steps.connectionsTab.content':
     'Connections reste disponible dans la navigation principale pour ajouter ou ajuster des services.',
@@ -5831,7 +5879,7 @@ const messages: TranslationMap = {
   'chat.parentThread': 'fil parent',
   'chat.removeReaction': 'Supprimer {emoji}',
   'settings.composio.loading': 'Chargement…',
-  'settings.mascot.noCharactersAvailable': "Aucun personnage OpenHuman n'est encore disponible",
+  'settings.mascot.noCharactersAvailable': "Aucun personnage openmark n'est encore disponible",
   'skills.uninstall.confirmTitle': 'Désinstaller {name} ?',
   'intelligence.memoryChunk.detail.copiedHint': 'copié',
   'settings.composio.notYetRouted': 'pas encore routé',
@@ -5843,7 +5891,7 @@ const messages: TranslationMap = {
     "Configurer les modes d'authentification Telegram/Discord et le routage des canaux par défaut",
   'devOptions.menuTools': 'Outils',
   'devOptions.menuToolsDesc':
-    'Activer ou désactiver les fonctionnalités que OpenHuman peut utiliser en votre nom',
+    'Activer ou désactiver les fonctionnalités que openmark peut utiliser en votre nom',
   'devOptions.menuAgentChat': "Chat d'agent",
   'devOptions.menuAgentChatDesc':
     "Conversation de l'agent de test avec remplacements de modèle et de température",
@@ -6199,7 +6247,7 @@ const messages: TranslationMap = {
 
   'announcement.gotIt': 'Compris',
   'harnessInit.subtitle':
-    'OpenHuman prépare les composants dont il a besoin lors du premier lancement.',
+    'openmark prépare les composants dont il a besoin lors du premier lancement.',
   'harnessInit.stepPython': "Environnement d'exécution Python",
   'harnessInit.stepSpacy': 'Modèle de langage',
   'harnessInit.stepNode': "Environnement d'exécution Node.js",
@@ -6209,16 +6257,16 @@ const messages: TranslationMap = {
   'harnessInit.stateSkipped': 'Ignoré',
   'harnessInit.stateFailed': 'Échec',
   'harnessInit.failedMessage':
-    'Certaines étapes de configuration ne se sont pas terminées. Vous pouvez réessayer ou continuer: OpenHuman utilisera une solution de secours intégrée.',
+    'Certaines étapes de configuration ne se sont pas terminées. Vous pouvez réessayer ou continuer: openmark utilisera une solution de secours intégrée.',
   'harnessInit.retry': 'Réessayer',
   'harnessInit.continueAnyway': 'Continuer quand même',
   'harnessInit.runInBackground': 'Exécuter en arrière-plan',
   'harnessInit.backgroundHint':
-    'Vous pouvez continuer à utiliser OpenHuman pendant que cela se termine.',
+    'Vous pouvez continuer à utiliser openmark pendant que cela se termine.',
 
   'keyring.consent.title': 'Stockage sécurisé indisponible',
   'keyring.consent.description':
-    "Le trousseau de votre système d'exploitation n'est pas accessible. OpenHuman a besoin de votre autorisation pour stocker les secrets en utilisant un stockage local chiffré.",
+    "Le trousseau de votre système d'exploitation n'est pas accessible. openmark a besoin de votre autorisation pour stocker les secrets en utilisant un stockage local chiffré.",
   'keyring.consent.reasonPrefix': 'Raison :',
   'keyring.consent.showDetails': "Qu'est-ce que cela signifie ?",
   'keyring.consent.hideDetails': 'Masquer les détails',
@@ -6262,7 +6310,7 @@ const messages: TranslationMap = {
   'memory.health.remediation.budget_exhausted':
     "Les embeddings de mémoire ont atteint le budget géré. Configurez des embeddings Ollama locaux (Connexions → Clés API → Intégrations) ou ajoutez votre propre clé d'API d'embeddings pour continuer à construire la mémoire.",
   'memory.health.remediation.auth_missing':
-    "Aucune information d'identification d'embeddings trouvée. Connectez-vous à OpenHuman ou configurez des embeddings Ollama locaux dans Connexions → Clés API → Intégrations.",
+    "Aucune information d'identification d'embeddings trouvée. Connectez-vous à openmark ou configurez des embeddings Ollama locaux dans Connexions → Clés API → Intégrations.",
   'memory.health.remediation.auth_invalid':
     "Vos informations d'identification d'embeddings ont été rejetées. Authentifiez-vous à nouveau ou passez aux embeddings Ollama locaux dans Connexions → Clés API → Intégrations.",
   'memory.health.remediation.embeddings_unconfigured':
@@ -6278,7 +6326,7 @@ const messages: TranslationMap = {
   'memory.health.remediation.empty_input_refused':
     "Un élément de mémoire a été ignoré car son texte était vide. Aucune action requise: les nouveaux éléments continuent de s'intégrer normalement.",
   'memory.health.remediation.storage_unavailable':
-    "OpenHuman ne peut pas écrire dans son stockage de mémoire: le disque ou la carte SD semble défaillant, plein ou en lecture seule. Vérifiez le lecteur et libérez de l'espace ; le traitement de la mémoire reprendra automatiquement une fois le stockage de nouveau accessible en écriture.",
+    "openmark ne peut pas écrire dans son stockage de mémoire: le disque ou la carte SD semble défaillant, plein ou en lecture seule. Vérifiez le lecteur et libérez de l'espace ; le traitement de la mémoire reprendra automatiquement une fois le stockage de nouveau accessible en écriture.",
   'memory.health.remediation.transient':
     'Une erreur temporaire a interrompu le traitement de la mémoire. Une nouvelle tentative aura lieu automatiquement.',
   'memory.health.remediation.unknown':
@@ -6359,11 +6407,11 @@ const messages: TranslationMap = {
   'onboarding.custom.vault.subtitle':
     'Confirmez où les notes de mémoire sont écrites, comment les données sources sont lues et si votre pipeline de coffre est en bon état.',
   'onboarding.custom.vault.defaultDesc':
-    "Utiliser les paramètres de mémoire gérés par OpenHuman. Le chemin du coffre et l'état de synchronisation peuvent encore être consultés ultérieurement.",
+    "Utiliser les paramètres de mémoire gérés par openmark. Le chemin du coffre et l'état de synchronisation peuvent encore être consultés ultérieurement.",
   'onboarding.custom.vault.configureDesc':
     'Vérifiez la propriété du coffre, exécutez des contrôles de santé et affinez les contrôles de mémoire maintenant.',
   'onboarding.custom.vault.localDisabledReason':
-    "La configuration gérée nécessite une connexion à OpenHuman et n'est pas disponible en mode local.",
+    "La configuration gérée nécessite une connexion à openmark et n'est pas disponible en mode local.",
   'onboarding.custom.vault.exitError': "Impossible de terminer l'intégration. Veuillez réessayer.",
 
   // Vault Health
@@ -6385,9 +6433,9 @@ const messages: TranslationMap = {
   'vaultHealth.existsLabel': "Le chemin du coffre de l'espace de travail existe",
   'vaultHealth.existsRecovery':
     'Le dossier du coffre est manquant. Lancez une synchronisation ou créez ce dossier, puis actualisez cette liste de contrôle.',
-  'vaultHealth.writableLabel': 'Le coffre est accessible en écriture par OpenHuman',
+  'vaultHealth.writableLabel': 'Le coffre est accessible en écriture par openmark',
   'vaultHealth.writableRecovery':
-    "OpenHuman ne peut pas encore écrire dans ce coffre. Accordez les autorisations d'écriture et actualisez.",
+    "openmark ne peut pas encore écrire dans ce coffre. Accordez les autorisations d'écriture et actualisez.",
   'vaultHealth.obsidianLabel': 'Le coffre est enregistré dans Obsidian',
   'vaultHealth.obsidianRecovery':
     'Dans Obsidian, choisissez « Ouvrir le dossier comme coffre » pour ce chemin, puis actualisez cette liste de contrôle.',
@@ -6405,13 +6453,13 @@ const messages: TranslationMap = {
   'memoryData.howItWorks': 'Fonctionnement du stockage de la mémoire',
   'memoryData.workspaceVault': "Coffre de l'espace de travail · écriture",
   'memoryData.workspaceVaultDesc':
-    'OpenHuman écrit les notes de mémoire générées dans memory_tree/content.',
+    'openmark écrit les notes de mémoire générées dans memory_tree/content.',
   'memoryData.connectedSources': 'Sources connectées · lecture',
   'memoryData.connectedSourcesDesc':
     "Les dossiers, boîtes mail, conversations et dépôts sont importés pour l'indexation de la mémoire: leurs fichiers originaux ne sont jamais réécrits.",
   'memoryData.internalFiles': "Fichiers internes de l'arbre de mémoire",
   'memoryData.internalFilesDesc':
-    "Les index, l'état de la file d'attente et les résumés sont gérés par OpenHuman pour maintenir la mémoire et la synchronisation en bon état.",
+    "Les index, l'état de la file d'attente et les résumés sont gérés par openmark pour maintenir la mémoire et la synchronisation en bon état.",
   'memoryData.windowError': 'Fenêtre de mémoire',
   'memoryData.windowUpdated': 'Fenêtre de mémoire mise à jour',
   'memoryData.windowUpdatedMsg': 'Définie sur {window}.',
@@ -6646,7 +6694,7 @@ const messages: TranslationMap = {
   // Gateways: cores this app provisions and runs elsewhere.
   'settings.gateway.title': 'Exécuter le cœur ailleurs',
   'settings.gateway.description':
-    'Le cœur peut s’exécuter dans un conteneur, sur une autre machine via SSH, ou dans un conteneur sur une autre machine. OpenHuman le démarre, s’y connecte et l’arrête quand vous changez d’emplacement.',
+    'Le cœur peut s’exécuter dans un conteneur, sur une autre machine via SSH, ou dans un conteneur sur une autre machine. openmark le démarre, s’y connecte et l’arrête quand vous changez d’emplacement.',
   'settings.gateway.add': 'Ajouter un emplacement',
   'settings.gateway.save': 'Enregistrer l’emplacement',
   'settings.gateway.remove': 'Supprimer',
